@@ -17,125 +17,137 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="./">Chanpio Park</a>
+  <div class="bar">
+    <a class="brand" href="./"><span class="mark" aria-hidden="true"></span>Chanpio Park</a>
     <nav class="nav" aria-label="Main">
       <a href="./#work">Work</a>
       <a href="./#about">About</a>
-      <a href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Resume</a>
+      <a class="pill dark" href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Resume</a>
     </nav>
   </div>
 </header>
-<main class="wrap">
+<main>
 <section class="hero">
-  <h1>The best AI doesn't wait to be asked.</h1>
-  <p class="sub">I'm Chanpio Park. I lead <strong>AI OS UX at Samsung</strong>, designing the proactive and agentic features in Galaxy AI, including Now Nudge and Gemini Automation.</p>
-  <div class="nudge-row">
-    <a class="nudge" href="#work"><span class="spark" aria-hidden="true">✦</span>See the work <span class="hint">6 case studies</span></a>
+  <div class="hero-card">
+    <div class="chips"><span class="chip c1" aria-hidden="true"><i>📅</i>Add to Calendar</span><span class="chip c2" aria-hidden="true"><i>🖼</i>Share photos</span><span class="chip c3" aria-hidden="true"><i>文</i>Translate</span><span class="chip c4" aria-hidden="true"><i>🗓</i>View calendar</span><span class="chip c5" aria-hidden="true"><i>📍</i>Open map</span><span class="chip c6" aria-hidden="true"><i>☕</i>Reorder coffee</span><span class="chip c7" aria-hidden="true"><i>⏰</i>Set reminder</span><span class="chip c8" aria-hidden="true"><i>✦</i>Summarize</span></div>
+    <div class="hero-copy">
+      <h1>The best AI doesn't<br class="lg"> wait to be asked</h1>
+      <p>I'm Chanpio Park. I lead AI OS UX at Samsung.</p>
+    </div>
+    <a class="scroll-cue" href="#work" aria-label="Scroll to work">⌄</a>
   </div>
 </section>
 
-<div class="facts">
-  <div><b>65M</b><span>devices with Now Nudge</span></div>
-  <div><b>50M</b><span>monthly users, Circle to Search</span></div>
-  <div><b>24</b><span>countries, Samsung Pay launch</span></div>
-  <div><b>8</b><span>designers on my team</span></div>
-</div>
+<section class="intro wrap center" id="work">
+  <p class="eyebrow">Selected work</p>
+  <h2>Designing the AI that knows<br>what you need next</h2>
+  <div class="pills">
+    <a class="pill soft" href="nudge/">Now Nudge</a>
+    <a class="pill soft" href="automation/">Gemini Automation</a>
+    <a class="pill soft" href="cts/">Circle to Search</a>
+  </div>
+</section>
 
-<h2 class="section-title" id="work">Selected work</h2>
+<section class="wrap grid">
+    <a class="card" href="nudge/">
+      <figure class="thumb"><img src="images/nudge/01.webp" alt="Now Nudge" loading="lazy" decoding="async"></figure>
+      <div class="card-text">
+        <span class="card-meta">Samsung · 2025</span>
+        <h3>Now Nudge</h3>
+        <p>A proactive layer in One UI that reads what's on screen and offers one action, right above the keyboard.</p>
+        <span class="card-stat"><b>65M</b> devices shipped</span>
+      </div>
+    </a>
+    <a class="card" href="automation/">
+      <figure class="thumb"><span class="thumb-word">Gemini Automation</span></figure>
+      <div class="card-text">
+        <span class="card-meta">Samsung + Google · 2025–2026</span>
+        <h3>Gemini Automation</h3>
+        <p>The interaction framework for delegating multi-step tasks to Gemini on Galaxy, from launch to handoff.</p>
+        <span class="card-stat"><b>S26</b> launch partner device</span>
+      </div>
+    </a>
+    <a class="card" href="cts/">
+      <figure class="thumb"><img src="images/cts/01.webp" alt="Circle to Search" loading="lazy" decoding="async"></figure>
+      <div class="card-text">
+        <span class="card-meta">Samsung + Google · 2023–2024</span>
+        <h3>Circle to Search</h3>
+        <p>Samsung-side entry gesture, selection handler, and onboarding for Circle to Search on Galaxy.</p>
+        <span class="card-stat"><b>50M</b> monthly active users</span>
+      </div>
+    </a>
+    <a class="card" href="spay/">
+      <figure class="thumb"><img src="images/spay/01.webp" alt="Samsung Pay Web" loading="lazy" decoding="async"></figure>
+      <div class="card-text">
+        <span class="card-meta">Samsung · 2014–2019</span>
+        <h3>Samsung Pay Web</h3>
+        <p>Cross-device web checkout that replaced form-filling with a QR scan and a fingerprint.</p>
+        <span class="card-stat"><b>60%</b> fewer drop-offs at sign-in</span>
+      </div>
+    </a>
+    <a class="card" href="color-picker/">
+      <figure class="thumb"><img src="images/color-picker/01.webp" alt="Color picker for everyone" loading="lazy" decoding="async"></figure>
+      <div class="card-text">
+        <span class="card-meta">Samsung · 2022–2023</span>
+        <h3>Color picker for everyone</h3>
+        <p>Clearer names, a consistent hue order, and inclusive feedback, standardized across Samsung apps.</p>
+        <span class="card-stat"><b>2.4x</b> higher selection success</span>
+      </div>
+    </a>
+    <a class="card" href="splitscreen/">
+      <figure class="thumb"><img src="images/splitscreen/01.webp" alt="Split screen for Galaxy Z Fold" loading="lazy" decoding="async"></figure>
+      <div class="card-text">
+        <span class="card-meta">Samsung · 2021</span>
+        <h3>Split screen for Galaxy Z Fold</h3>
+        <p>A redesigned multitasking model for foldables, now the core split-screen interaction in One UI.</p>
+        <span class="card-stat"><b>35%</b> faster task completion</span>
+      </div>
+    </a>
+</section>
 
-  <a class="project" href="nudge/">
-    <figure class="thumb"><img src="images/nudge/01.webp" alt="Now Nudge" loading="lazy" decoding="async"></figure>
-    <div>
-      <span class="meta">Samsung, 2025</span>
-      <h2>Now Nudge</h2>
-      <p>A proactive layer in One UI that reads what's on screen and offers one action, right above the keyboard.</p>
-      <ul class="wins"><li><b>65M</b>devices shipped</li><li><b>60%</b>fewer steps on multi-app tasks</li><li><b>40%</b>higher task success</li></ul>
-      <span class="open">Read the case study</span>
+<section class="dark-band rounded" id="about">
+  <div class="wrap center">
+    <span class="glyph" aria-hidden="true">✦</span>
+    <h2>Knowing, anticipating, acting,<br>with people in control</h2>
+    <p class="lede">15+ years at Samsung across Samsung Pay, One UI, and Galaxy AI.<br>I lead a team of 8 designers and work closely with Google on Gemini.</p>
+    <div class="pills">
+      <a class="pill light" href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Resume</a>
+      <a class="pill line" href="https://www.linkedin.com/in/chanpio/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
-  </a>
-  <a class="project" href="automation/">
-    <figure class="thumb"><span class="thumb-word">Gemini Automation</span></figure>
-    <div>
-      <span class="meta">Samsung + Google, 2025–2026</span>
-      <h2>Gemini Automation</h2>
-      <p>The interaction framework for delegating multi-step tasks to Gemini on Galaxy, from launch to handoff.</p>
-      <ul class="wins"><li><b>S26</b>launch partner device</li><li><b>3</b>form factors: bar, Flip, Fold</li></ul>
-      <span class="open">Read the case study</span>
+    <div class="loop">
+      <div><span class="loop-icon k" aria-hidden="true"></span><h3>Knowing</h3><p>Understand context from what's on screen, without asking.</p></div>
+      <div><span class="loop-icon a" aria-hidden="true"></span><h3>Anticipating</h3><p>Offer the next step only when the intent is clear.</p></div>
+      <div><span class="loop-icon x" aria-hidden="true"></span><h3>Acting</h3><p>Carry it out, while the person stays in control.</p></div>
     </div>
-  </a>
-  <a class="project" href="cts/">
-    <figure class="thumb"><img src="images/cts/01.webp" alt="Circle to Search" loading="lazy" decoding="async"></figure>
-    <div>
-      <span class="meta">Samsung + Google, 2023–2024</span>
-      <h2>Circle to Search</h2>
-      <p>Samsung-side entry gesture, selection handler, and onboarding for Circle to Search on Galaxy.</p>
-      <ul class="wins"><li><b>50M</b>monthly active users</li><li><b>34%</b>of flagship users use it daily</li><li><b>80%</b>less time to finish a visual search</li></ul>
-      <span class="open">Read the case study</span>
+    <div class="numbers">
+      <div><b>65M</b><span>devices with Now Nudge</span></div>
+      <div><b>50M</b><span>monthly users, Circle to Search</span></div>
+      <div><b>24</b><span>countries, Samsung Pay</span></div>
+      <div><b>8</b><span>designers on my team</span></div>
     </div>
-  </a>
-  <a class="project" href="spay/">
-    <figure class="thumb"><img src="images/spay/01.webp" alt="Samsung Pay Web" loading="lazy" decoding="async"></figure>
-    <div>
-      <span class="meta">Samsung, 2014–2019</span>
-      <h2>Samsung Pay Web</h2>
-      <p>Cross-device web checkout that replaced form-filling with a QR scan and a fingerprint.</p>
-      <ul class="wins"><li><b>60%</b>fewer drop-offs at sign-in</li><li><b>86%</b>faster device pairing</li><li><b>85%</b>came back to use it again</li></ul>
-      <span class="open">Read the case study</span>
-    </div>
-  </a>
-  <a class="project" href="color-picker/">
-    <figure class="thumb"><img src="images/color-picker/01.webp" alt="Color picker for everyone" loading="lazy" decoding="async"></figure>
-    <div>
-      <span class="meta">Samsung, 2022–2023</span>
-      <h2>Color picker for everyone</h2>
-      <p>Clearer names, a consistent hue order, and inclusive feedback, standardized across Samsung apps.</p>
-      <ul class="wins"><li><b>2.4x</b>higher selection success</li><li><b>1</b>standard component across apps</li></ul>
-      <span class="open">Read the case study</span>
-    </div>
-  </a>
-  <a class="project" href="splitscreen/">
-    <figure class="thumb"><img src="images/splitscreen/01.webp" alt="Split screen for Galaxy Z Fold" loading="lazy" decoding="async"></figure>
-    <div>
-      <span class="meta">Samsung, 2021</span>
-      <h2>Split screen for Galaxy Z Fold</h2>
-      <p>A redesigned multitasking model for foldables, now the core split-screen interaction in One UI.</p>
-      <ul class="wins"><li><b>35%</b>faster task completion</li><li><b>15%</b>more usage after 3 months</li></ul>
-      <span class="open">Read the case study</span>
-    </div>
-  </a>
-
-<section class="about" id="about">
-  <h2>I design systems that notice, offer, and act.</h2>
-  <div>
-    <p>I've spent 15+ years at Samsung, working on <strong>Samsung Pay</strong> in Seoul, <strong>One UI</strong> core experiences in New Jersey, and now <strong>Galaxy AI</strong>, where I lead a team of 8 designers and work closely with Google on Gemini.</p>
-    <p>My work follows one loop:</p>
-    <ul class="loop">
-      <li><b>Knowing</b><span>Understand context from what's on screen, without asking.</span></li>
-      <li><b>Anticipating</b><span>Offer the next step only when the intent is clear.</span></li>
-      <li><b>Acting</b><span>Carry it out, while the person stays in control.</span></li>
-    </ul>
+  </div>
+  <div class="wrap">
+    <div class="list-head"><h2>Experience</h2><a href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Full resume ›</a></div>
+    <div class="rows"><a class="row" href="nudge/"><span class="r-title">UX Lead, AI OS</span><span class="r-sub">Galaxy AI · Seoul</span><span class="r-year">2024–now</span><span class="chev" aria-hidden="true">›</span></a><a class="row" href="cts/"><span class="r-title">Principal Product Designer</span><span class="r-sub">One UI Core UX · New Jersey</span><span class="r-year">2021–2024</span><span class="chev" aria-hidden="true">›</span></a><a class="row" href="splitscreen/"><span class="r-title">Senior Product Designer</span><span class="r-sub">One UI Core UX · New Jersey</span><span class="r-year">2019–2021</span><span class="chev" aria-hidden="true">›</span></a><a class="row" href="spay/"><span class="r-title">Senior Product Designer</span><span class="r-sub">Samsung Pay · Seoul</span><span class="r-year">2014–2019</span><span class="chev" aria-hidden="true">›</span></a></div>
   </div>
 </section>
 </main>
 <footer class="site-footer" id="contact">
-  <div class="wrap">
-    <div>
-      <h2>Let's talk about what's next.</h2>
-      <p>Open to Staff and Principal roles in AI product design. Based in Seoul, authorized to work in the US.</p>
+  <div class="wrap center">
+    <p class="eyebrow">Contact</p>
+    <h2>Let's build what's next.</h2>
+    <p class="lede">Open to Staff and Principal roles in AI product design.<br>Based in Seoul, authorized to work in the US.</p>
+    <div class="pills">
+      <a class="pill dark" href="mailto:chanpiopark@gmail.com">Email me</a>
+      <a class="pill soft" href="https://www.linkedin.com/in/chanpio/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="pill soft" href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Resume</a>
     </div>
-    <div>
-      <div class="contact-links">
-        <a class="btn primary" href="mailto:chanpiopark@gmail.com">Email me</a>
-        <a class="btn" href="https://www.linkedin.com/in/chanpio/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Resume</a>
-      </div>
-    </div>
+    <p class="fine">© 2026 Chanpio Park</p>
   </div>
 </footer>
 </body>
