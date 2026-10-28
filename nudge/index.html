@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Now Nudge | Chanpio Park</title>
+<meta name="description" content="How Chanpio Park led UX for Now Nudge, Samsung&#x27;s proactive on-device AI that surfaces the right action at the right time.">
+<link rel="canonical" href="https://www.chanpio.work/nudge/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chanpio Park">
+<meta property="og:title" content="Now Nudge | Chanpio Park">
+<meta property="og:description" content="How Chanpio Park led UX for Now Nudge, Samsung&#x27;s proactive on-device AI that surfaces the right action at the right time.">
+<meta property="og:url" content="https://www.chanpio.work/nudge/">
+<meta property="og:image" content="https://www.chanpio.work/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../">Chanpio Park</a>
+    <nav class="nav" aria-label="Main">
+      <a href="../#work" aria-current="page">Work</a>
+      <a href="../#about">About</a>
+      <a href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<section class="case-head">
+  <p class="meta"><strong>Now Nudge</strong>, Samsung, 2025</p>
+  <h1>Designing an OS that offers the next step before you ask</h1>
+</section>
+<figure class="cover"><img src="../images/nudge/01.webp" alt="Now Nudge" loading="lazy" decoding="async"></figure>
+<div class="case-grid">
+  <aside class="rail"><dl><div><dt>My role</dt><dd>Design lead</dd><dd>Design strategy</dd><dd>Interaction design</dd></div><div><dt>Team</dt><dd>Myself</dd><dd>1 PM</dd><dd>5 engineers</dd><dd>1 UX researcher</dd><dd>1 product designer</dd><dd>1 motion designer</dd></div></dl></aside>
+  <div>
+    <p class="summary">I led UX for Now Nudge, an on-device AI layer that predicts what you need next and offers it in place. Instead of copying text, switching apps, and searching, you tap one chip above the keyboard. I owned the problem framing, the interaction model, and the Nudge Handler spec that later became the shared template for proactive AI in One UI.</p>
+  </div>
+</div>
+<div class="body">
+  <div class="outcomes"><div><b>65M</b><span>devices shipped with Now Nudge</span></div><div><b><em>60%</em></b><span>fewer steps on complex multi-app tasks</span></div><div><b>40%</b><span>higher task success with proactive suggestions</span></div><div><b>No. 1</b><span>most-engaged agentic feature in One UI</span></div></div>
+  
+<h2>The user was the only orchestrator</h2>
+<p>On a phone, every cross-app task runs through the user. A friend mentions dinner on Saturday, and you copy the time, open Calendar, create an event, and come back. The intent is obvious. The execution is broken.</p>
+<p>I led the problem framing, running contextual research across 12 real-world task flows to find where intent was clear but execution fell apart.</p>
+
+<h2>Two rules that shaped everything</h2>
+<div class="compare">
+  <div><h4>Accuracy over coverage</h4><p class="con" style="margin:0">Trigger only when intent is clear. A wrong nudge costs more trust than a missing one.</p></div>
+  <div><h4>Glanceability over depth</h4><p class="con" style="margin:0">Surface one action, never a menu. If it needs reading, it's not a nudge.</p></div>
+</div>
+
+<h2>Critical user journeys</h2>
+<ol class="steps">
+  <li><h3>Smart action bridging</h3><p>A message mentions weekend plans. Now Nudge reads the date, checks the calendar, and offers to add the event inline. No context switch.</p></li>
+  <li><h3>Intelligent content retrieval</h3><p>A friend asks for trip photos. Now Nudge recognizes the place and offers the right album. The first spec only linked to the gallery. I pushed for album-level suggestions and drove the cross-team alignment that made it possible.</p></li>
+  <li><h3>Adaptive interface</h3><p>You land on a page in another language and a Translate chip appears over it. I found this journey in diary study data: language switches had the highest copy-paste frequency of any moment we observed.</p></li>
+</ol>
+<div class="full bleed"><figure class="fig row r3"><div><video src="../images/nudge/06.mp4" poster="../images/nudge/06-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Now Nudge offering trip photos in a chat"></video></div><div><img src="../images/nudge/02.webp" alt="Share Photos chip above the keyboard" loading="lazy" decoding="async"></div><div><img src="../images/nudge/03.webp" alt="Translate chip over a foreign-language video" loading="lazy" decoding="async"></div><figcaption>Left to right: content retrieval in a real chat, the Share Photos chip, and the Translate chip.</figcaption></figure></div>
+
+<h2>The Nudge Handler</h2>
+<p>I owned the full spec for the Nudge Handler, covering entry motion, label structure, and dismissal, and set it up as one shared component across every trigger type.</p>
+<ul>
+  <li><strong>Quiet entrance.</strong> It slides in without blocking the task you're doing.</li>
+  <li><strong>Two-to-three-word labels.</strong> "Add to Calendar," not a sentence.</li>
+  <li><strong>Two modes.</strong> An action nudge runs a task. A recall nudge types the answer for you.</li>
+</ul>
+<div class="full"><figure class="fig bleed"><img src="../images/nudge/04.webp" alt="Nudge Handler spec: data-driven insight and action-oriented task" loading="lazy" decoding="async"></figure></div>
+
+<h2>Where should a guess live?</h2>
+<p>I tested the nudge in the top bar, as a floating chip, and in the bottom corners. The keyboard won. It's always in reach, never covers content, and asks for no new behavior.</p>
+<div class="callout"><p>In concept testing, keyboard-anchored placement had the highest task completion and the fewest accidental dismissals of every position we tried.</p></div>
+<div class="full"><figure class="fig"><img src="../images/nudge/05.webp" alt="Rejected placements: top, center, and corner, with the reason each failed" loading="lazy" decoding="async"></figure></div>
+
+<h2>Designing for the wrong guess</h2>
+<p>A proactive system will be wrong some of the time, so I treated a miss as a design problem rather than an edge case.</p>
+<ul>
+  <li><strong>Silence by default.</strong> When the model wasn't confident, nothing appeared. We tuned for precision and accepted lower coverage.</li>
+  <li><strong>Cheap to ignore.</strong> A nudge never steals focus or blocks typing. Ignoring it costs nothing.</li>
+  <li><strong>Dismissal teaches.</strong> Dismissing a type of nudge repeatedly makes it appear less often.</li>
+  <li><strong>On-device by design.</strong> Screen content is read and processed on the device, which let us offer help without asking people to trade away privacy.</li>
+</ul>
+
+<h2>Result</h2>
+<p>Now Nudge shipped to 65 million devices, became the most-engaged agentic feature in One UI, and set the interaction template for the proactive AI features that followed at Samsung.</p>
+<div class="lesson">
+  <p class="cap">Lesson learned</p>
+  <p class="big">Intelligence should be invisible. The best AI features don't feel like features. They feel like the device understood you.</p>
+</div>
+
+  <nav class="next" aria-label="More work">
+    <a href="../"><small>Back</small><b>All work</b></a>
+    <a href="../automation/" style="text-align:right"><small>Next project</small><b>Gemini Automation</b></a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Let's talk about what's next.</h2>
+      <p>Open to Staff and Principal roles in AI product design. Based in Seoul, authorized to work in the US.</p>
+    </div>
+    <div>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:chanpiopark@gmail.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/chanpio/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

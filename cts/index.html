@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Circle to Search | Chanpio Park</title>
+<meta name="description" content="How Chanpio Park designed the Samsung-side gesture and selection UX for Circle to Search on Galaxy.">
+<link rel="canonical" href="https://www.chanpio.work/cts/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chanpio Park">
+<meta property="og:title" content="Circle to Search | Chanpio Park">
+<meta property="og:description" content="How Chanpio Park designed the Samsung-side gesture and selection UX for Circle to Search on Galaxy.">
+<meta property="og:url" content="https://www.chanpio.work/cts/">
+<meta property="og:image" content="https://www.chanpio.work/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../">Chanpio Park</a>
+    <nav class="nav" aria-label="Main">
+      <a href="../#work" aria-current="page">Work</a>
+      <a href="../#about">About</a>
+      <a href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<section class="case-head">
+  <p class="meta"><strong>Circle to Search</strong>, Samsung + Google, 2023–2024</p>
+  <h1>The gesture that made search part of the screen</h1>
+</section>
+<figure class="cover"><img src="../images/cts/01.webp" alt="Circle to Search" loading="lazy" decoding="async"></figure>
+<div class="case-grid">
+  <aside class="rail"><dl><div><dt>My role</dt><dd>Design lead (Samsung)</dd><dd>Design strategy</dd><dd>User research</dd><dd>Interaction design</dd><dd>Prototyping</dd></div><div><dt>Team</dt><dd>Myself</dd><dd>Product planning</dd><dd>Technical program manager</dd><dd>6 engineers</dd><dd>Visual and motion designer</dd><dd>In partnership with Google</dd></div></dl></aside>
+  <div>
+    <p class="summary">Circle to Search lets you search anything on screen by drawing a circle around it. Google built the search experience. I led the Samsung side: choosing the entry gesture, designing the selection handler and its visual feedback, and building the onboarding that taught 50 million people to use it.</p>
+  </div>
+</div>
+<div class="body">
+  <div class="outcomes"><div><b>50M</b><span>monthly active users, Samsung's most-used AI feature</span></div><div><b>34%</b><span>of flagship users use it every day</span></div><div><b><em>80%</em></b><span>less time to complete a visual search task in testing</span></div></div>
+  
+<h2>Typing was the bottleneck</h2>
+<p>You see an unfamiliar spice on a cooking show, or a menu in another language. Searching for it means leaving the app, describing it in words, and coming back. In our search survey, 48% said typing queries was tedious and 21% said switching apps took too long.</p>
+
+<figure class="fig row r2"><div><img src="../images/cts/02.webp" alt="Pointing a phone at a Japanese menu" loading="lazy" decoding="async"></div><div><img src="../images/cts/03.webp" alt="An unfamiliar spice on a cooking show" loading="lazy" decoding="async"></div></figure>
+
+<h2>Goals</h2>
+<ul>
+  <li>Start a search without leaving what you're doing</li>
+  <li>Get results from a single interaction</li>
+  <li>Spend less time navigating and more time deciding</li>
+</ul>
+
+<h2>Finding the entry point</h2>
+<p>The entry gesture decides whether anyone finds the feature. I ran the brainstorms, built prototypes of three options, and concept-tested them.</p>
+<div class="compare">
+  <div><h4>Long-press side key</h4><ul><li class="pro">Quick and one-handed</li><li class="con">Already reserved for another function</li><li class="con">Awkward for left-handed users</li></ul></div>
+  <div><h4>Swipe up from corner</h4><ul><li class="pro">Quick and one-handed</li><li class="con">Conflicts with the home gesture</li><li class="con">Hard to remember</li></ul></div>
+  <div class="pick"><span class="tag">Chosen</span><h4>Long-press home handle</h4><ul><li class="pro">Quick and one-handed</li><li class="pro">Always-visible cue</li><li class="con">Small touch target</li></ul></div>
+</div>
+<p>The head of design, engineering lead, and product planning aligned on the long-press of the home handle.</p>
+<div class="full"><figure class="fig row r3"><div><video src="../images/cts/05.mp4" poster="../images/cts/05-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Prototype: long-press side key"></video></div><div><video src="../images/cts/06.mp4" poster="../images/cts/06-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Prototype: swipe up from corner"></video></div><div><video src="../images/cts/07.mp4" poster="../images/cts/07-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Prototype: long-press home handle"></video></div><figcaption>Prototypes of the three entry gestures.</figcaption></figure>
+<figure class="fig"><img src="../images/cts/08.webp" alt="Concept testing session" loading="lazy" decoding="async"></figure></div>
+
+<h2>The selection handler</h2>
+<p>I mapped the whole gesture system on the device so other designers and stakeholders could see where the new interaction fit, then introduced a new component: the selection handler. A tinted scrim settles over the screen when you select something, pulling attention to what you circled.</p>
+<div class="full bleed"><figure class="fig bleed"><img src="../images/cts/09.webp" alt="Gesture blueprint for the system" loading="lazy" decoding="async"><figcaption>Gesture blueprint, mapping Circle to Search against existing system gestures.</figcaption></figure>
+<figure class="fig"><img src="../images/cts/10.webp" alt="Selection handler component spec" loading="lazy" decoding="async"></figure>
+<figure class="fig"><video src="../images/cts/11.mp4" poster="../images/cts/11-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Themed scrim focusing the selection"></video></figure>
+
+<h2>Final design</h2>
+<p>Spot sneakers on Instagram, long-press the home handle, circle them, and see where to buy, without leaving the app.</p>
+<figure class="fig narrow"><video src="../images/cts/12.mp4" poster="../images/cts/12-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Circling sneakers in Instagram"></video></figure>
+<figure class="fig bleed"><img src="../images/cts/04.webp" alt="From circle to shopping results" loading="lazy" decoding="async"></figure></div>
+
+<h2>Getting people to find it</h2>
+<p>A gesture nobody knows about doesn't exist. I added a contextual tooltip that appears after someone touches the home handle 10 times without discovering the feature. The first version was text-heavy and got ignored. I cut it to a short visual prompt, and engagement with the feature rose.</p>
+<figure class="fig"><img src="../images/cts/13.webp" alt="Tooltip redesign: flick-up hint, first design, second design" loading="lazy" decoding="async"></figure>
+
+<div class="lesson">
+  <p class="cap">Lesson learned</p>
+  <p class="big">Build, test, and prove instead of debating.</p>
+  <p>Prototypes and real feedback ended arguments faster than any meeting could, and led to better design.</p>
+</div>
+
+  <nav class="next" aria-label="More work">
+    <a href="../"><small>Back</small><b>All work</b></a>
+    <a href="../spay/" style="text-align:right"><small>Next project</small><b>Samsung Pay Web</b></a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Let's talk about what's next.</h2>
+      <p>Open to Staff and Principal roles in AI product design. Based in Seoul, authorized to work in the US.</p>
+    </div>
+    <div>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:chanpiopark@gmail.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/chanpio/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samsung Pay Web | Chanpio Park</title>
+<meta name="description" content="How Chanpio Park designed Samsung Pay&#x27;s cross-device web checkout, cutting drop-off by 60% with QR pairing.">
+<link rel="canonical" href="https://www.chanpio.work/spay/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chanpio Park">
+<meta property="og:title" content="Samsung Pay Web | Chanpio Park">
+<meta property="og:description" content="How Chanpio Park designed Samsung Pay&#x27;s cross-device web checkout, cutting drop-off by 60% with QR pairing.">
+<meta property="og:url" content="https://www.chanpio.work/spay/">
+<meta property="og:image" content="https://www.chanpio.work/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../">Chanpio Park</a>
+    <nav class="nav" aria-label="Main">
+      <a href="../#work" aria-current="page">Work</a>
+      <a href="../#about">About</a>
+      <a href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<section class="case-head">
+  <p class="meta"><strong>Samsung Pay Web</strong>, Samsung, 2014–2019</p>
+  <h1>Browse on any PC, pay with your phone</h1>
+</section>
+<figure class="cover"><img src="../images/spay/01.webp" alt="Samsung Pay Web" loading="lazy" decoding="async"></figure>
+<div class="case-grid">
+  <aside class="rail"><dl><div><dt>My role</dt><dd>Design lead</dd><dd>Design strategy</dd><dd>User research</dd><dd>Interaction design</dd><dd>Prototyping</dd></div><div><dt>Team</dt><dd>Myself</dd><dd>PM</dd><dd>3 engineers</dd><dd>Visual designer</dd></div></dl></aside>
+  <div>
+    <p class="summary">Samsung Pay had won in stores, but online checkout was a gap, and Samsung laptops held only about 1% of the market. Instead of building for Samsung PCs, I designed a flow where you shop on any computer and approve the payment on your phone. Replacing a personal-info form with a QR scan cut drop-off by 60% and pairing time from 49 seconds to 7.</p>
+  </div>
+</div>
+<div class="body">
+  <div class="outcomes"><div><b><em>60%</em></b><span>fewer drop-offs at the pairing step (60% to 24%)</span></div><div><b>86%</b><span>faster pairing (49s to 7s)</span></div><div><b>14%</b><span>lift in share of the promoted credit card</span></div><div><b>85%</b><span>of users came back to use it again</span></div></div>
+  
+<h2>The wrong device to bet on</h2>
+<p>Extending Samsung Pay to the web made sense. Building it only for Samsung laptops, at roughly 1% market share, did not. Our survey also showed why people disliked paying online:</p>
+<figure class="fig row r2"><div><img src="../images/spay/02.webp" alt="Samsung Pay in stores" loading="lazy" decoding="async"></div><div><img src="../images/spay/03.webp" alt="Market share: 25% on phones, 1% on laptops" loading="lazy" decoding="async"></div></figure>
+<ul>
+  <li>They didn't want to save card details on work PCs</li>
+  <li>Typing card number, address, and date of birth felt invasive and tedious</li>
+  <li>Long payment flows made them give up</li>
+</ul>
+
+<h2>Goals</h2>
+<ul>
+  <li>Shop on any PC, pay on your phone with one fingerprint</li>
+  <li>Never type a card number again</li>
+</ul>
+
+<h2>User insights</h2>
+<p>We studied 12 people who shop online at least once a week as they completed real purchases. The same frustrations kept appearing: manual card entry, distrust of shared computers, and wanting checkout to be over. That became our persona, Tyra.</p>
+<div class="full"><figure class="fig"><img src="../images/spay/04.webp" alt="Persona: Tyra" loading="lazy" decoding="async"></figure></div>
+
+<h2>Browse on web, pay on phone</h2>
+<p>I mapped the core flow with the PM to keep business goals and design in step. You start a purchase on any computer, and a secure payment request goes to your Samsung phone to approve.</p>
+<div class="full bleed"><figure class="fig bleed"><img src="../images/spay/05.webp" alt="User flow: initiate on web, authenticate on phone" loading="lazy" decoding="async"></figure>
+<figure class="fig bleed"><img src="../images/spay/06.webp" alt="Wireframes" loading="lazy" decoding="async"></figure></div>
+
+<h2>Testing found the real problem</h2>
+<p>In moderated usability testing, 60% of participants dropped off when asked for personal information. The form existed only to send a one-time passcode to the phone, but people found name, birthday, gender, and phone number too intrusive, and the step took too long.</p>
+<figure class="fig"><img src="../images/spay/07.webp" alt="The original personal-information form that caused the drop-off" loading="lazy" decoding="async"></figure>
+<div class="callout"><p>Nobody said "this feels invasive" out loud. The drop-off rate said it for them.</p></div>
+
+<h2>From a form to a scan</h2>
+<p>We compared ways to link the browser session to the phone. An ID and password felt familiar but still needed typing and failed often on shared devices. A QR code needed nothing: scan it with your phone and the two are linked.</p>
+<div class="compare">
+  <div><h4>ID and password</h4><ul><li class="pro">Familiar</li><li class="con">Still manual input</li><li class="con">Forgotten or mistyped credentials</li></ul></div>
+  <div class="pick"><span class="tag">Chosen</span><h4>QR pairing</h4><ul><li class="pro">No typing, no password</li><li class="pro">Nothing personal to share</li></ul></div>
+</div>
+<p>Pairing time fell from 49 seconds to 7, and drop-off fell from 60% to 24%.</p>
+<div class="full"><figure class="fig"><video src="../images/spay/08.mp4" poster="../images/spay/08-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="QR pairing: scan on the PC, approve on the phone"></video></figure>
+<figure class="fig bleed"><img src="../images/spay/09.webp" alt="Final web and phone screens" loading="lazy" decoding="async"></figure></div>
+
+<h2>A late business request</h2>
+<p>After the flow was approved, the business team asked to promote a specific credit card at checkout. My first placement put the banner in the payment method dropdown. Data showed 80% of users never changed their payment method, so nobody would see it. I moved the promotion to the top of the payment sheet instead. Product and marketing both approved, and the promoted card's share rose 14%.</p>
+<figure class="fig row r2"><div><img src="../images/spay/10.webp" alt="Promotion in the dropdown versus at the top" loading="lazy" decoding="async"></div><div><img src="../images/spay/11.webp" alt="Final payment sheet with the promotion" loading="lazy" decoding="async"></div></figure>
+
+<div class="lesson">
+  <p class="cap">Lesson learned</p>
+  <p class="big">Data reveals what users won't say out loud.</p>
+  <p>The drop-off pointed to distrust, not inconvenience, and that changed the whole approach.</p>
+</div>
+
+  <nav class="next" aria-label="More work">
+    <a href="../"><small>Back</small><b>All work</b></a>
+    <a href="../color-picker/" style="text-align:right"><small>Next project</small><b>Color picker for everyone</b></a>
+  </nav>
+</div>
+</main>
+<footer class="site-footer" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Let's talk about what's next.</h2>
+      <p>Open to Staff and Principal roles in AI product design. Based in Seoul, authorized to work in the US.</p>
+    </div>
+    <div>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:chanpiopark@gmail.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/chanpio/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://docs.google.com/document/d/1v5Hb3JQzFbzeVpcfl6RQq98e89TelgxSJpV1TtdyTv4/preview" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
