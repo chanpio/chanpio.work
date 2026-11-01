@@ -52,26 +52,26 @@
   
 <h2>A breakthrough capability that almost no one used</h2>
 <p>Only 1 in 200 Gemini users had ever tried automation. The other 199 never started.</p>
-<figure class="fig narrow"><img src="../images/automation/problem.webp" alt="Gemini automation searching for a restaurant in a delivery app" loading="lazy" decoding="async"></figure>
+<figure class="shots s1 solo"><div class="shot"><div class="frame"><img src="../images/automation/w-problem.webp" alt="Gemini automation searching for a restaurant in a delivery app" loading="lazy" decoding="async"></div><p>Automation running inside a delivery app</p></div></figure>
 
 <h2>It promised delegation but demanded supervision</h2>
 <p>Two things stood out. Before the task, you stare at a blank prompt, and typing it out feels like work. During the task, you watch it run and wonder if it will work. That isn't delegation. It's babysitting.</p>
-<figure class="fig bleed"><img src="../images/automation/diagnosis.webp" alt="Before the task, prompting felt like work. During the task, watching felt like work." loading="lazy" decoding="async"></figure>
+<figure class="shots s2 pair photo"><div class="shot"><div class="frame"><img src="../images/automation/w-before.webp" alt="A person staring at a blank Gemini prompt" loading="lazy" decoding="async"></div><p>Before the task: prompting felt like work</p></div><div class="shot"><div class="frame"><img src="../images/automation/w-during.webp" alt="A person watching automation run" loading="lazy" decoding="async"></div><p>During the task: watching felt like work</p></div></figure>
 
 <h2>Design story 01: during the automation</h2>
 <p>Automation should fit the foldable: floating on the Fold, glanceable on the Flip.</p>
 
 <h3>Fold: keep the main task in front</h3>
 <p>Imagine you're watching a video while Automation orders your dinner in the background. You just want a glance. Google's first implementation sent "View progress" into a full screen inside Gemini. Your video stopped and your task paused. I pushed back.</p>
-<figure class="fig bleed"><img src="../images/automation/fold-challenge.webp" alt="Google&#x27;s first implementation: View progress takes over the full screen" loading="lazy" decoding="async"></figure>
+<figure class="shots s2 pair wide"><div class="shot"><div class="frame"><img src="../images/automation/w-fold-video.webp" alt="Watching a video while automation runs" loading="lazy" decoding="async"></div><p>Watching a video while dinner is ordered</p></div><div class="shot g"><div class="frame"><img src="../images/automation/w-fold-google.webp" alt="View progress takes over the full screen" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Google</span>Google's first version: full screen takes over</p></div></figure>
 <p>I explored two directions. A full task history on screen meant reading a list instead of doing. A floating panel over the main task let you stay where you were while the AI worked in the corner. The floating panel won, and the Fold's large screen made it possible.</p>
-<figure class="fig bleed"><img src="../images/automation/fold-explore.webp" alt="Exploration 1: full-screen history. Exploration 2: floating panel over the main task." loading="lazy" decoding="async"></figure>
+<figure class="shots s2 pair wide"><div class="shot no"><div class="frame"><img src="../images/automation/w-fold-list.webp" alt="Full-screen task history" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Rejected</span>Exploration 1: full-screen history</p></div><div class="shot pick"><div class="frame"><img src="../images/automation/w-fold-float.webp" alt="Floating progress panel over the video" loading="lazy" decoding="async"></div><p><span class="shot-tag pick">Chosen</span>Exploration 2: floating panel</p></div></figure>
 
 <h3>Flip: check progress without opening the phone</h3>
 <p>Google's first version showed the actual app screen on the cover display: a tiny copy of the agent navigating a delivery app on a screen about two inches wide. At that size the text isn't legible, and glanceability is the small device's whole identity.</p>
-<figure class="fig bleed"><img src="../images/automation/flip-challenge.webp" alt="Cover screen states and Google&#x27;s first implementation" loading="lazy" decoding="async"></figure>
+<figure class="shots s3 three"><div class="shot"><div class="frame"><img src="../images/automation/w-flip-glance.webp" alt="Cover screen, glance state" loading="lazy" decoding="async"></div><p>Glance</p></div><div class="shot"><div class="frame"><img src="../images/automation/w-flip-expanded.webp" alt="Cover screen, expanded state" loading="lazy" decoding="async"></div><p>Expanded</p></div><div class="shot g"><div class="frame"><img src="../images/automation/w-flip-google.webp" alt="Google&#x27;s first cover screen implementation" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Google</span>Google's first version: a tiny app screen</p></div></figure>
 <p>My counter-proposal shows the app icon so you know what's running, the past step checked off, and the current step below it. Everything stays on the cover screen with the phone closed.</p>
-<figure class="fig"><img src="../images/automation/flip-explore.webp" alt="Google&#x27;s proposal versus my counter-proposal: app icon, past task, current task" loading="lazy" decoding="async"></figure>
+<figure class="shots s2 pair"><div class="shot g"><div class="frame"><img src="../images/automation/w-flip-google-prop.webp" alt="Google&#x27;s cover screen proposal" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Google</span>Google: mirror the app</p></div><div class="shot me"><div class="frame"><img src="../images/automation/w-flip-mine.webp" alt="My cover screen counter-proposal" loading="lazy" decoding="async"></div><p><span class="shot-tag pick">My proposal</span>Mine: app icon, past step, current step</p></div></figure>
 
 <h2>Design story 02: the North Star</h2>
 <p>Starting an automation had two problems. Automation executes, but it doesn't know you: no personal context, no preferences. And the blank prompt makes people freeze. The capability was there, but it didn't know who you were or tell you where to start.</p>
@@ -81,7 +81,7 @@
   <div><h4>Anticipate</h4><p class="con" style="margin:0">Predict what you actually need.</p></div>
   <div><h4>Act</h4><p class="con" style="margin:0">Surface the right automation at the right moment. No prompt required.</p></div>
 </div>
-<figure class="fig bleed"><img src="../images/automation/scenario.webp" alt="Overnight, your boss emails; Gemini reads it; a widget is waiting in the morning" loading="lazy" decoding="async"></figure>
+<figure class="fig flat"><img src="../images/automation/w-scenario.webp" alt="Overnight, your boss emails; Gemini reads it; a widget is waiting in the morning" loading="lazy" decoding="async"><figcaption>Overnight, your boss emails. Gemini reads it. In the morning, a widget is waiting.</figcaption></figure>
 
 <ol class="steps">
   <li><h3>The widget was already waiting</h3><p>Your boss emails, "Can you prep a draft before the 3pm team sync?" You haven't opened Gmail, but Automation has cross-referenced the email with your calendar. A home screen widget asks, "Deck ready before 3 PM?" One tap starts the draft.</p></li>
