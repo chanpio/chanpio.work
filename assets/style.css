@@ -363,3 +363,11 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 .body .fig.narrow > img, .body .fig.narrow > video { padding-left: max(16px, calc(50% - 170px)); padding-right: max(16px, calc(50% - 170px)); }
 .body .fig.narrow-wide > img { padding-left: max(16px, calc(50% - 260px)); padding-right: max(16px, calc(50% - 260px)); }
 .steps .fig { margin: 20px 0 0; }
+
+/* Matte on covers and home thumbnails */
+.cover { background: var(--soft); border-radius: var(--r-xl); padding: clamp(16px, 4vw, 48px); }
+.cover img, .cover video { border-radius: var(--r-md); max-height: 600px; width: 100%; object-fit: contain; background: transparent; }
+@media (max-width: 760px) { .cover { border-radius: var(--r-lg); } .cover img, .cover video { border-radius: 12px; } }
+.thumb { padding: clamp(14px, 2.4vw, 28px); }
+.thumb img, .thumb video { border-radius: var(--r-md); object-fit: cover; }
+.thumb .thumb-word { margin: calc(-1 * clamp(14px, 2.4vw, 28px)); height: calc(100% + 2 * clamp(14px, 2.4vw, 28px)); }
