@@ -371,3 +371,12 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 .thumb { padding: clamp(14px, 2.4vw, 28px); }
 .thumb img, .thumb video { border-radius: var(--r-md); object-fit: cover; }
 .thumb .thumb-word { margin: calc(-1 * clamp(14px, 2.4vw, 28px)); height: calc(100% + 2 * clamp(14px, 2.4vw, 28px)); }
+
+/* Now Nudge: no grey matte */
+.case-nudge .cover { background: none; padding: 0; }
+.case-nudge .cover img, .case-nudge .cover video { border-radius: var(--r-xl); }
+.case-nudge .body .fig > img, .case-nudge .body .fig > video, .case-nudge .body .fig.row > div { background: none; padding: 0; border-radius: var(--r-md); }
+.case-nudge .body .fig > img, .case-nudge .body .fig > video { overflow: hidden; }
+.case-nudge .body .fig.narrow > img, .case-nudge .body .fig.narrow > video { max-width: 340px; margin: 0 auto; display: block; }
+.case-nudge .body .fig.narrow-wide > img, .case-nudge .body .fig.narrow-wide > video { max-width: 520px; margin: 0 auto; display: block; }
+@media (max-width: 760px) { .case-nudge .cover img, .case-nudge .cover video { border-radius: var(--r-lg); } }
