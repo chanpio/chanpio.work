@@ -388,7 +388,7 @@ footer
 - **Sentence case** for every heading, button, and label. No all-caps.
 - **Buttons say what happens:** "Email me", "Read the case study". Avoid "Learn more" or "Click here".
 - **Chips are 2–3 word verbs:** "Add to Calendar", "Translate".
-- **Numbers lead:** put the metric first in stat pills and outcome cards ("65M devices shipped").
+- **Numbers lead:** put the metric first in stat pills and outcome cards ("42M+ Galaxy devices").
 - **Meta format:** "Org · Year" with a middle dot.
 - **No → arrows in link text.** Use › only in list rows and the next-project link.
 
