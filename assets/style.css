@@ -436,3 +436,11 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 .shots.photo .frame img, .shots.photo .frame video { height: 100%; object-fit: cover; }
 .flow-step > div { display: flex; flex-wrap: wrap; align-items: flex-start; flex-direction: column; }
 .flow-step:last-child { min-height: 0; overflow: visible; padding-bottom: 22px; }
+
+/* ---------- All case studies: images sit directly on white, no grey matte ---------- */
+main[class^="case-"] .cover { background: none; padding: 0; }
+main[class^="case-"] .body .fig > img, main[class^="case-"] .body .fig > video,
+main[class^="case-"] .body .fig.row > div { background: none; padding: 0; border-radius: var(--r-md); }
+main[class^="case-"] .body .fig.row > div > img, main[class^="case-"] .body .fig.row > div > video { border-radius: var(--r-md); }
+main[class^="case-"] .fig img, main[class^="case-"] .fig video { background: none; }
+.fig.row { padding: 0; border-bottom: 0; text-decoration: none; }
