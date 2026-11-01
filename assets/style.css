@@ -284,56 +284,47 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 @media (max-width: 600px) { br.lg { display: none; } }
 
 /* Resume */
-button.pill { font-family: inherit; cursor: pointer; }
-.print-only { display: none; }
-.resume .case-head .meta { margin-top: 14px; }
-.resume-band { border-radius: var(--r-xl); margin: 0 var(--gutter); padding: clamp(56px, 8vw, 96px) 0; }
-@media (max-width: 760px) { .resume-band { margin: 0 8px; border-radius: var(--r-lg); } }
-.resume-band .summary { max-width: 34em; color: var(--night-text); }
-.roles, .skills { max-width: 880px; margin: 0 auto; }
-.roles h2, .skills h2 { font-size: clamp(26px, 3vw, 34px); line-height: 1.2; margin: clamp(64px, 9vw, 104px) 0 8px; }
-.role { display: grid; grid-template-columns: 200px 1fr; gap: clamp(20px, 4vw, 48px); padding: 32px 0; border-bottom: 1px solid var(--hairline); }
-.role:last-of-type { border-bottom: 0; }
-.role-when { display: flex; flex-direction: column; gap: 2px; color: var(--graphite); font-size: 15px; padding-top: 3px; }
-.role-when span:first-child { color: var(--ink); font-weight: 500; }
-.role h3 { font-size: 22px; line-height: 1.25; letter-spacing: -0.02em; }
-.role-org { color: var(--graphite); margin: 2px 0 12px; font-size: 15px; }
-.role ul { margin: 0; padding-left: 18px; }
-.role li { margin: 10px 0; color: color-mix(in srgb, var(--ink) 80%, var(--paper)); }
-.role li b { color: var(--ink); font-weight: 600; }
-.role li b a { text-decoration: none; color: inherit; border-bottom: 1.5px solid color-mix(in srgb, var(--blue) 45%, transparent); }
-.role li b a:hover { color: var(--blue); border-color: var(--blue); }
-.role .ctx { color: var(--graphite); font-size: 15px; font-weight: 400; }
-@media (max-width: 680px) { .role { grid-template-columns: 1fr; gap: 10px; } .role-when { flex-direction: row; gap: 10px; } }
-.skill-list { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.skill-list li { background: var(--soft); border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 500; }
+.no-print {}
+.cv { max-width: 720px; margin: 0 auto; padding: clamp(120px, 14vw, 150px) var(--gutter) 48px; }
+.cv-head h1 { font-size: clamp(30px, 4vw, 38px); line-height: 1.15; letter-spacing: -0.025em; }
+.cv-role-line { margin: 6px 0 0; color: var(--graphite); }
+.cv-links { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 16px; font-size: 15px; }
+.cv-links a, .cv-links button, .cv-foot a {
+  font: inherit; color: var(--ink); background: none; border: 0; padding: 0 0 1px; cursor: pointer;
+  text-decoration: none; border-bottom: 2px solid color-mix(in srgb, var(--blue) 35%, transparent);
+}
+.cv-links a:hover, .cv-links button:hover, .cv-foot a:hover { color: var(--blue); border-color: var(--blue); }
+.cv-section { margin-top: 44px; }
+.cv-label { color: var(--graphite); font-size: 15px; margin: 0 0 6px; }
+.cv-summary, .cv-section > p:not(.cv-label) { margin: 0; line-height: 1.65; }
+.cv-role { margin: 0 0 30px; }
+.cv-role:last-child { margin-bottom: 0; }
+.cv-role h3 { font-size: 17px; line-height: 1.4; letter-spacing: -0.01em; font-weight: 600; }
+.cv-when { margin: 2px 0 8px; color: var(--graphite); font-size: 15px; }
+.cv-role ul { margin: 0; padding-left: 18px; }
+.cv-role li { margin: 6px 0; line-height: 1.6; color: color-mix(in srgb, var(--ink) 82%, var(--paper)); }
+.cv-role li::marker { color: var(--graphite); }
+.cv-role li b { color: var(--ink); font-weight: 600; }
+.cv-role li b a { color: inherit; text-decoration: none; border-bottom: 2px solid color-mix(in srgb, var(--blue) 35%, transparent); }
+.cv-role li b a:hover { color: var(--blue); border-color: var(--blue); }
+.cv-role .ctx { color: var(--graphite); font-weight: 400; }
+.cv-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 22px; margin-top: 64px; padding-top: 22px; border-top: 2px solid var(--hairline); font-size: 15px; }
+.cv-foot b { font-weight: 600; }
 
 @media print {
-  @page { margin: 14mm 14mm; }
-  :root { --paper: #fff; --ink: #000; --graphite: #555; --soft: #f2f2f4; --hairline: #ddd; }
-  body { font-size: 10pt; line-height: 1.4; background: #fff; color: #000; }
-  .site-header, .site-footer, .no-print { display: none !important; }
-  .print-only { display: block; }
-  .print-contact { margin: 6px 0 0; font-size: 9.5pt; color: #555; }
-  .case-head { padding: 0 0 12px; text-align: left; }
-  .case-head h1 { font-size: 24pt; margin: 0; max-width: none; }
-  .eyebrow { display: none; }
-  .resume .case-head .meta { margin-top: 2px; font-size: 11pt; color: #000; }
-  .resume-band { background: none !important; color: #000; margin: 0; padding: 0 0 6px; border-radius: 0; }
-  .resume-band .wrap, .wrap { padding: 0; max-width: none; }
-  .resume-band .summary { color: #000; font-size: 10.5pt; max-width: none; }
-  .outcomes { display: none; }
-  .roles h2, .skills h2 { font-size: 13pt; margin: 14px 0 2px; border-bottom: 1px solid #999; padding-bottom: 2px; }
-  .role { grid-template-columns: 1fr; gap: 0; padding: 8px 0; border: 0; break-inside: avoid; }
-  .role-when { flex-direction: row; gap: 8px; font-size: 9pt; order: 3; padding: 0; color: #555; }
-  .role-when span:first-child { color: #555; font-weight: 400; }
-  .role-body { display: contents; }
-  .role h3 { font-size: 11pt; order: 1; }
-  .role-org { order: 2; margin: 0; font-size: 10pt; color: #000; font-style: italic; }
-  .role ul { order: 4; margin-top: 4px; }
-  .role li { margin: 2px 0; color: #000; }
-  .role li b a { border: 0; }
-  .role .ctx { font-size: 9pt; }
-  .skill-list li { background: none; padding: 0 8px 0 0; font-size: 9.5pt; }
-  .skill-list li + li::before { content: "· "; }
+  @page { margin: 14mm; }
+  :root { --paper: #fff; --ink: #000; --graphite: #555; --hairline: #ccc; --blue: #000; }
+  body { font-size: 10pt; background: #fff; }
+  .site-header, .cv-foot, .no-print { display: none !important; }
+  .cv { padding: 0; max-width: none; }
+  .cv-head h1 { font-size: 22pt; }
+  .cv-links { margin-top: 6px; font-size: 9.5pt; gap: 4px 14px; }
+  .cv-links a { border: 0; }
+  .cv-section { margin-top: 16px; }
+  .cv-label { font-size: 9.5pt; margin-bottom: 3px; }
+  .cv-role { margin-bottom: 12px; break-inside: avoid; }
+  .cv-role h3 { font-size: 10.5pt; }
+  .cv-when { font-size: 9pt; margin-bottom: 3px; }
+  .cv-role li { margin: 2px 0; line-height: 1.4; color: #000; }
+  .cv-role li b a { border: 0; }
 }
