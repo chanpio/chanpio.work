@@ -345,3 +345,21 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 .cap-note { font-size: 14px; color: var(--graphite) !important; text-align: center; margin: 0 0 8px; }
 .fig.narrow-wide { max-width: 520px; margin-left: auto !important; margin-right: auto !important; }
 .card[href="automation/"] .thumb img { object-position: left center; }
+
+/* Matte frame around case study images */
+.body .fig { margin: 48px 0; }
+.body .fig > img, .body .fig > video,
+.body .fig.row > div {
+  background: var(--soft);
+  padding: clamp(16px, 4vw, 44px);
+  border-radius: var(--r-lg);
+  box-sizing: border-box;
+}
+.body .fig > img, .body .fig > video { width: 100%; }
+.body .fig.row > div > img, .body .fig.row > div > video { border-radius: 12px; }
+.body .fig > img, .body .fig > video { object-fit: contain; }
+.body .fig.row { gap: 16px; }
+.body .fig.narrow, .body .fig.narrow-wide { max-width: none; }
+.body .fig.narrow > img, .body .fig.narrow > video { padding-left: max(16px, calc(50% - 170px)); padding-right: max(16px, calc(50% - 170px)); }
+.body .fig.narrow-wide > img { padding-left: max(16px, calc(50% - 260px)); padding-right: max(16px, calc(50% - 260px)); }
+.steps .fig { margin: 20px 0 0; }
