@@ -112,11 +112,11 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
   display: grid; place-items: center; font-size: 14px; color: #fff;
 }
 .c1 { left: 6%;  top: 22%; --r: -6deg; } .c1 i { background: #3b8ef0; }
-.c2 { left: 12%; top: 62%; --r: 4deg; }  .c2 i { background: #ff6fa6; }
+.c2 { left: 9%; top: 71%; --r: 4deg; }  .c2 i { background: #ff6fa6; }
 .c3 { right: 9%; top: 18%; --r: 5deg; }  .c3 i { background: #22b07d; }
-.c4 { right: 5%; top: 58%; --r: -4deg; } .c4 i { background: #8b5cf6; }
-.c5 { left: 30%; top: 82%; --r: -3deg; } .c5 i { background: #ffb341; }
-.c6 { right: 26%; top: 80%; --r: 3deg; } .c6 i { background: #c2733a; }
+.c4 { right: 5%; top: 69%; --r: -4deg; } .c4 i { background: #8b5cf6; }
+.c5 { left: 30%; top: 84%; --r: -3deg; } .c5 i { background: #ffb341; }
+.c6 { right: 26%; top: 83%; --r: 3deg; } .c6 i { background: #c2733a; }
 .c7 { left: 28%; top: 9%; --r: 3deg; font-size: 14px; opacity: .8; filter: blur(.6px); } .c7 i { background: #ff5a4f; }
 .c8 { right: 30%; top: 7%; --r: -4deg; font-size: 14px; opacity: .8; filter: blur(.6px); } .c8 i { background: #111; }
 .chip { transform: rotate(var(--r)); }
@@ -135,9 +135,8 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
   .chip { font-size: 13px; padding: 8px 12px 8px 8px; }
   .chip i { width: 22px; height: 22px; font-size: 11px; }
   .c1 { left: 4%; top: 16%; } .c3 { right: 4%; top: 12%; }
-  .c2 { left: 4%; top: 72%; } .c4 { right: 4%; top: 66%; }
-  .c5 { left: 18%; top: 86%; } .c6 { right: 10%; top: 82%; }
-  .c7, .c8 { display: none; }
+  .c4 { right: 4%; top: 74%; } .c2 { left: 4%; top: 83%; }
+  .c5, .c6, .c7, .c8 { display: none; }
 }
 
 /* Intro + grid */
