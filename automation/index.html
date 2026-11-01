@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gemini Automation | Chanpio Park</title>
-<meta name="description" content="How Chanpio Park defined the interaction framework for Gemini Automation on Galaxy S26 and foldables.">
+<meta name="description" content="How Chanpio Park turned Gemini&#x27;s task automation into a Galaxy device experience: foldable progress views and a North Star for ambient, prompt-free automation.">
 <link rel="canonical" href="https://www.chanpio.work/automation/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Chanpio Park">
 <meta property="og:title" content="Gemini Automation | Chanpio Park">
-<meta property="og:description" content="How Chanpio Park defined the interaction framework for Gemini Automation on Galaxy S26 and foldables.">
+<meta property="og:description" content="How Chanpio Park turned Gemini&#x27;s task automation into a Galaxy device experience: foldable progress views and a North Star for ambient, prompt-free automation.">
 <meta property="og:url" content="https://www.chanpio.work/automation/">
 <meta property="og:image" content="https://www.chanpio.work/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -34,56 +34,73 @@
 <main>
 <section class="case-head wrap center">
   <p class="eyebrow">Gemini Automation</p>
-  <h1>Letting people hand a task to the OS and still feel in control</h1>
-  <p class="meta">Samsung + Google · 2025–2026</p>
+  <h1>Turning an AI capability into a device experience</h1>
+  <p class="meta">Samsung + Google · 2026</p>
 </section>
-<div class="wrap"></div>
+<div class="wrap"><figure class="cover"><img src="../images/automation/01.webp" alt="Gemini Automation" loading="eager" fetchpriority="high" decoding="async"></figure></div>
 <section class="dark-band">
   <div class="wrap">
     <div class="case-grid">
-      <aside class="rail"><dl><div><dt>My role</dt><dd>UX lead (Samsung)</dd><dd>Interaction framework</dd><dd>Foldable experience</dd><dd>North Star concept</dd></div><div><dt>Team</dt><dd>Myself and the Galaxy AI UX team</dd><dd>Google Gemini design and engineering</dd><dd>Samsung framework engineering</dd></div></dl></aside>
-      <p class="summary">Gemini Automation lets you ask for something like "reorder my usual coffee" and watch the agent do it across apps. I defined the Samsung side of the interaction framework: how a delegated task launches, how you watch it, how it asks when it's unsure, and how you take over for the final step. I also designed how it adapts to the Flip cover screen and Fold multitasking.</p>
+      <aside class="rail"><dl><div><dt>My role</dt><dd>Samsung UX lead</dd><dd>Samsung–Google design alignment</dd><dd>Foldable experience</dd><dd>North Star concept</dd></div><div><dt>Team</dt><dd>Myself and the Galaxy AI UX team</dd><dd>Google Gemini design and engineering</dd><dd>Reviewed with Samsung and Google executives</dd></div></dl></aside>
+      <p class="summary">Gemini can now run multi-step tasks across apps, like ordering dinner or booking a ride. Google built the agent. My job was figuring out how that capability should actually show up on a Galaxy device. I led design alignment between Samsung and Google, and every proposal here went through a workstream where executives from both companies sat at the table.</p>
     </div>
-    <div class="outcomes"><div><b>S26</b><span>first Galaxy launch, in partnership with Google</span></div><div><b>3</b><span>form factors designed: bar, Flip cover screen, Fold</span></div><div><b>1</b><span>shared framework from launch to handoff</span></div></div>
+    <div class="outcomes"><div><b>1:200</b><span>Gemini users had ever tried automation</span></div><div><b><em>5 → 3</em></b><span>steps from intent to a running task</span></div><div><b>2</b><span>foldable form factors redesigned</span></div><div><b>0</b><span>prompts needed in the North Star</span></div></div>
   </div>
 </section>
 <div class="wrap">
 <div class="body">
   
-<h2>Delegation is a trust problem</h2>
-<p>Asking an agent to act on your behalf is different from asking it a question. People need to know what it's doing, when it's stuck, and that the last word is still theirs. The model's capability was not the hard part. The hard part was making delegation feel safe.</p>
+<h2>A breakthrough capability that almost no one used</h2>
+<p>Only 1 in 200 Gemini users had ever tried automation. The other 199 never started.</p>
+<figure class="fig narrow"><img src="../images/automation/problem.webp" alt="Gemini automation searching for a restaurant in a delivery app" loading="lazy" decoding="async"></figure>
 
-<h2>Four moments of a delegated task</h2>
+<h2>It promised delegation but demanded supervision</h2>
+<p>Two things stood out. Before the task, you stare at a blank prompt, and typing it out feels like work. During the task, you watch it run and wonder if it will work. That isn't delegation. It's babysitting.</p>
+<figure class="fig bleed"><img src="../images/automation/diagnosis.webp" alt="Before the task, prompting felt like work. During the task, watching felt like work." loading="lazy" decoding="async"></figure>
+
+<h2>Design story 01: during the automation</h2>
+<p>Automation should fit the foldable: floating on the Fold, glanceable on the Flip.</p>
+
+<h3>Fold: keep the main task in front</h3>
+<p>Imagine you're watching a video while Automation orders your dinner in the background. You just want a glance. Google's first implementation sent "View progress" into a full screen inside Gemini. Your video stopped and your task paused. I pushed back.</p>
+<figure class="fig bleed"><img src="../images/automation/fold-challenge.webp" alt="Google&#x27;s first implementation: View progress takes over the full screen" loading="lazy" decoding="async"></figure>
+<p>I explored two directions. A full task history on screen meant reading a list instead of doing. A floating panel over the main task let you stay where you were while the AI worked in the corner. The floating panel won, and the Fold's large screen made it possible.</p>
+<figure class="fig bleed"><img src="../images/automation/fold-explore.webp" alt="Exploration 1: full-screen history. Exploration 2: floating panel over the main task." loading="lazy" decoding="async"></figure>
+
+<h3>Flip: check progress without opening the phone</h3>
+<p>Google's first version showed the actual app screen on the cover display: a tiny copy of the agent navigating a delivery app on a screen about two inches wide. At that size the text isn't legible, and glanceability is the small device's whole identity.</p>
+<figure class="fig bleed"><img src="../images/automation/flip-challenge.webp" alt="Cover screen states and Google&#x27;s first implementation" loading="lazy" decoding="async"></figure>
+<p>My counter-proposal shows the app icon so you know what's running, the past step checked off, and the current step below it. Everything stays on the cover screen with the phone closed.</p>
+<figure class="fig"><img src="../images/automation/flip-explore.webp" alt="Google&#x27;s proposal versus my counter-proposal: app icon, past task, current task" loading="lazy" decoding="async"></figure>
+
+<h2>Design story 02: the North Star</h2>
+<p>Starting an automation had two problems. Automation executes, but it doesn't know you: no personal context, no preferences. And the blank prompt makes people freeze. The capability was there, but it didn't know who you were or tell you where to start.</p>
+<p>So I defined a North Star: <strong>the AI that acts before you ask.</strong></p>
+<div class="compare">
+  <div><h4>Know</h4><p class="con" style="margin:0">Read context from your personal data.</p></div>
+  <div><h4>Anticipate</h4><p class="con" style="margin:0">Predict what you actually need.</p></div>
+  <div><h4>Act</h4><p class="con" style="margin:0">Surface the right automation at the right moment. No prompt required.</p></div>
+</div>
+<figure class="fig bleed"><img src="../images/automation/scenario.webp" alt="Overnight, your boss emails; Gemini reads it; a widget is waiting in the morning" loading="lazy" decoding="async"></figure>
+
 <ol class="steps">
-  <li><h3>Launch without losing your place</h3><p>The task opens in a floating window, so the app you were in stays put. I worked with framework engineering on a launch-as-floating-window behavior so automation never hijacks the full screen.</p></li>
-  <li><h3>Watch it work</h3><p>Live View shows the agent moving through the app in real time. You see the steps, not just a spinner.</p></li>
-  <li><h3>Ask when unsure</h3><p>When the request is ambiguous, like two coffee shops with the same name, Live View pauses and asks. The agent never silently picks for you.</p></li>
-  <li><h3>Hand back the final step</h3><p>For confirming a payment or sending a message, the agent stops and hands control to you. Irreversible actions stay human.</p></li>
+  <li><h3>The widget was already waiting</h3><p>Your boss emails, "Can you prep a draft before the 3pm team sync?" You haven't opened Gmail, but Automation has cross-referenced the email with your calendar. A home screen widget asks, "Deck ready before 3 PM?" One tap starts the draft.</p></li>
+  <li><h3>Recent automations, ready to rerun</h3><p>Past automations are saved and surfaced in a drawer, not buried in logs. Pick one and it runs again, with no re-prompting.</p></li>
+  <li><h3>A multi-step automation as one icon</h3><p>Friday evening, wine, no car. One home screen tap calls an Uber, sets the wine bar as the destination, and pushes the arrival time to your calendar. One tap replaces three apps and four manual steps.</p></li>
 </ol>
-<div class="full bleed"></div>
+<figure class="fig row r3"><div><img src="../images/automation/widget.webp" alt="Home screen widget: Deck ready before 3 PM?" loading="lazy" decoding="async"></div><div><img src="../images/automation/rerun.webp" alt="Rerun drawer listing recent automations" loading="lazy" decoding="async"></div><div><img src="../images/automation/shortcut.webp" alt="Home screen shortcut that runs a multi-step automation" loading="lazy" decoding="async"></div><figcaption>Widget, rerun drawer, and home screen shortcut. The ambient surfacing concept was entirely mine.</figcaption></figure>
 
-<h2>Designing for every form factor</h2>
-<h3>Flip cover screen</h3>
-<p>A glanceable view of task progress on the cover screen, so you can delegate and keep the phone closed.</p>
-<h3>Fold multitasking</h3>
-<p>A floating "view progress" surface lets the task run beside your other apps, matching how people already use the large screen.</p>
-<div class="full"></div>
-
-<h2>North Star: automation that offers itself</h2>
-<p>Beyond launch, I proposed where automation should go next: stop waiting to be asked. These concepts were my own.</p>
-<ul>
-  <li><strong>Ambient widget</strong> that suggests a task you run at this time, in this place.</li>
-  <li><strong>Rerun drawer</strong> that brings back tasks you've delegated before, one tap away.</li>
-  <li><strong>Home screen shortcuts</strong> that turn a repeated request into an icon.</li>
-</ul>
-<div class="callout"><p>This connects Gemini Automation to Now Nudge: the OS notices the intent, then offers to carry it out.</p></div>
-
-<h2>Working across two companies</h2>
-<p>I represented Samsung UX in design alignment with Google, covering how Gemini surfaces render inside One UI, visual consistency, and where Samsung-specific behavior belongs. The job was to keep one coherent experience while two design systems met in the same screen.</p>
+<h2>Impact: from blank-prompt panic to ambient intelligence</h2>
+<div class="compare">
+  <div><h4>Before</h4><ol style="margin:0;padding-left:18px;font-size:15px"><li>Open the Gemini app</li><li>Stare at a blank prompt</li><li>Think of what to type</li><li>Manually compose the automation</li><li>Hope it works</li></ol></div>
+  <div class="pick"><span class="tag">After</span><ol style="margin:0;padding-left:18px;font-size:15px"><li>Gemini reads context overnight</li><li>A suggestion appears on the home screen</li><li>One tap to run it</li></ol></div>
+</div>
+<div class="callout"><p>The prompt is gone. The result is already there.</p></div>
 
 <div class="lesson">
   <p class="cap">Lesson learned</p>
-  <p class="big">People will hand over a task when they can see it, stop it, and finish it themselves.</p>
+  <p class="big">Google had the agent. I designed where it lived.</p>
+  <p>The same lens behind Now Nudge, knowing, anticipating, and acting, turned a powerful capability into something people would actually use.</p>
 </div>
 
   <nav class="next" aria-label="More work">

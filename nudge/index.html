@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Now Nudge | Chanpio Park</title>
-<meta name="description" content="How Chanpio Park led UX for Now Nudge, Samsung&#x27;s proactive on-device AI that surfaces the right action at the right time.">
+<meta name="description" content="How Chanpio Park designed Now Nudge, Samsung&#x27;s proactive AI in the keyboard: research, interaction model, a data-settled design debate, and results.">
 <link rel="canonical" href="https://www.chanpio.work/nudge/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Chanpio Park">
 <meta property="og:title" content="Now Nudge | Chanpio Park">
-<meta property="og:description" content="How Chanpio Park led UX for Now Nudge, Samsung&#x27;s proactive on-device AI that surfaces the right action at the right time.">
+<meta property="og:description" content="How Chanpio Park designed Now Nudge, Samsung&#x27;s proactive AI in the keyboard: research, interaction model, a data-settled design debate, and results.">
 <meta property="og:url" content="https://www.chanpio.work/nudge/">
 <meta property="og:image" content="https://www.chanpio.work/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -34,68 +34,87 @@
 <main>
 <section class="case-head wrap center">
   <p class="eyebrow">Now Nudge</p>
-  <h1>Designing an OS that offers the next step before you ask</h1>
+  <h1>The answer is already on your keyboard</h1>
   <p class="meta">Samsung · 2025</p>
 </section>
 <div class="wrap"><figure class="cover"><img src="../images/nudge/01.webp" alt="Now Nudge" loading="eager" fetchpriority="high" decoding="async"></figure></div>
 <section class="dark-band">
   <div class="wrap">
     <div class="case-grid">
-      <aside class="rail"><dl><div><dt>My role</dt><dd>Design lead</dd><dd>Design strategy</dd><dd>Interaction design</dd></div><div><dt>Team</dt><dd>Myself</dd><dd>1 PM</dd><dd>5 engineers</dd><dd>1 UX researcher</dd><dd>1 product designer</dd><dd>1 motion designer</dd></div></dl></aside>
-      <p class="summary">I led UX for Now Nudge, an on-device AI layer that predicts what you need next and offers it in place. Instead of copying text, switching apps, and searching, you tap one chip above the keyboard. I owned the problem framing, the interaction model, and the Nudge Handler spec that later became the shared template for proactive AI in One UI.</p>
+      <aside class="rail"><dl><div><dt>My role</dt><dd>Design lead</dd><dd>Design strategy</dd><dd>Interaction design</dd><dd>User research</dd></div><div><dt>Team</dt><dd>Myself</dd><dd>1 PM</dd><dd>5 engineers</dd><dd>1 UX researcher</dd><dd>1 product designer</dd><dd>1 motion designer</dd></div></dl></aside>
+      <p class="summary">When a friend asks "Let's meet on Saturday?", most of us say yes and then go check. Now Nudge removes that check. It reads the message, knows what you've done, anticipates what you'll type next, and offers it as one chip above the keyboard. I led the design from research to launch, including the interaction model, where the nudge lives, and which AI model powers each moment.</p>
     </div>
-    <div class="outcomes"><div><b>42M+</b><span>Galaxy devices in the 2026 lineup</span></div><div><b><em>60%</em></b><span>fewer steps on complex multi-app tasks</span></div><div><b>40%</b><span>higher task success with proactive suggestions</span></div><div><b>No. 1</b><span>most-engaged agentic feature in One UI</span></div></div>
+    <div class="outcomes"><div><b><em>52%</em></b><span>monthly retention among people who tried it</span></div><div><b>26%</b><span>have used it, vs a 14% Galaxy AI baseline</span></div><div><b>Unpacked</b><span>featured on stage at Samsung Unpacked 2025</span></div><div><b>USA TODAY</b><span>named it a favorite Galaxy AI feature</span></div></div>
   </div>
 </section>
 <div class="wrap">
 <div class="body">
   
-<h2>The user was the only orchestrator</h2>
-<p>On a phone, every cross-app task runs through the user. A friend mentions dinner on Saturday, and you copy the time, open Calendar, create an event, and come back. The intent is obvious. The execution is broken.</p>
-<p>I led the problem framing, running contextual research across 12 real-world task flows to find where intent was clear but execution fell apart.</p>
+<h2>Users are forced to orchestrate</h2>
+<p>Someone texts, "Where's the restaurant we went last Friday?" To answer, you switch apps, search your history, copy the name, come back, and retype it. Every single time, for something this simple.</p>
+<figure class="fig bleed"><img src="../images/nudge/d-problem.webp" alt="Four steps to answer one message: receive, search history, copy, re-type" loading="lazy" decoding="async"></figure>
 
-<h2>Two rules that shaped everything</h2>
+<h2>What people expect from AI</h2>
+<p>I ran a survey of 300 people and 8 in-person interviews. People wanted three things from AI, and those three became the lens for every decision that followed.</p>
 <div class="compare">
-  <div><h4>Accuracy over coverage</h4><p class="con" style="margin:0">Trigger only when intent is clear. A wrong nudge costs more trust than a missing one.</p></div>
-  <div><h4>Glanceability over depth</h4><p class="con" style="margin:0">Surface one action, never a menu. If it needs reading, it's not a nudge.</p></div>
+  <div><h4>Knowing</h4><p class="con" style="margin:0">It remembers who you are and what you've done.</p></div>
+  <div><h4>Anticipating</h4><p class="con" style="margin:0">It predicts what you need before you ask.</p></div>
+  <div><h4>Acting</h4><p class="con" style="margin:0">It does the steps for you.</p></div>
 </div>
+<p class="quote">"I know what needs to happen. I just hate doing all the steps to get there."<cite>Interview participant</cite></p>
 
-<h2>Critical user journeys</h2>
-<ol class="steps">
-  <li><h3>Smart action bridging</h3><p>A message mentions weekend plans. Now Nudge reads the date, checks the calendar, and offers to add the event inline. No context switch.</p></li>
-  <li><h3>Intelligent content retrieval</h3><p>A friend asks for trip photos. Now Nudge recognizes the place and offers the right album. The first spec only linked to the gallery. I pushed for album-level suggestions and drove the cross-team alignment that made it possible.</p></li>
-  <li><h3>Adaptive interface</h3><p>You land on a page in another language and a Translate chip appears over it. I found this journey in diary study data: language switches had the highest copy-paste frequency of any moment we observed.</p></li>
-</ol>
-<div class="full bleed"><figure class="fig row r3"><div><video src="../images/nudge/06.mp4" poster="../images/nudge/06-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Now Nudge offering trip photos in a chat"></video></div><div><img src="../images/nudge/02.webp" alt="Share Photos chip above the keyboard" loading="lazy" decoding="async"></div><div><img src="../images/nudge/03.webp" alt="Translate chip over a foreign-language video" loading="lazy" decoding="async"></div><figcaption>Left to right: content retrieval in a real chat, the Share Photos chip, and the Translate chip.</figcaption></figure></div>
+<h2>Start where AI can act with confidence</h2>
+<p>In the survey, 82% felt most inefficient in productivity and 65% in communication. I started with communication anyway. In a conversation the context is already on screen and the action is right there, so AI can act with confidence.</p>
+<div class="outcomes light">
+  <div><b>82%</b><span>Productivity</span></div>
+  <div><b><em>65%</em></b><span>Communication, where we started</span></div>
+  <div><b>47%</b><span>Memory</span></div>
+  <div><b>35%</b><span>Health</span></div>
+</div>
+<p class="cap-note">Where people feel inefficient. Now Nudge survey, n=300.</p>
 
-<h2>The Nudge Handler</h2>
-<p>I owned the full spec for the Nudge Handler, covering entry motion, label structure, and dismissal, and set it up as one shared component across every trigger type.</p>
-<ul>
-  <li><strong>Quiet entrance.</strong> It slides in without blocking the task you're doing.</li>
-  <li><strong>Two-to-three-word labels.</strong> "Add to Calendar," not a sentence.</li>
-  <li><strong>Two modes.</strong> An action nudge runs a task. A recall nudge types the answer for you.</li>
-</ul>
-<div class="full"><figure class="fig bleed"><img src="../images/nudge/04.webp" alt="Nudge Handler spec: data-driven insight and action-oriented task" loading="lazy" decoding="async"></figure></div>
+<h2>Two kinds of nudge</h2>
+<h3>Recall nudge: makes input easier</h3>
+<p>"Where's the restaurant we went last Friday?" Now Nudge picks out "restaurant" and "last Friday," checks your location history, and finds Pacific Catch, Friday at 7pm. That's what you were about to type, so it's waiting as a chip, ready to send.</p>
+<figure class="fig bleed"><img src="../images/nudge/d-recall.webp" alt="Recall nudge: trigger, knowing, anticipate, and the Pacific Catch chip" loading="lazy" decoding="async"></figure>
+<h3>Action nudge: see it before you tap</h3>
+<p>"Can you share photos of the trip to Seoul?" It finds photos tagged Seoul and offers one button, Share photos. Tap it and the gallery opens already filtered.</p>
+<figure class="fig bleed"><img src="../images/nudge/d-action.webp" alt="Action nudge: trigger, knowing, anticipate, and the Share photos chip" loading="lazy" decoding="async"></figure>
 
 <h2>Where should a guess live?</h2>
-<p>I tested the nudge in the top bar, as a floating chip, and in the bottom corners. The keyboard won. It's always in reach, never covers content, and asks for no new behavior.</p>
-<div class="callout"><p>In concept testing, keyboard-anchored placement had the highest task completion and the fewest accidental dismissals of every position we tried.</p></div>
-<div class="full"><figure class="fig"><img src="../images/nudge/05.webp" alt="Rejected placements: top, center, and corner, with the reason each failed" loading="lazy" decoding="async"></figure></div>
+<p>At the top it looked like a notification. In the middle of the chat it blocked the conversation. By the navigation bar it interrupted whatever you were doing.</p>
+<figure class="fig narrow-wide"><img src="../images/nudge/d-placement.webp" alt="Rejected placements: top, in-chat, and navigation bar" loading="lazy" decoding="async"></figure>
+<p>I landed on the keyboard. The keyboard isn't just input. It's the moment of intent. It never covers content, leads naturally into typing for recall nudges, and works in third-party chat apps like KakaoTalk and WhatsApp.</p>
+<figure class="fig narrow"><img src="../images/nudge/d-keyboard.webp" alt="Now Nudge in the keyboard toolbar" loading="lazy" decoding="async"></figure>
 
-<h2>Designing for the wrong guess</h2>
-<p>A proactive system will be wrong some of the time, so I treated a miss as a design problem rather than an edge case.</p>
-<ul>
-  <li><strong>Silence by default.</strong> When the model wasn't confident, nothing appeared. We tuned for precision and accepted lower coverage.</li>
-  <li><strong>Cheap to ignore.</strong> A nudge never steals focus or blocks typing. Ignoring it costs nothing.</li>
-  <li><strong>Dismissal teaches.</strong> Dismissing a type of nudge repeatedly makes it appear less often.</li>
-  <li><strong>On-device by design.</strong> Screen content is read and processed on the device, which let us offer help without asking people to trade away privacy.</li>
-</ul>
+<h2>One nudge or many?</h2>
+<p>My product owner and I disagreed on how, not what. I designed one nudge at a time. He wanted a scrollable row: we can't always know what the user wants, so why limit them?</p>
+<figure class="fig bleed"><img src="../images/nudge/d-conflict.webp" alt="One nudge versus scrollable nudges" loading="lazy" decoding="async"></figure>
+<p>I pointed to Hick's Law, which says more options mean slower decisions, and a conversation isn't a browsing moment. Instead of arguing, we tested both, measuring time to choose and how many people scrolled.</p>
+<figure class="fig bleed"><img src="../images/nudge/d-result.webp" alt="Test result: the scroll version was 1.4x slower and only 2% scrolled" loading="lazy" decoding="async"></figure>
+<div class="callout"><p>The scroll version was 1.4x slower, and only 2% of people ever scrolled to a second option. We shipped the single most confident suggestion.</p></div>
 
-<h2>Result</h2>
-<p>Now Nudge shipped across the 2026 Galaxy lineup, more than 42 million devices, became the most-engaged agentic feature in One UI, and set the interaction template for the proactive AI features that followed at Samsung.</p>
+<h2>The right model for each moment</h2>
+<p>Recall and action nudges needed speed and low cost, so they run on a small on-device language model. Superfill, which fills travel forms even when fields have no labels, needed deeper reasoning, so it uses a cloud LLM. Choosing the right tool for each moment is part of AI product design.</p>
+<figure class="fig narrow-wide"><img src="../images/nudge/d-models.webp" alt="Superfill on a cloud LLM; recall and action nudges on-device" loading="lazy" decoding="async"></figure>
+
+<h2>Designed for the Fold</h2>
+<p>On the Fold, View calendar opens in split screen, so you check your schedule without leaving the conversation you're replying to.</p>
+<figure class="fig"><img src="../images/nudge/d-fold.webp" alt="View calendar opening in split screen on Galaxy Z Fold" loading="lazy" decoding="async"></figure>
+
+<h2>Before and after</h2>
+<p>Five steps (receive, switch apps, search, copy, retype) collapse into one tap, because the system knows what you've done and anticipates what you'll do.</p>
+<figure class="fig bleed"><img src="../images/nudge/d-before-after.webp" alt="Before: five steps across apps. After: one Now Nudge chip." loading="lazy" decoding="async"></figure>
+
+<h2>Outcomes</h2>
+<p>Now Nudge shipped and was featured on stage at Samsung Unpacked 2025. USA TODAY called it their favorite Galaxy AI feature. 26% of users have tried it, against a 14% Galaxy AI baseline, and 52% of them came back the next month.</p>
+<figure class="fig"><img src="../images/nudge/d-unpacked.webp" alt="Now Nudge on stage at Samsung Unpacked 2025" loading="lazy" decoding="async"></figure>
+<p class="quote">"The AI feature I feel most in daily life."<cite>Bolt, tech reviewer</cite></p>
+
 <div class="lesson">
   <p class="cap">Lesson learned</p>
-  <p class="big">Intelligence should be invisible. The best AI features don't feel like features. They feel like the device understood you.</p>
+  <p class="big">Context makes AI know without being asked.</p>
+  <p>The best suggestion is the one you'd have typed anyway.</p>
 </div>
 
   <nav class="next" aria-label="More work">

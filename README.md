@@ -36,16 +36,13 @@ PNG became WebP, and animated GIFs became looping MP4 videos with a WebP poster 
 Files live at `images/<project>/<number>.webp` or `.mp4`. Swap any one by replacing the file with the same name.
 `01` in each folder is the cover image on the home page and case study header.
 
-Still missing:
-- `images/automation/` is empty, so the Gemini Automation page has no images and its home card shows the title on a pink tile. Add `01.webp` for a cover.
+Now Nudge (`images/nudge/d-*.webp`) and Gemini Automation (`images/automation/`) images were cropped from the case study deck.
 
 ## Content to verify before going live
 
 These lines were rewritten or drafted. Check each one is accurate and cleared to publish.
 
-- **Gemini Automation (whole page)**: drafted from your notes. No metrics yet. Confirm the team line and add numbers if you have them.
-- **Now Nudge, "Designing for the wrong guess"**: drafted. Confirm each bullet (precision tuning, dismissal learning, on-device processing) matches what shipped.
-- **Now Nudge 60% / 40%**: state where these came from (usability test, A/B, telemetry).
+- **Now Nudge and Gemini Automation**: rewritten from the interview deck, which is marked Confidential. Confirm the usage data (1:200, 26%, 52%, 1.4x, 2%) and Google's first-implementation screens are cleared for public use.
 - **Circle to Search 80%**: reworded from "10 mins to 2 mins" to "less time to complete a visual search task in testing". Confirm the basis.
 - **Samsung Pay 14%**: now "lift in share of the promoted credit card". Confirm meaning.
 - **Samsung Pay years**: set to 2014–2019 from your resume. The web checkout itself may be narrower.

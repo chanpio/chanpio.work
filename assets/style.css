@@ -334,3 +334,14 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
   .cv-role li { margin: 2px 0; line-height: 1.4; color: #000; }
   .cv-role li b a { border: 0; }
 }
+
+/* Case study additions */
+.outcomes.light > div { background: var(--soft); }
+.outcomes.light b { color: var(--ink); }
+.outcomes.light b em { color: var(--blue); }
+.outcomes.light span { color: var(--graphite); }
+.body .outcomes.light { margin: 24px 0 6px; grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 600px) { .body .outcomes.light { grid-template-columns: 1fr 1fr; } }
+.cap-note { font-size: 14px; color: var(--graphite) !important; text-align: center; margin: 0 0 8px; }
+.fig.narrow-wide { max-width: 520px; margin-left: auto !important; margin-right: auto !important; }
+.card[href="automation/"] .thumb img { object-position: left center; }
