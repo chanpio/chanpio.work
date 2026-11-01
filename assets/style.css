@@ -284,6 +284,7 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 @media (max-width: 600px) { br.lg { display: none; } }
 
 /* Resume */
+.print-only { display: none; }
 .no-print {}
 .cv { max-width: 720px; margin: 0 auto; padding: clamp(120px, 14vw, 150px) var(--gutter) 48px; }
 .cv-head h1 { font-size: clamp(30px, 4vw, 38px); line-height: 1.15; letter-spacing: -0.025em; }
@@ -310,6 +311,8 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 .cv-role .ctx { color: var(--graphite); font-weight: 400; }
 .cv-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 22px; margin-top: 64px; padding-top: 22px; border-top: 2px solid var(--hairline); font-size: 15px; }
 .cv-foot b { font-weight: 600; }
+.cv-place { color: var(--graphite); }
+.cv-section .cv-role:has(> h3 + .cv-when:last-child) { margin-bottom: 14px; }
 
 @media print {
   @page { margin: 14mm; }
@@ -317,6 +320,9 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
   body { font-size: 10pt; background: #fff; font-family: Arial, Helvetica, sans-serif; font-feature-settings: normal; font-variant-ligatures: none; }
   .cv h1, .cv h3 { letter-spacing: 0; }
   .site-header, .cv-foot, .no-print { display: none !important; }
+  .print-only { display: inline !important; }
+  .cv-links > :not(.no-print) + :not(.no-print)::before { content: "|"; margin-right: 10px; color: #555; }
+  .cv-place { color: #000; }
   .cv { padding: 0; max-width: none; }
   .cv-head h1 { font-size: 22pt; }
   .cv-links { margin-top: 6px; font-size: 9.5pt; gap: 4px 14px; }
