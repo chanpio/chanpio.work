@@ -6,8 +6,7 @@ import { StillContext } from './kit/reduced-motion'
 // Mounts the demo into #nudge-hero and keeps the hero's Knowing / Anticipating / Acting
 // list in step with it: the stage writes the beat it is on as data-mark.
 // The story plays three times, each run fading out to the opening frame, then holds on
-// the result. One control under the list: Stop while it plays (WCAG 2.2.2, motion over
-// 5 seconds can be stopped), which shows the finished frame, and Replay once it rests.
+// the result and shows Replay, which plays it three times again.
 const root = document.getElementById('nudge-hero')
 const steps = [...document.querySelectorAll<HTMLElement>('[data-step]')]
 const control = document.getElementById('nudge-replay') as HTMLButtonElement | null
@@ -49,18 +48,13 @@ function Hero() {
 
   useEffect(() => {
     if (!control) return
-    setControl(reduced() ? 'none' : 'stop')
+    setControl('none')
     const go = () => {
-      if (resting.current) {
-        resting.current = false
-        plays.current = 1
-        setControl('stop')
-        swap(() => { setStill(false); setRun((n) => n + 1) })
-      } else {
-        resting.current = true
-        setControl('replay')
-        swap(() => { setStill(true); setRun((n) => n + 1) })
-      }
+      if (!resting.current) return
+      resting.current = false
+      plays.current = 1
+      setControl('none')
+      swap(() => { setStill(false); setRun((n) => n + 1) })
     }
     control.addEventListener('click', go)
     return () => control.removeEventListener('click', go)
@@ -89,7 +83,7 @@ function Hero() {
           swap(() => setRun((n) => n + 1))
         } else {
           resting.current = true // the script has finished and holds its result
-          setControl('replay')
+          if (!reduced()) setControl('replay')
         }
       }, HOLD)
     }

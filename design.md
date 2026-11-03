@@ -243,7 +243,7 @@ There are no card shadows on white. Cards are separated by the image tile and sp
 | Motion | Spec | Trigger |
 |---|---|---|
 | Hero rise | 0.9s `cubic-bezier(.2,.8,.2,1)`, 16px up + fade | Page load, once |
-| Nudge demo | About 11s a run. Plays 3 times, each run holding the result 3.2s, then fading out (0.4s) to the opening frame; after the third it holds on the result. A Stop control shows the finished frame at any time; Replay plays it 3 times again. The Knowing / Anticipating / Acting list lights in step. Under reduced motion it shows the finished frame, no Replay | Hero, on load |
+| Nudge demo | About 11s a run. Plays 3 times, each run holding the result 3.2s, then fading out (0.4s) to the opening frame; after the third it holds on the result and shows Replay, which plays it 3 times again. The Knowing / Anticipating / Acting list lights in step. Under reduced motion it shows the finished frame, no Replay | Hero, on load |
 | Thumb zoom | scale 1.03 over 0.6s `cubic-bezier(.2,.8,.2,1)` | Card hover |
 | Color shift | 0.2s on background, color, border | Pill hover |
 | Smooth scroll | `scroll-behavior: smooth` | Anchor links |
@@ -271,7 +271,7 @@ A fixed frosted pill 12px from the top, max 1080px wide, with padding `8 8 8 20`
 
 ### 9.3 Hero card
 
-Full width minus the gutter, sized to its content, with only the bottom corners rounded to 48px. Two columns on the sky gradient: on the left a `display` h1, a `hero-sub` line, the Knowing / Anticipating / Acting list and a Replay pill; on the right the Now Nudge demo, its phone running off the card's foot. Below 1024px the copy stacks over the demo.
+Full width minus the gutter, sized to its content, with only the bottom corners rounded to 48px. Two columns on the sky gradient: on the left a `display` h1, a `hero-sub` line, the Knowing / Anticipating / Acting list and a Replay pill that appears once the demo rests; on the right the Now Nudge demo, its phone running off the card's foot. Below 1024px the copy stacks over the demo.
 
 ### 9.4 Now Nudge demo
 
@@ -400,7 +400,7 @@ footer
 - **Contrast:** graphite `#6E6E73` on white is 5.0:1, which passes AA for body text. Night-dim `#A1A1A6` on black is 8.2:1. Blue `#3B8EF0` on white is only 3.3:1, which is below AA (4.5:1) for the 16px eyebrow. See Open issues.
 - **Motion:** every animation respects `prefers-reduced-motion`.
 - **Skip link:** every page opens with a “Skip to content” link to `#main`, shown on keyboard focus. Anchors land below the fixed nav (`scroll-margin-top: 96px`).
-- **Moving content can be stopped:** the hero demo has Stop while it plays and Replay once it rests; every looping case-study video has a pause/play button (`assets/site.js`) and does not autoplay under reduced motion.
+- **Moving content:** every looping case-study video has a pause/play button (`assets/site.js`) and does not autoplay under reduced motion. The hero demo stops by itself after three runs (about 32s) and shows Replay; under reduced motion it shows only the finished frame.
 - **Headings:** one `h1` per page and no skipped levels (compare cards are `h3`, résumé sections are `h2`).
 - **Typography details:** curly quotes and apostrophes in copy; `text-wrap: balance` on headings and `pretty` on paragraphs; tabular numbers in stats and outcomes.
 - **Layout shift:** every `img` carries its intrinsic `width` and `height`.
