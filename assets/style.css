@@ -107,7 +107,7 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 
 /* Hero: copy and the Knowing / Anticipating / Acting loop on the left, the Now Nudge demo on the right.
    The demo's source is hero/ (stageshow kit); it builds to assets/hero/. */
-.hero { padding: 12px var(--gutter) 0; }
+.hero { padding: 0; } /* the hero card runs edge to edge */
 .hero-card {
   position: relative; overflow: hidden;
   border-radius: 0 0 var(--r-xl) var(--r-xl);
@@ -116,7 +116,7 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
     radial-gradient(90% 60% at 15% 85%, #e9e1ff 0%, rgba(233,225,255,0) 60%),
     linear-gradient(180deg, #cfe2f7 0%, #e6eef8 45%, #f6efe6 100%);
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); align-items: end; column-gap: 24px;
-  padding: 84px max(clamp(24px, 5vw, 72px), calc((100% - 1180px) / 2)) 0;
+  padding: 96px max(clamp(24px, 5vw, 72px), calc((100% - 1180px) / 2)) 0;
 }
 .hero-copy { position: relative; z-index: 2; align-self: center; min-width: 0; padding-block: 40px 64px; color: #000; }
 .hero-copy h1 { text-wrap: balance; font-size: clamp(42px, 4.9vw, 66px); line-height: 1.02; }
@@ -147,7 +147,7 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 .hero-stage[data-fading] { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .hero-steps li, .hero-steps li::before, .hero-stage { transition: none; } }
 @media (max-width: 1024px) {
-  .hero-card { grid-template-columns: minmax(0, 1fr); padding: 88px 0 0; }
+  .hero-card { grid-template-columns: minmax(0, 1fr); padding: 100px 0 0; }
   .hero-copy { padding: 8px 16px 24px; }
   .hero-copy h1 { max-width: none; }
   .hero-steps { margin-top: 24px; }
