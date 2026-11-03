@@ -17,7 +17,11 @@
   --r-md: 20px;
   --col: 680px;
   --wide: 1080px;
-  --gutter: clamp(16px, 4vw, 40px);
+  --gutter: clamp(20px, 4vw, 40px);
+  /* One content edge for the whole page: the nav's wordmark, the hero's text and every .wrap start here.
+     Resolve it only on full-width boxes (the fixed header, the full-bleed hero), where 100% is the page width. */
+  --edge: max(var(--gutter), calc((100% - var(--wide)) / 2 + var(--gutter)));
+  --bar-pad: 12px;
   /* Type: a serif for headings that speaks, a sans from the same family for everything you read or tap */
   --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
   --font-text: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -84,11 +88,11 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 .pill.line:hover, .pill.light:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
 
 /* Header */
-.site-header { position: fixed; inset: 0 0 auto; z-index: 20; padding: 12px var(--gutter); pointer-events: none; }
+.site-header { position: fixed; inset: 0 0 auto; z-index: 20; padding: 12px calc(var(--edge) - var(--bar-pad)); pointer-events: none; }
 .bar {
-  max-width: var(--wide); margin: 0 auto; pointer-events: auto;
+  pointer-events: auto;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding: 8px 8px 8px 20px; border-radius: 999px;
+  padding: 8px var(--bar-pad); border-radius: 999px;
   /* Clear at the top of the page; the frosted pill appears once the page scrolls under it (assets/site.js) */
   background: transparent;
   transition: background-color .2s ease, box-shadow .2s ease, -webkit-backdrop-filter .2s ease, backdrop-filter .2s ease;
@@ -98,7 +102,8 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
   backdrop-filter: saturate(1.6) blur(18px); -webkit-backdrop-filter: saturate(1.6) blur(18px);
 }
 @media (prefers-reduced-motion: reduce) { .bar { transition: none; } }
-.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 18px; letter-spacing: -0.02em; }
+/* The wordmark is the mark: the display serif in italic, the one italic beside the hero's emphasis */
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 25px; line-height: 1; letter-spacing: -0.005em; }
 .nav { display: flex; align-items: center; gap: 6px; }
 .nav > a:not(.pill) { text-decoration: none; padding: 10px 12px; font-weight: 500; font-size: 16px; }
 .nav > a:not(.pill):hover { color: var(--blue); }
@@ -116,7 +121,7 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
     radial-gradient(90% 60% at 15% 85%, #e9e1ff 0%, rgba(233,225,255,0) 60%),
     linear-gradient(180deg, #cfe2f7 0%, #e6eef8 45%, #f6efe6 100%);
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); align-items: end; column-gap: 24px;
-  padding: 96px max(clamp(24px, 5vw, 72px), calc((100% - 1180px) / 2)) 0;
+  padding: 96px max(var(--gutter), calc((100% - 1280px) / 2)) 0 var(--edge);
 }
 .hero-copy { position: relative; z-index: 2; align-self: center; min-width: 0; padding-block: 40px 64px; color: #000; }
 .hero-copy h1 { text-wrap: balance; font-size: clamp(42px, 4.9vw, 66px); line-height: 1.02; }
@@ -147,10 +152,13 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 .hero-stage[data-fading] { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .hero-steps li, .hero-steps li::before, .hero-stage { transition: none; } }
 @media (max-width: 1024px) {
-  .hero-card { grid-template-columns: minmax(0, 1fr); padding: 100px 0 0; }
-  .hero-copy { padding: 8px 16px 24px; }
+  .hero-card { grid-template-columns: minmax(0, 1fr); padding: 92px 0 0; }
+  .hero-copy { padding: 0 var(--edge) 16px; }
   .hero-copy h1 { max-width: none; }
-  .hero-steps { margin-top: 24px; }
+  .hero-copy p { margin-top: 14px; }
+  .hero-steps { margin-top: 18px; }
+  .hero-steps li { padding: 6px 0; }
+  .hero-replay { margin-top: 10px; }
   .hero-stage { max-width: 358px; justify-self: center; }
 }
 @media (max-width: 760px) { .hero-card { border-radius: 0 0 32px 32px; } }
