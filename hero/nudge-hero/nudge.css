@@ -16,7 +16,12 @@
   background: transparent;
   overflow: hidden;
 
-  .nh-phone { position: absolute; left: 168px; top: 40px; }
+  /* The phone runs off the hero's foot, so a cast shadow below it is never seen and only
+     its gray side haze shows. A soft ambient shadow in the sky's own blue instead. */
+  .nh-phone {
+    position: absolute; left: 168px; top: 40px;
+    box-shadow: 0 0 0 1px rgba(20, 30, 60, 0.05), 0 18px 48px -12px rgba(40, 70, 130, 0.14);
+  }
 
   .nh-app { height: calc(100% + 44px); margin-top: -44px; display: flex; flex-direction: column; background: var(--nh-paper); color: var(--nh-ink); }
 
