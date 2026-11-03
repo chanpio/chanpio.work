@@ -89,9 +89,15 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
   max-width: var(--wide); margin: 0 auto; pointer-events: auto;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 8px 8px 8px 20px; border-radius: 999px;
+  /* Clear at the top of the page; the frosted pill appears once the page scrolls under it (assets/site.js) */
+  background: transparent;
+  transition: background-color .2s ease, box-shadow .2s ease, -webkit-backdrop-filter .2s ease, backdrop-filter .2s ease;
+}
+.site-header[data-scrolled] .bar {
   background: color-mix(in srgb, var(--paper) 72%, transparent);
   backdrop-filter: saturate(1.6) blur(18px); -webkit-backdrop-filter: saturate(1.6) blur(18px);
 }
+@media (prefers-reduced-motion: reduce) { .bar { transition: none; } }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 18px; letter-spacing: -0.02em; }
 .nav { display: flex; align-items: center; gap: 6px; }
 .nav > a:not(.pill) { text-decoration: none; padding: 10px 12px; font-weight: 500; font-size: 16px; }

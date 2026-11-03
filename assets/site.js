@@ -1,3 +1,12 @@
+// Header: the frosted pill shows only once the page has scrolled under it
+(() => {
+  const header = document.querySelector('.site-header')
+  if (!header) return
+  const sync = () => header.toggleAttribute('data-scrolled', window.scrollY > 8)
+  sync()
+  window.addEventListener('scroll', sync, { passive: true })
+})();
+
 // Looping case-study videos: a pause/play control on each, and no autoplay for people
 // who asked for reduced motion (WCAG 2.2.2: moving content over 5 seconds can be paused).
 (() => {
