@@ -56,7 +56,7 @@ The hero card uses a fixed palette that does not change in dark mode.
 
 ### 2.4 Chip palette
 
-These colors were the hero's floating chips, which the Now Nudge demo replaced. They remain for the loop icons and the brand mark.
+These colors were the hero's floating chips and the about band's loop icons. Both are gone, so the palette is retired; keep it only as history.
 
 | Chip | Color | | Chip | Color |
 |---|---|---|---|---|
@@ -65,7 +65,7 @@ These colors were the hero's floating chips, which the Now Nudge demo replaced. 
 | Translate | `#22B07D` | | Set reminder | `#FF5A4F` |
 | View calendar | `#8B5CF6` | | Summarize | `#111111` |
 
-Brand mark: conic gradient from 200°, `#3B8EF0 → #8B5CF6 → #FF6FA6 → #FFB341 → #3B8EF0`.
+The nav no longer carries a brand mark; the wordmark stands alone.
 
 ### 2.5 Usage rules
 
@@ -181,7 +181,7 @@ Case head top uses `clamp(130px, 16vw, 180px)` to clear the fixed nav.
 | `--r-md` | 20px | Figures, outcome cards, compare boxes, callouts |
 | — | 22px | Loop icon tile (should become `--r-md`) |
 | pill | 999px | Nav bar, buttons, chips, stat pills, tags, focus ring |
-| circle | 50% | Step numbers, glyph, chip icon disc, brand mark |
+| circle | 50% | Step numbers |
 
 **Nesting rule:** an inner element's radius is smaller than its container's. For example, a 20px outcome card sits inside a 48px band.
 
@@ -267,7 +267,7 @@ Spec: padding 12×20 (11×18 in the nav), 16/500, line-height 1, radius 999px, i
 
 ### 9.2 Navigation bar
 
-A fixed frosted pill 12px from the top, max 1080px wide, with padding `8 8 8 20`. The brand mark plus wordmark sits on the left. Text links and a dark Resume pill sit on the right. The container ignores pointer events so the hero stays clickable around it.
+A fixed frosted pill 12px from the top, max 1080px wide, with padding `8 8 8 20`. The wordmark “Chanpio Park” sits on the left, with no logo. Text links and a dark Resume pill sit on the right. The container ignores pointer events so the hero stays clickable around it.
 
 ### 9.3 Hero card
 
@@ -404,7 +404,7 @@ footer
 - **Headings:** one `h1` per page and no skipped levels (compare cards are `h3`, résumé sections are `h2`).
 - **Typography details:** curly quotes and apostrophes in copy; `text-wrap: balance` on headings and `pretty` on paragraphs; tabular numbers in stats and outcomes.
 - **Layout shift:** every `img` carries its intrinsic `width` and `height`.
-- **Decoration hidden:** icons, the glyph, and the brand mark are `aria-hidden`. The hero demo is one `role="img"` with a sentence describing what happens.
+- **Decoration hidden:** decorative icons are `aria-hidden`. The hero demo is one `role="img"` with a sentence describing what happens.
 - **Dark mode:** follows the system setting; force it with `data-theme="light"` or `"dark"` on `<html>`.
 - **Media:** every image has alt text, and every video has an `aria-label` and a poster.
 

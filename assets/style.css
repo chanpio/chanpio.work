@@ -88,7 +88,6 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
   backdrop-filter: saturate(1.6) blur(18px); -webkit-backdrop-filter: saturate(1.6) blur(18px);
 }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 18px; letter-spacing: -0.02em; }
-.mark { width: 18px; height: 18px; border-radius: 50%; background: conic-gradient(from 200deg, #3b8ef0, #8b5cf6, #ff6fa6, #ffb341, #3b8ef0); }
 .nav { display: flex; align-items: center; gap: 6px; }
 .nav > a:not(.pill) { text-decoration: none; padding: 10px 12px; font-weight: 500; font-size: 16px; }
 .nav > a:not(.pill):hover { color: var(--blue); }
