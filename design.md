@@ -269,7 +269,7 @@ Spec: padding 12×20 (11×18 in the nav), 16/500, line-height 1, radius 999px, i
 
 ### 9.2 Navigation bar
 
-A fixed frosted pill 12px from the top, max 1080px wide, with padding `8 8 8 20`. The wordmark “Chanpio Park” sits on the left, with no logo, set in Instrument Serif italic at 25px. Italic appears in only two places on the site: this wordmark and the one emphasized word in the hero (“knows”). Text links and a dark Resume pill sit on the right. The container ignores pointer events so the hero stays clickable around it.
+A fixed frosted pill 12px from the top, max 1080px wide, with padding `8 8 8 20`. Every page shares one content edge, `--edge` (the `.wrap` content start: `max(gutter, (100% − 1080px) / 2 + gutter)`). The nav pill is inset `--edge − 12px` and padded 12px, so the wordmark and the Resume pill sit exactly on that edge, in line with the hero text and the work grid. The wordmark “Chanpio Park” sits on the left, with no logo, set in Instrument Serif italic at 25px. Italic appears in only two places on the site: this wordmark and the one emphasized word in the hero (“knows”). Text links and a dark Resume pill sit on the right. The container ignores pointer events so the hero stays clickable around it.
 
 ### 9.3 Hero card
 
