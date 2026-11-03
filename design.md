@@ -8,7 +8,7 @@ The design system behind www.chanpio.work. Every value here comes from `assets/s
 
 ## 1. Principles
 
-1. **Calm surface, one lively moment.** Pages are mostly white and black. The only playful element is the hero, where floating nudge chips act out the work itself: an AI that offers the next step.
+1. **Calm surface, one lively moment.** Pages are mostly white and black. The only moving element is the hero, where a Now Nudge demo acts out the work itself: an AI that reads the conversation and offers the next step.
 2. **Alternate light and dark.** White sections carry the work. Rounded black bands carry identity and proof (philosophy, numbers, outcomes, lessons). Moving between them gives the scroll its rhythm.
 3. **Soft geometry.** Large radii on every container and full pills on every control. There are no sharp corners and no hairline-heavy layouts.
 4. **One typeface, rank by weight and color.** Inter Tight does everything. Secondary information gets graphite, not a smaller size.
@@ -55,7 +55,7 @@ The hero card uses a fixed palette that does not change in dark mode.
 
 ### 2.4 Chip palette
 
-Each hero chip has a colored icon disc. These colors appear only in the hero and in the loop icons.
+These colors were the hero's floating chips, which the Now Nudge demo replaced. They remain for the loop icons and the brand mark.
 
 | Chip | Color | | Chip | Color |
 |---|---|---|---|---|
@@ -70,7 +70,7 @@ Brand mark: conic gradient from 200°, `#3B8EF0 → #8B5CF6 → #FF6FA6 → #FFB
 
 - Text is `--ink` or `--graphite`. Never set body text in blue.
 - Blue appears at most once per viewport as a label (the eyebrow). Everything else blue is a state: hover, focus, or chosen.
-- Chip colors stay in the hero. Don't reuse them for charts or tags.
+- Chip colors stay in the loop icons. Don't reuse them for charts or tags.
 
 ---
 
@@ -193,9 +193,7 @@ The system is mostly flat. Depth comes from blur and color, not shadow.
 | Material | Recipe | Used for |
 |---|---|---|
 | Frosted bar | `paper` at 72% + `backdrop-filter: saturate(1.6) blur(18px)` | Fixed nav |
-| Frosted chip | `rgba(255,255,255,.82)` + `blur(8px)` + inner 1px white ring + shadow `0 12px 30px -12px rgba(40,60,110,.35)` | Hero chips |
 | Metal tile | linear 145° `#4A4A4F → #1F1F22`, inner top highlight `rgba(255,255,255,.25)`, drop `0 10px 24px -10px #000` | Loop icons |
-| Depth of field | `opacity .8` + `blur(.6px)` | Back-row hero chips |
 
 There are no card shadows on white. Cards are separated by the image tile and spacing alone.
 
@@ -225,7 +223,8 @@ There are no card shadows on white. Cards are separated by the image tile and sp
 | Width | What changes |
 |---|---|
 | 820px | Case header stacks |
-| 760px | Grids collapse; bands inset 8px with 32px radius; chips shrink and two hide; bleed figures stop bleeding |
+| 860px | Hero stacks: copy over the demo, which drops to its 358px compact design |
+| 760px | Grids collapse; bands inset 8px with 32px radius; bleed figures stop bleeding |
 | 640px | Experience rows stack |
 | 600px | Image rows stack; hero h1 drops its forced line break |
 | 480px | "About" nav link hides |
@@ -243,7 +242,7 @@ There are no card shadows on white. Cards are separated by the image tile and sp
 | Motion | Spec | Trigger |
 |---|---|---|
 | Hero rise | 0.9s `cubic-bezier(.2,.8,.2,1)`, 16px up + fade | Page load, once |
-| Chip float | 7s ease-in-out infinite, ±12px, staggered delays (−0.6s to −5s), keeps its rotation | Always, hero only |
+| Nudge demo | About 11s, plays once and holds on the result; the Knowing / Anticipating / Acting list lights in step; Replay restarts it. Under reduced motion it shows the finished frame | Hero, on load and on scroll back into view |
 | Thumb zoom | scale 1.03 over 0.6s `cubic-bezier(.2,.8,.2,1)` | Card hover |
 | Color shift | 0.2s on background, color, border | Pill hover |
 | Smooth scroll | `scroll-behavior: smooth` | Anchor links |
@@ -271,11 +270,11 @@ A fixed frosted pill 12px from the top, max 1080px wide, with padding `8 8 8 20`
 
 ### 9.3 Hero card
 
-Full width minus the gutter, `min(88vh, 760px)` tall (min 520px), with only the bottom corners rounded to 48px. It holds the sky gradient, 8 floating chips, a centered `display` h1, a `hero-sub` line, and a ⌄ scroll cue 22px from the bottom.
+Full width minus the gutter, sized to its content, with only the bottom corners rounded to 48px. Two columns on the sky gradient: on the left a `display` h1, a `hero-sub` line, the Knowing / Anticipating / Acting list and a Replay pill; on the right the Now Nudge demo, its phone running off the card's foot. Below 860px the copy stacks over the demo.
 
-### 9.4 Nudge chip
+### 9.4 Now Nudge demo
 
-Frosted pill with padding `12 18 12 12`, 16/500. It holds a 28px colored icon disc and a 2–3 word action label. Each chip is rotated −6° to +5°. It is decorative, so it is `aria-hidden`.
+A faux One UI screen built with the stageshow kit: Samsung Messages, the Samsung Keyboard toolbar with the Open calendar nudge, and the Galaxy status bar, matched to the shipped screens in the Now Nudge case study. Source in `hero/`, built to `assets/hero/` with `npm run build` (see `hero/README.md`). The stage is one `role="img"` with a description; the site's global CSS is fenced off it with `:not(:where(.ss-stage *))`.
 
 ### 9.5 Project card
 
@@ -354,7 +353,7 @@ Centered: a "Contact" eyebrow, a `heading-1` line, a graphite lede, then dark Em
 ### Home
 ```
 [ frosted nav pill                                   ]
-[ hero card: sky + floating chips + display h1       ]   bottom radius 48
+[ hero card: sky · h1 + loop list | Now Nudge demo   ]   bottom radius 48
   eyebrow · heading-1 · soft pill links                   centered
   [card][card]                                            2-col grid
   [card][card]
@@ -387,7 +386,7 @@ footer
 
 - **Sentence case** for every heading, button, and label. No all-caps.
 - **Buttons say what happens:** "Email me", "Read the case study". Avoid "Learn more" or "Click here".
-- **Chips are 2–3 word verbs:** "Add to Calendar", "Translate".
+- **Nudges are 2–3 word verbs:** "Open calendar", "Share photos".
 - **Numbers lead:** put the metric first in stat pills and outcome cards ("42M+ Galaxy devices").
 - **Meta format:** "Org · Year" with a middle dot.
 - **No → arrows in link text.** Use › only in list rows and the next-project link.
@@ -397,9 +396,9 @@ footer
 ## 12. Accessibility
 
 - **Focus:** 2px blue outline, 3px offset, pill radius on every link and button.
-- **Contrast:** graphite `#6E6E73` on white is 5.0:1, which passes AA for body text. Night-dim `#A1A1A6` on black is 8.2:1. Blue `#3B8EF0` on white is only 3.3:1, which is below AA (4.5:1) for the 16px eyebrow. See Open issues. White glyphs on the blue chip disc are 3.3:1, acceptable only because the chips are decorative.
+- **Contrast:** graphite `#6E6E73` on white is 5.0:1, which passes AA for body text. Night-dim `#A1A1A6` on black is 8.2:1. Blue `#3B8EF0` on white is only 3.3:1, which is below AA (4.5:1) for the 16px eyebrow. See Open issues.
 - **Motion:** every animation respects `prefers-reduced-motion`.
-- **Decoration hidden:** chips, icons, the glyph, and the brand mark are `aria-hidden`.
+- **Decoration hidden:** icons, the glyph, and the brand mark are `aria-hidden`. The hero demo is one `role="img"` with a sentence describing what happens.
 - **Dark mode:** follows the system setting; force it with `data-theme="light"` or `"dark"` on `<html>`.
 - **Media:** every image has alt text, and every video has an `aria-label` and a poster.
 
@@ -416,7 +415,7 @@ These are inconsistencies in the current CSS, not intended design.
 | 3 | Inter Tight 700 is loaded but unused | Load `wght@400;500;600` only |
 | 4 | Five tracking values (−0.01 to −0.03em) | Reduce to −0.01 / −0.02 / −0.03 |
 | 5 | `#7DB6FF` (blue-on-night) and the 22px loop-icon radius are hard-coded | Add `--blue-night` and use `--r-md` |
-| 6 | Hero chip and loop colors are hard-coded per class | Move them to `--chip-1`…`--chip-8` tokens |
+| 6 | Loop icon colors are hard-coded per class | Move them to `--chip-1`…`--chip-8` tokens |
 | 7 | Mobile band radius is a literal `32px` | Use `var(--r-lg)` |
 | 8 | Spacing has no tokens; 12 near-duplicate values are written inline | Add `--space-1`…`--space-12` from section 4.1 |
 | 9 | Blue eyebrow on white is 3.3:1, below AA for 16px text | Darken text-blue to `#1F6FD1` (about 4.9:1) and keep `#3B8EF0` for fills and focus |

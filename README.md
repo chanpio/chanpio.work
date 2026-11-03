@@ -1,6 +1,7 @@
 # chanpio.work
 
 Static portfolio site. Plain HTML and CSS, no build step. Edit any `index.html` directly.
+The one exception is the home hero demo: its built files are committed, so the site still deploys as is (see `hero/README.md`).
 
 ## Structure
 
@@ -13,6 +14,8 @@ spay/                 Samsung Pay Web
 color-picker/         Color picker for everyone
 splitscreen/          Split screen for Galaxy Z Fold
 assets/style.css      All styles (colors at the top under :root)
+assets/hero/          Built Now Nudge hero demo (do not edit; rebuild from hero/)
+hero/                 Source for the hero demo (see hero/README.md)
 images/               Put images here (see list below)
 CNAME                 Custom domain for GitHub Pages
 ```

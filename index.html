@@ -19,6 +19,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/hero/nudge-hero.css">
+<script type="module" src="assets/hero/nudge-hero.js"></script>
 </head>
 <body>
 <header class="site-header">
@@ -34,12 +36,17 @@
 <main>
 <section class="hero">
   <div class="hero-card">
-    <div class="chips"><span class="chip c1" aria-hidden="true"><i>📅</i>Add to Calendar</span><span class="chip c2" aria-hidden="true"><i>🖼</i>Share photos</span><span class="chip c3" aria-hidden="true"><i>文</i>Translate</span><span class="chip c4" aria-hidden="true"><i>🗓</i>View calendar</span><span class="chip c5" aria-hidden="true"><i>📍</i>Open map</span><span class="chip c6" aria-hidden="true"><i>☕</i>Reorder coffee</span><span class="chip c7" aria-hidden="true"><i>⏰</i>Set reminder</span><span class="chip c8" aria-hidden="true"><i>✦</i>Summarize</span></div>
     <div class="hero-copy">
-      <h1>The best AI doesn't<br class="lg"> wait to be asked</h1>
-      <p>I'm Chanpio Park, a product designer leading Galaxy AI UX at Samsung.<br class="lg"> I design agentic AI and ambient intelligence.</p>
+      <h1>The best AI doesn't wait to be asked</h1>
+      <p>I'm Chanpio Park, a product designer leading Galaxy AI UX at Samsung. I design agentic AI and ambient intelligence.</p>
+      <ol class="hero-steps">
+        <li data-step="knowing"><b>Knowing</b> It reads the conversation</li>
+        <li data-step="anticipating"><b>Anticipating</b> It offers the next step</li>
+        <li data-step="acting"><b>Acting</b> One tap opens your Tuesday</li>
+      </ol>
+      <button class="hero-replay" id="nudge-replay" type="button">Replay</button>
     </div>
-    <a class="scroll-cue" href="#work" aria-label="Scroll to work">⌄</a>
+    <div class="hero-stage" id="nudge-hero" role="img" aria-label="Now Nudge on a Galaxy phone: a friend asks about this Tuesday at lunchtime, Open calendar appears above the keyboard, and one tap shows Tuesday with the lunch slot free."></div>
   </div>
 </section>
 

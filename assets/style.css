@@ -30,7 +30,7 @@
   --night: #161618; --night-card: #232326;
 }
 
-* { box-sizing: border-box; }
+*:not(:where(.ss-stage, .ss-stage *)) { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
@@ -82,62 +82,54 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 .nav .pill { padding: 11px 18px; }
 @media (max-width: 480px) { .nav > a[href$="#about"] { display: none; } }
 
-/* Hero */
+/* Hero: copy and the Knowing / Anticipating / Acting loop on the left, the Now Nudge demo on the right.
+   The demo's source is hero/ (stageshow kit); it builds to assets/hero/. */
 .hero { padding: 12px var(--gutter) 0; }
 .hero-card {
   position: relative; overflow: hidden;
-  height: min(88vh, 760px); min-height: 520px;
   border-radius: 0 0 var(--r-xl) var(--r-xl);
   background:
     radial-gradient(120% 70% at 50% 110%, #f7e9d6 0%, rgba(247,233,214,0) 60%),
     radial-gradient(90% 60% at 15% 85%, #e9e1ff 0%, rgba(233,225,255,0) 60%),
     linear-gradient(180deg, #cfe2f7 0%, #e6eef8 45%, #f6efe6 100%);
-  display: grid; place-items: center;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); align-items: end; column-gap: 24px;
+  padding: 84px max(clamp(24px, 5vw, 72px), calc((100% - 1180px) / 2)) 0;
 }
-.hero-copy { position: relative; z-index: 2; text-align: center; padding: 0 20px; color: #000; }
-.hero-copy p { margin: 18px 0 0; font-size: clamp(18px, 2vw, 22px); font-weight: 500; letter-spacing: -0.01em; }
-.scroll-cue { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); text-decoration: none; color: #6e6e73; font-size: 24px; z-index: 2; }
+.hero-copy { position: relative; z-index: 2; align-self: center; min-width: 0; padding-block: 40px 64px; color: #000; }
+.hero-copy h1 { text-wrap: balance; max-width: 11ch; }
+.hero-copy p { margin: 20px 0 0; max-width: 34ch; font-size: clamp(18px, 2vw, 21px); font-weight: 500; letter-spacing: -0.01em; }
 
-.chips { position: absolute; inset: 0; }
-.chip {
-  position: absolute; display: inline-flex; align-items: center; gap: 8px;
-  padding: 12px 18px 12px 12px; border-radius: 999px;
-  background: rgba(255,255,255,.82); color: #111;
-  box-shadow: 0 12px 30px -12px rgba(40,60,110,.35), inset 0 0 0 1px rgba(255,255,255,.9);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  font-weight: 500; font-size: 16px; white-space: nowrap;
+.hero-steps { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: 8px max-content 1fr; column-gap: 12px; row-gap: 4px; max-width: 400px; }
+.hero-steps li {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline; padding: 8px 0;
+  color: #6e6e73; transition: color .4s ease;
 }
-.chip i {
-  font-style: normal; width: 28px; height: 28px; border-radius: 50%;
-  display: grid; place-items: center; font-size: 14px; color: #fff;
+.hero-steps li::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%; background: #b8bcc6; transform: translateY(-1px);
+  transition: background .4s ease, box-shadow .4s ease;
 }
-.c1 { left: 6%;  top: 22%; --r: -6deg; } .c1 i { background: #3b8ef0; }
-.c2 { left: 9%; top: 71%; --r: 4deg; }  .c2 i { background: #ff6fa6; }
-.c3 { right: 9%; top: 18%; --r: 5deg; }  .c3 i { background: #22b07d; }
-.c4 { right: 5%; top: 69%; --r: -4deg; } .c4 i { background: #8b5cf6; }
-.c5 { left: 30%; top: 84%; --r: -3deg; } .c5 i { background: #ffb341; }
-.c6 { right: 26%; top: 83%; --r: 3deg; } .c6 i { background: #c2733a; }
-.c7 { left: 28%; top: 9%; --r: 3deg; font-size: 14px; opacity: .8; filter: blur(.6px); } .c7 i { background: #ff5a4f; }
-.c8 { right: 30%; top: 7%; --r: -4deg; font-size: 14px; opacity: .8; filter: blur(.6px); } .c8 i { background: #111; }
-.chip { transform: rotate(var(--r)); }
-@media (prefers-reduced-motion: no-preference) {
-  .chip { animation: float 7s ease-in-out infinite; }
-  .c2 { animation-delay: -1.2s; } .c3 { animation-delay: -2.4s; } .c4 { animation-delay: -3.1s; }
-  .c5 { animation-delay: -4.2s; } .c6 { animation-delay: -5s; } .c7 { animation-delay: -.6s; } .c8 { animation-delay: -2s; }
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(var(--r)); }
-    50% { transform: translateY(-12px) rotate(var(--r)); }
-  }
-  .hero-copy { animation: rise .9s cubic-bezier(.2,.8,.2,1) both; }
-  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.hero-steps b { font-weight: 600; color: inherit; }
+.hero-steps li[data-past] { color: #3d3f45; }
+.hero-steps li[data-past]::before { background: #8fb9ef; }
+.hero-steps li[data-on] { color: #000; }
+.hero-steps li[data-on]::before { background: var(--blue); box-shadow: 0 0 0 4px rgba(59,142,240,.18); }
+.hero-replay {
+  visibility: hidden; opacity: 0; transition: opacity .3s ease;
+  margin-top: 16px; border: 0; cursor: pointer; font: inherit; font-weight: 500; font-size: 15px; line-height: 1;
+  padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,.7); color: #000;
 }
-@media (max-width: 760px) {
-  .chip { font-size: 13px; padding: 8px 12px 8px 8px; }
-  .chip i { width: 22px; height: 22px; font-size: 11px; }
-  .c1 { left: 4%; top: 16%; } .c3 { right: 4%; top: 12%; }
-  .c4 { right: 4%; top: 74%; } .c2 { left: 4%; top: 83%; }
-  .c5, .c6, .c7, .c8 { display: none; }
+.hero-replay[data-ready] { visibility: visible; opacity: 1; }
+.hero-replay:hover { background: #fff; }
+.hero-stage { min-width: 0; width: 100%; align-self: end; }
+@media (prefers-reduced-motion: reduce) { .hero-steps li, .hero-steps li::before { transition: none; } }
+@media (max-width: 860px) {
+  .hero-card { grid-template-columns: minmax(0, 1fr); padding: 88px 0 0; }
+  .hero-copy { padding: 8px 16px 24px; }
+  .hero-copy h1 { max-width: none; }
+  .hero-steps { margin-top: 24px; }
+  .hero-stage { max-width: 358px; justify-self: center; }
 }
+@media (max-width: 760px) { .hero-card { border-radius: 0 0 32px 32px; } }
 
 /* Intro + grid */
 .intro { padding: clamp(80px, 12vw, 140px) var(--gutter) clamp(40px, 6vw, 64px); }
