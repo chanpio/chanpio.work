@@ -98,7 +98,8 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
   backdrop-filter: saturate(1.6) blur(18px); -webkit-backdrop-filter: saturate(1.6) blur(18px);
 }
 @media (prefers-reduced-motion: reduce) { .bar { transition: none; } }
-.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 18px; letter-spacing: -0.02em; }
+/* The wordmark is the mark: the display serif in italic, the one italic beside the hero's emphasis */
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 25px; line-height: 1; letter-spacing: -0.005em; }
 .nav { display: flex; align-items: center; gap: 6px; }
 .nav > a:not(.pill) { text-decoration: none; padding: 10px 12px; font-weight: 500; font-size: 16px; }
 .nav > a:not(.pill):hover { color: var(--blue); }
