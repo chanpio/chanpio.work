@@ -120,8 +120,9 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 }
 .hero-replay[data-ready] { visibility: visible; opacity: 1; }
 .hero-replay:hover { background: #fff; }
-.hero-stage { min-width: 0; width: 100%; align-self: end; }
-@media (prefers-reduced-motion: reduce) { .hero-steps li, .hero-steps li::before { transition: none; } }
+.hero-stage { min-width: 0; width: 100%; align-self: end; transition: opacity .4s ease; }
+.hero-stage[data-fading] { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .hero-steps li, .hero-steps li::before, .hero-stage { transition: none; } }
 @media (max-width: 1024px) {
   .hero-card { grid-template-columns: minmax(0, 1fr); padding: 88px 0 0; }
   .hero-copy { padding: 8px 16px 24px; }

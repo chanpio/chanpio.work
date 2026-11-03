@@ -242,7 +242,7 @@ There are no card shadows on white. Cards are separated by the image tile and sp
 | Motion | Spec | Trigger |
 |---|---|---|
 | Hero rise | 0.9s `cubic-bezier(.2,.8,.2,1)`, 16px up + fade | Page load, once |
-| Nudge demo | About 11s, plays once and holds on the result; the Knowing / Anticipating / Acting list lights in step; Replay restarts it. Under reduced motion it shows the finished frame | Hero, on load and on scroll back into view |
+| Nudge demo | About 11s a run. Plays 3 times, each run holding the result 3.2s, then fading out (0.4s) to the opening frame; after the third it holds on the result and shows Replay, which plays it 3 times again. The Knowing / Anticipating / Acting list lights in step. Under reduced motion it shows the finished frame, no Replay | Hero, on load |
 | Thumb zoom | scale 1.03 over 0.6s `cubic-bezier(.2,.8,.2,1)` | Card hover |
 | Color shift | 0.2s on background, color, border | Pill hover |
 | Smooth scroll | `scroll-behavior: smooth` | Anchor links |
