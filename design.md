@@ -27,7 +27,8 @@ The design system behind www.chanpio.work. Every value here comes from `assets/s
 | `--graphite` | `#6E6E73` | `#A1A1A6` | Secondary text: meta, captions, ledes |
 | `--soft` | `#F2F2F4` | `#1C1C1E` | Soft pill, stat pill, compare box, callout, image placeholder |
 | `--hairline` | `#E8E8EC` | `#2C2C2E` | Dividers, soft-pill hover |
-| `--blue` | `#3B8EF0` | `#3B8EF0` | Accent: eyebrow, hover, focus ring, chosen state |
+| `--blue` | `#3B8EF0` | `#3B8EF0` | Accent fills: hover, focus ring, chosen state, dots |
+| `--blue-text` | `#1B66C9` | `#5EA3F3` | Blue as text: eyebrow, flow labels, the After label (5.5:1 on white, 5.0:1 on `--soft`) |
 
 ### 2.2 Night tokens (dark bands)
 
@@ -242,7 +243,7 @@ There are no card shadows on white. Cards are separated by the image tile and sp
 | Motion | Spec | Trigger |
 |---|---|---|
 | Hero rise | 0.9s `cubic-bezier(.2,.8,.2,1)`, 16px up + fade | Page load, once |
-| Nudge demo | About 11s a run. Plays 3 times, each run holding the result 3.2s, then fading out (0.4s) to the opening frame; after the third it holds on the result and shows Replay, which plays it 3 times again. The Knowing / Anticipating / Acting list lights in step. Under reduced motion it shows the finished frame, no Replay | Hero, on load |
+| Nudge demo | About 11s a run. Plays 3 times, each run holding the result 3.2s, then fading out (0.4s) to the opening frame; after the third it holds on the result. A Stop control shows the finished frame at any time; Replay plays it 3 times again. The Knowing / Anticipating / Acting list lights in step. Under reduced motion it shows the finished frame, no Replay | Hero, on load |
 | Thumb zoom | scale 1.03 over 0.6s `cubic-bezier(.2,.8,.2,1)` | Card hover |
 | Color shift | 0.2s on background, color, border | Pill hover |
 | Smooth scroll | `scroll-behavior: smooth` | Anchor links |
@@ -398,6 +399,11 @@ footer
 - **Focus:** 2px blue outline, 3px offset, pill radius on every link and button.
 - **Contrast:** graphite `#6E6E73` on white is 5.0:1, which passes AA for body text. Night-dim `#A1A1A6` on black is 8.2:1. Blue `#3B8EF0` on white is only 3.3:1, which is below AA (4.5:1) for the 16px eyebrow. See Open issues.
 - **Motion:** every animation respects `prefers-reduced-motion`.
+- **Skip link:** every page opens with a “Skip to content” link to `#main`, shown on keyboard focus. Anchors land below the fixed nav (`scroll-margin-top: 96px`).
+- **Moving content can be stopped:** the hero demo has Stop while it plays and Replay once it rests; every looping case-study video has a pause/play button (`assets/site.js`) and does not autoplay under reduced motion.
+- **Headings:** one `h1` per page and no skipped levels (compare cards are `h3`, résumé sections are `h2`).
+- **Typography details:** curly quotes and apostrophes in copy; `text-wrap: balance` on headings and `pretty` on paragraphs; tabular numbers in stats and outcomes.
+- **Layout shift:** every `img` carries its intrinsic `width` and `height`.
 - **Decoration hidden:** icons, the glyph, and the brand mark are `aria-hidden`. The hero demo is one `role="img"` with a sentence describing what happens.
 - **Dark mode:** follows the system setting; force it with `data-theme="light"` or `"dark"` on `<html>`.
 - **Media:** every image has alt text, and every video has an `aria-label` and a poster.
@@ -418,4 +424,4 @@ These are inconsistencies in the current CSS, not intended design.
 | 6 | Loop icon colors are hard-coded per class | Move them to `--chip-1`…`--chip-8` tokens |
 | 7 | Mobile band radius is a literal `32px` | Use `var(--r-lg)` |
 | 8 | Spacing has no tokens; 12 near-duplicate values are written inline | Add `--space-1`…`--space-12` from section 4.1 |
-| 9 | Blue eyebrow on white is 3.3:1, below AA for 16px text | Darken text-blue to `#1F6FD1` (about 4.9:1) and keep `#3B8EF0` for fills and focus |
+| 9 | ~~Blue eyebrow on white is 3.3:1, below AA for 16px text~~ | Done: `--blue-text` `#1B66C9` for blue text and white-on-blue tags; `#3B8EF0` stays for fills and focus |
