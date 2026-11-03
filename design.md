@@ -11,7 +11,7 @@ The design system behind www.chanpio.work. Every value here comes from `assets/s
 1. **Calm surface, one lively moment.** Pages are mostly white and black. The only moving element is the hero, where a Now Nudge demo acts out the work itself: an AI that reads the conversation and offers the next step.
 2. **Alternate light and dark.** White sections carry the work. Rounded black bands carry identity and proof (philosophy, numbers, outcomes, lessons). Moving between them gives the scroll its rhythm.
 3. **Soft geometry.** Large radii on every container and full pills on every control. There are no sharp corners and no hairline-heavy layouts.
-4. **One typeface, rank by weight and color.** Inter Tight does everything. Secondary information gets graphite, not a smaller size.
+4. **Two voices from one family.** Instrument Serif speaks in the headings (hero, case titles, section titles, card titles, the about statement); Instrument Sans carries everything you read, tap or count. Secondary information gets graphite, not a smaller size.
 5. **Blue means "next."** The single accent marks eyebrows, hover, the chosen option, and highlighted results, and nothing else.
 
 ---
@@ -81,16 +81,18 @@ The nav no longer carries a brand mark; the wordmark stands alone.
 
 | Role | Family | Weights | Source |
 |---|---|---|---|
-| All text | **Inter Tight** | 400, 500, 600 | Google Fonts |
-| Fallback | `system-ui, -apple-system, "Segoe UI", sans-serif` | — | System |
+| Display: h1, h2, card titles, about statement | **Instrument Serif** | 400, 400 italic | Google Fonts |
+| Text: body, UI, labels, numbers, small headings (h3 and below) | **Instrument Sans** | 400, 500, 600 | Google Fonts |
+| Fallbacks | Georgia / `system-ui, -apple-system, "Segoe UI", sans-serif` | — | System |
 
 ```css
-font-family: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+--font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+--font-text: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 font-synthesis: none;
 -webkit-font-smoothing: antialiased;
 ```
 
-**Weights have jobs:** 600 for headlines and numbers, 500 for UI and emphasis, 400 for reading.
+**Weights have jobs:** the serif has one weight, so headings rank by size and get 10–20% more of it than the old sans (h1 42–74px, h2 34–54px, case h2 31–40px, card titles 29–33px) with a tight 1.02–1.1 line height. *Italic* marks the one word a heading turns on ("knows"). In the sans: 600 for small headings and numbers, 500 for UI and emphasis, 400 for reading. The serif never goes below about 26px, and numbers, stats and the demo's phone UI stay in the sans. The résumé prints in Arial for ATS.
 
 ### 3.2 Fluid scale (display and headings)
 
@@ -418,7 +420,7 @@ These are inconsistencies in the current CSS, not intended design.
 |---|---|---|
 | 1 | h3 line-height inherits 1.55 from body, which is loose at 22–28px | `h3 { line-height: 1.25; }` |
 | 2 | 12 fixed text sizes; 15/14/13 are hard to tell apart | Merge `meta` and `tag` into `caption` (14) |
-| 3 | Inter Tight 700 is loaded but unused | Load `wght@400;500;600` only |
+| 3 | Instrument Sans 700 is loaded but unused | Load `wght@400;500;600` only |
 | 4 | Five tracking values (−0.01 to −0.03em) | Reduce to −0.01 / −0.02 / −0.03 |
 | 5 | `#7DB6FF` (blue-on-night) and the 22px loop-icon radius are hard-coded | Add `--blue-night` and use `--r-md` |
 | 6 | Loop icon colors are hard-coded per class | Move them to `--chip-1`…`--chip-8` tokens |

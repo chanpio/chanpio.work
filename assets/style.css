@@ -18,6 +18,9 @@
   --col: 680px;
   --wide: 1080px;
   --gutter: clamp(16px, 4vw, 40px);
+  /* Type: a serif for headings that speaks, a sans from the same family for everything you read or tap */
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-text: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-synthesis: none;
 }
 @media (prefers-color-scheme: dark) {
@@ -36,7 +39,7 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   margin: 0; background: var(--paper); color: var(--ink);
-  font-family: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--font-text);
   font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased;
 }
 img, video { max-width: 100%; display: block; }
@@ -57,8 +60,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-
 .wrap { max-width: var(--wide); margin: 0 auto; padding: 0 var(--gutter); }
 .center { text-align: center; }
 h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; margin: 0; }
-h1 { font-size: clamp(38px, 5.6vw, 64px); line-height: 1.12; }
-h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02em; }
+h1, h2 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; }
+h1 { font-size: clamp(42px, 6.4vw, 74px); line-height: 1.04; }
+h2 { font-size: clamp(34px, 4.6vw, 54px); line-height: 1.08; }
+h1 em, h2 em, .card h3 em { font-style: italic; }
 .eyebrow { color: var(--blue-text); font-weight: 500; font-size: 16px; margin: 0 0 14px; letter-spacing: 0; }
 .lede { color: var(--graphite); font-size: 18px; line-height: 1.6; margin: 20px auto 0; max-width: 46ch; }
 
@@ -108,7 +113,7 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
   padding: 84px max(clamp(24px, 5vw, 72px), calc((100% - 1180px) / 2)) 0;
 }
 .hero-copy { position: relative; z-index: 2; align-self: center; min-width: 0; padding-block: 40px 64px; color: #000; }
-.hero-copy h1 { text-wrap: balance; font-size: clamp(36px, 4.2vw, 56px); line-height: 1.1; }
+.hero-copy h1 { text-wrap: balance; font-size: clamp(42px, 4.9vw, 66px); line-height: 1.02; }
 .hero-copy p { margin: 20px 0 0; max-width: 34ch; font-size: clamp(18px, 2vw, 21px); font-weight: 500; letter-spacing: -0.01em; }
 
 .hero-steps { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: 8px max-content 1fr; column-gap: 12px; row-gap: 4px; max-width: 400px; }
@@ -159,7 +164,7 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 }
 .card-text { padding: 20px 4px 0; }
 .card-meta { color: var(--graphite); font-size: 15px; }
-.card h3 { font-size: clamp(24px, 2.4vw, 28px); letter-spacing: -0.025em; margin: 4px 0 8px; }
+.card h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(29px, 2.8vw, 33px); line-height: 1.08; letter-spacing: -0.005em; margin: 4px 0 8px; }
 .card:hover h3 { color: var(--blue); }
 .card p { color: var(--graphite); margin: 0 0 14px; max-width: 46ch; }
 .card-stat { display: inline-flex; gap: 6px; align-items: baseline; background: var(--soft); border-radius: 999px; padding: 7px 14px; font-size: 14px; color: var(--graphite); }
@@ -171,7 +176,7 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 .dark-band.rounded { border-radius: var(--r-xl); margin: 0 var(--gutter); }
 @media (max-width: 760px) { .dark-band.rounded { margin: 0 8px; border-radius: 32px; } }
 .dark-band .lede { color: var(--night-dim); }
-.about-text { margin: 0; max-width: 32em; font-size: clamp(22px, 2.5vw, 30px); line-height: 1.45; font-weight: 500; letter-spacing: -0.015em; color: var(--night-text); text-wrap: pretty; }
+.about-text { margin: 0; max-width: 30em; font-family: var(--font-display); font-size: clamp(26px, 2.8vw, 34px); line-height: 1.22; font-weight: 400; letter-spacing: -0.005em; color: var(--night-text); text-wrap: pretty; }
 .list-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: clamp(80px, 10vw, 120px) 0 16px; }
 .list-head a { text-decoration: none; font-weight: 500; white-space: nowrap; }
 .list-head a:hover { color: var(--blue); }
@@ -193,7 +198,7 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 
 /* Case study */
 .case-head { padding: clamp(130px, 16vw, 180px) var(--gutter) clamp(40px, 6vw, 64px); }
-.case-head h1 { max-width: 18ch; margin: 0 auto; font-size: clamp(34px, 5vw, 58px); }
+.case-head h1 { max-width: 16ch; margin: 0 auto; font-size: clamp(42px, 6vw, 70px); }
 .case-head .meta { color: var(--graphite); margin: 20px 0 0; }
 .cover { margin: 0 0 clamp(48px, 7vw, 80px); }
 .cover img, .cover video { width: 100%; max-height: 680px; object-fit: cover; border-radius: var(--r-xl); background: var(--soft); }
@@ -218,7 +223,7 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 .outcomes span { display: block; color: var(--night-dim); font-size: 15px; margin-top: 8px; line-height: 1.4; }
 
 .body { max-width: var(--col); margin: 0 auto; padding-top: clamp(24px, 4vw, 40px); }
-.body h2 { font-size: clamp(26px, 3vw, 34px); line-height: 1.2; margin: clamp(64px, 9vw, 104px) 0 16px; }
+.body h2 { font-size: clamp(31px, 3.5vw, 40px); line-height: 1.1; margin: clamp(64px, 9vw, 104px) 0 16px; }
 .body h3 { font-size: 19px; font-weight: 600; margin: 28px 0 6px; letter-spacing: -0.015em; }
 .body p, .body li { color: color-mix(in srgb, var(--ink) 80%, var(--paper)); }
 .body ul { padding-left: 20px; }
@@ -276,7 +281,7 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 .print-only { display: none; }
 .no-print {}
 .cv { max-width: 720px; margin: 0 auto; padding: clamp(120px, 14vw, 150px) var(--gutter) 48px; }
-.cv-head h1 { font-size: clamp(30px, 4vw, 38px); line-height: 1.15; letter-spacing: -0.025em; }
+.cv-head h1 { font-size: clamp(36px, 4.6vw, 46px); line-height: 1.05; letter-spacing: -0.01em; }
 .cv-role-line { margin: 6px 0 0; color: var(--graphite); }
 .cv-links { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 16px; font-size: 15px; }
 .cv-links a, .cv-links button, .cv-foot a {
@@ -285,7 +290,7 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
 }
 .cv-links a:hover, .cv-links button:hover, .cv-foot a:hover { color: var(--blue); border-color: var(--blue); }
 .cv-section { margin-top: 44px; }
-.cv-label { color: var(--graphite); font-size: 15px; font-weight: 400; letter-spacing: 0; line-height: 1.55; margin: 0 0 6px; }
+.cv-label { font-family: var(--font-text); color: var(--graphite); font-size: 15px; font-weight: 400; letter-spacing: 0; line-height: 1.55; margin: 0 0 6px; }
 .cv-summary, .cv-section > p:not(.cv-label) { margin: 0; line-height: 1.65; }
 .cv-role { margin: 0 0 30px; }
 .cv-role:last-child { margin-bottom: 0; }
@@ -307,7 +312,7 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.22; letter-spacing: -0.02
   @page { margin: 14mm; }
   :root { --paper: #fff; --ink: #000; --graphite: #555; --hairline: #ccc; --blue: #000; }
   body { font-size: 10pt; background: #fff; font-family: Arial, Helvetica, sans-serif; font-feature-settings: normal; font-variant-ligatures: none; }
-  .cv h1, .cv h3 { letter-spacing: 0; }
+  .cv h1, .cv h2, .cv h3 { letter-spacing: 0; font-family: Arial, Helvetica, sans-serif; font-weight: 700; }
   .site-header, .cv-foot, .no-print { display: none !important; }
   .print-only { display: inline !important; }
   .cv-links > :not(.no-print) + :not(.no-print)::before { content: "|"; margin-right: 10px; color: #555; }
