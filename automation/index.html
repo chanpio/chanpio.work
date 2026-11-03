@@ -14,16 +14,20 @@
 <meta property="og:image" content="https://www.chanpio.work/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href="../"><span class="mark" aria-hidden="true"></span>Chanpio Park</a>
+    <a class="brand" href="../">Chanpio Park</a>
     <nav class="nav" aria-label="Main">
       <a href="../#work">Work</a>
       <a href="../#about">About</a>
@@ -31,20 +35,20 @@
     </nav>
   </div>
 </header>
-<main class="case-automation">
+<main id="main" class="case-automation">
 <section class="case-head wrap center">
   <p class="eyebrow">Gemini Automation</p>
   <h1>Turning an AI capability into a device experience</h1>
   <p class="meta">Samsung + Google · 2026</p>
 </section>
-<div class="wrap"><figure class="cover"><img src="../images/automation/01.webp" alt="Gemini Automation" loading="eager" fetchpriority="high" decoding="async"></figure></div>
+<div class="wrap"><figure class="cover"><img width="1456" height="819" src="../images/automation/01.webp" alt="Gemini Automation" loading="eager" fetchpriority="high" decoding="async"></figure></div>
 <section class="dark-band">
   <div class="wrap">
     <div class="case-grid">
-      <aside class="rail"><dl><div><dt>My role</dt><dd>Samsung UX lead</dd><dd>Samsung–Google design alignment</dd><dd>Foldable experience</dd><dd>North Star concept</dd></div><div><dt>Team</dt><dd>Myself and the Galaxy AI UX team</dd><dd>Google Gemini design and engineering</dd><dd>Reviewed with Samsung and Google executives</dd></div></dl></aside>
+      <aside class="rail"><dl><div><dt>Timeline</dt><dd>2026</dd></div><div><dt>My role</dt><dd>Samsung UX lead</dd><dd>Owned how Gemini’s agent lives on Galaxy, from foldable progress views to the North Star concept</dd></div><div><dt>Team</dt><dd>Galaxy AI UX team</dd><dd>Google Gemini design and engineering</dd></div><div><dt>Stakeholders</dt><dd>Samsung and Google executives, in a joint design workstream</dd></div></dl></aside>
       <p class="summary">Gemini can now run multi-step tasks across apps, like ordering dinner or booking a ride. Google built the agent. My job was figuring out how that capability should actually show up on a Galaxy device. I led design alignment between Samsung and Google, and every proposal here went through a workstream where executives from both companies sat at the table.</p>
     </div>
-    <div class="outcomes"><div><b>1:200</b><span>Gemini users had ever tried automation</span></div><div><b><em>5 → 3</em></b><span>steps from intent to a running task</span></div><div><b>2</b><span>foldable form factors redesigned</span></div><div><b>0</b><span>prompts needed in the North Star</span></div></div>
+    <div class="outcomes"><div><b><em>5 → 3</em></b><span>steps from intent to a running task</span></div><div><b>2</b><span>foldable form factors redesigned</span></div><div><b>0</b><span>prompts needed in the North Star</span></div><div><b>1 in 200</b><span>Gemini users had tried automation, the problem we started from</span></div></div>
   </div>
 </section>
 <div class="wrap">
@@ -52,39 +56,39 @@
   
 <h2>A breakthrough capability that almost no one used</h2>
 <p>Only 1 in 200 Gemini users had ever tried automation. The other 199 never started.</p>
-<figure class="shots s1 solo"><div class="shot"><div class="frame"><img src="../images/automation/w-problem.webp" alt="Gemini automation searching for a restaurant in a delivery app" loading="lazy" decoding="async"></div><p>Automation running inside a delivery app</p></div></figure>
+<figure class="shots s1 solo"><div class="shot"><div class="frame"><img width="800" height="1569" src="../images/automation/w-problem.webp" alt="Gemini automation searching for a restaurant in a delivery app" loading="lazy" decoding="async"></div><p>Automation running inside a delivery app</p></div></figure>
 
 <h2>It promised delegation but demanded supervision</h2>
-<p>Two things stood out. Before the task, you stare at a blank prompt, and typing it out feels like work. During the task, you watch it run and wonder if it will work. That isn't delegation. It's babysitting.</p>
-<figure class="shots s2 pair photo"><div class="shot"><div class="frame"><img src="../images/automation/w-before.webp" alt="A person staring at a blank Gemini prompt" loading="lazy" decoding="async"></div><p>Before the task: prompting felt like work</p></div><div class="shot"><div class="frame"><img src="../images/automation/w-during.webp" alt="A person watching automation run" loading="lazy" decoding="async"></div><p>During the task: watching felt like work</p></div></figure>
+<p>Two things stood out. Before the task, you stare at a blank prompt, and typing it out feels like work. During the task, you watch it run and wonder if it will work. That isn’t delegation. It’s babysitting.</p>
+<figure class="shots s2 pair photo"><div class="shot"><div class="frame"><img width="1100" height="1404" src="../images/automation/w-before.webp" alt="A person staring at a blank Gemini prompt" loading="lazy" decoding="async"></div><p>Before the task: prompting felt like work</p></div><div class="shot"><div class="frame"><img width="1300" height="882" src="../images/automation/w-during.webp" alt="A person watching automation run" loading="lazy" decoding="async"></div><p>During the task: watching felt like work</p></div></figure>
 
 <h2>Design story 01: during the automation</h2>
 <p>Automation should fit the foldable: floating on the Fold, glanceable on the Flip.</p>
 
 <h3>Fold: keep the main task in front</h3>
-<p>Imagine you're watching a video while Automation orders your dinner in the background. You just want a glance. Google's first implementation sent "View progress" into a full screen inside Gemini. Your video stopped and your task paused. I pushed back.</p>
-<figure class="shots s2 pair wide"><div class="shot"><div class="frame"><img src="../images/automation/w-fold-video.webp" alt="Watching a video while automation runs" loading="lazy" decoding="async"></div><p>Watching a video while dinner is ordered</p></div><div class="shot g"><div class="frame"><img src="../images/automation/w-fold-google.webp" alt="View progress takes over the full screen" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Google</span>Google's first version: full screen takes over</p></div></figure>
-<p>I explored two directions. A full task history on screen meant reading a list instead of doing. A floating panel over the main task let you stay where you were while the AI worked in the corner. The floating panel won, and the Fold's large screen made it possible.</p>
-<figure class="shots s2 pair wide"><div class="shot no"><div class="frame"><img src="../images/automation/w-fold-list.webp" alt="Full-screen task history" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Rejected</span>Exploration 1: full-screen history</p></div><div class="shot pick"><div class="frame"><img src="../images/automation/w-fold-float.webp" alt="Floating progress panel over the video" loading="lazy" decoding="async"></div><p><span class="shot-tag pick">Chosen</span>Exploration 2: floating panel</p></div></figure>
+<p>Imagine you’re watching a video while Automation orders your dinner in the background. You just want a glance. Google’s first implementation sent “View progress” into a full screen inside Gemini. Your video stopped and your task paused. I pushed back.</p>
+<figure class="shots s2 pair wide"><div class="shot"><div class="frame"><img width="1300" height="854" src="../images/automation/w-fold-video.webp" alt="Watching a video while automation runs" loading="lazy" decoding="async"></div><p>Watching a video while dinner is ordered</p></div><div class="shot g"><div class="frame"><img width="1300" height="854" src="../images/automation/w-fold-google.webp" alt="View progress takes over the full screen" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Google</span>Google’s first version: full screen takes over</p></div></figure>
+<p>I explored two directions. A full task history on screen meant reading a list instead of doing. A floating panel over the main task let you stay where you were while the AI worked in the corner. The floating panel won, and the Fold’s large screen made it possible.</p>
+<figure class="shots s2 pair wide"><div class="shot no"><div class="frame"><img width="1300" height="854" src="../images/automation/w-fold-list.webp" alt="Full-screen task history" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Rejected</span>Exploration 1: full-screen history</p></div><div class="shot pick"><div class="frame"><img width="1300" height="847" src="../images/automation/w-fold-float.webp" alt="Floating progress panel over the video" loading="lazy" decoding="async"></div><p><span class="shot-tag pick">Chosen</span>Exploration 2: floating panel</p></div></figure>
 
 <h3>Flip: check progress without opening the phone</h3>
-<p>Google's first version showed the actual app screen on the cover display: a tiny copy of the agent navigating a delivery app on a screen about two inches wide. At that size the text isn't legible, and glanceability is the small device's whole identity.</p>
-<figure class="shots s3 three"><div class="shot"><div class="frame"><img src="../images/automation/w-flip-glance.webp" alt="Cover screen, glance state" loading="lazy" decoding="async"></div><p>Glance</p></div><div class="shot"><div class="frame"><img src="../images/automation/w-flip-expanded.webp" alt="Cover screen, expanded state" loading="lazy" decoding="async"></div><p>Expanded</p></div><div class="shot g"><div class="frame"><img src="../images/automation/w-flip-google.webp" alt="Google&#x27;s first cover screen implementation" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Google</span>Google's first version: a tiny app screen</p></div></figure>
-<p>My counter-proposal shows the app icon so you know what's running, the past step checked off, and the current step below it. Everything stays on the cover screen with the phone closed.</p>
-<figure class="shots s2 pair"><div class="shot g"><div class="frame"><img src="../images/automation/w-flip-google-prop.webp" alt="Google&#x27;s cover screen proposal" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Google</span>Google: mirror the app</p></div><div class="shot me"><div class="frame"><img src="../images/automation/w-flip-mine.webp" alt="My cover screen counter-proposal" loading="lazy" decoding="async"></div><p><span class="shot-tag pick">My proposal</span>Mine: app icon, past step, current step</p></div></figure>
+<p>Google’s first version showed the actual app screen on the cover display: a tiny copy of the agent navigating a delivery app on a screen about two inches wide. At that size the text isn’t legible, and glanceability is the small device’s whole identity.</p>
+<figure class="shots s3 three"><div class="shot"><div class="frame"><img width="399" height="441" src="../images/automation/w-flip-glance.webp" alt="Cover screen, glance state" loading="lazy" decoding="async"></div><p>Glance</p></div><div class="shot"><div class="frame"><img width="399" height="441" src="../images/automation/w-flip-expanded.webp" alt="Cover screen, expanded state" loading="lazy" decoding="async"></div><p>Expanded</p></div><div class="shot g"><div class="frame"><img width="800" height="872" src="../images/automation/w-flip-google.webp" alt="Google&#x27;s first cover screen implementation" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Google</span>Google’s first version: a tiny app screen</p></div></figure>
+<p>My counter-proposal shows the app icon so you know what’s running, the past step checked off, and the current step below it. Everything stays on the cover screen with the phone closed.</p>
+<figure class="shots s2 pair"><div class="shot g"><div class="frame"><img width="800" height="872" src="../images/automation/w-flip-google-prop.webp" alt="Google&#x27;s cover screen proposal" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Google</span>Google: mirror the app</p></div><div class="shot me"><div class="frame"><img width="800" height="872" src="../images/automation/w-flip-mine.webp" alt="My cover screen counter-proposal" loading="lazy" decoding="async"></div><p><span class="shot-tag pick">My proposal</span>Mine: app icon, past step, current step</p></div></figure>
 
 <h2>Design story 02: the North Star</h2>
-<p>Starting an automation had two problems. Automation executes, but it doesn't know you: no personal context, no preferences. And the blank prompt makes people freeze. The capability was there, but it didn't know who you were or tell you where to start.</p>
+<p>Starting an automation had two problems. Automation executes, but it doesn’t know you: no personal context, no preferences. And the blank prompt makes people freeze. The capability was there, but it didn’t know who you were or tell you where to start.</p>
 <p>So I defined a North Star: <strong>the AI that acts before you ask.</strong></p>
 <div class="compare">
-  <div><h4>Know</h4><p class="con" style="margin:0">Read context from your personal data.</p></div>
-  <div><h4>Anticipate</h4><p class="con" style="margin:0">Predict what you actually need.</p></div>
-  <div><h4>Act</h4><p class="con" style="margin:0">Surface the right automation at the right moment. No prompt required.</p></div>
+  <div><h3>Know</h3><p class="con" style="margin:0">Read context from your personal data.</p></div>
+  <div><h3>Anticipate</h3><p class="con" style="margin:0">Predict what you actually need.</p></div>
+  <div><h3>Act</h3><p class="con" style="margin:0">Surface the right automation at the right moment. No prompt required.</p></div>
 </div>
-<figure class="fig flat"><img src="../images/automation/w-scenario.webp" alt="Overnight, your boss emails; Gemini reads it; a widget is waiting in the morning" loading="lazy" decoding="async"><figcaption>Overnight, your boss emails. Gemini reads it. In the morning, a widget is waiting.</figcaption></figure>
+<figure class="fig flat"><img width="1500" height="1000" src="../images/automation/w-scenario.webp" alt="Overnight, your boss emails; Gemini reads it; a widget is waiting in the morning" loading="lazy" decoding="async"><figcaption>Overnight, your boss emails. Gemini reads it. In the morning, a widget is waiting.</figcaption></figure>
 
 <ol class="steps">
-  <li><h3>The widget was already waiting</h3><p>Your boss emails, "Can you prep a draft before the 3pm team sync?" You haven't opened Gmail, but Automation has cross-referenced the email with your calendar. A home screen widget asks, "Deck ready before 3 PM?" One tap starts the draft.</p></li>
+  <li><h3>The widget was already waiting</h3><p>Your boss emails, “Can you prep a draft before the 3pm team sync?” You haven’t opened Gmail, but Automation has cross-referenced the email with your calendar. A home screen widget asks, “Deck ready before 3 PM?” One tap starts the draft.</p></li>
   <li><h3>Recent automations, ready to rerun</h3><p>Past automations are saved and surfaced in a drawer, not buried in logs. Pick one and it runs again, with no re-prompting.</p></li>
   <li><h3>A multi-step automation as one icon</h3><p>Friday evening, wine, no car. One home screen tap calls an Uber, sets the wine bar as the destination, and pushes the arrival time to your calendar. One tap replaces three apps and four manual steps.</p></li>
 </ol>
@@ -92,7 +96,7 @@
 
 <h2>Impact: from blank-prompt panic to ambient intelligence</h2>
 <div class="compare">
-  <div><h4>Before</h4><ol style="margin:0;padding-left:18px;font-size:15px"><li>Open the Gemini app</li><li>Stare at a blank prompt</li><li>Think of what to type</li><li>Manually compose the automation</li><li>Hope it works</li></ol></div>
+  <div><h3>Before</h3><ol style="margin:0;padding-left:18px;font-size:15px"><li>Open the Gemini app</li><li>Stare at a blank prompt</li><li>Think of what to type</li><li>Manually compose the automation</li><li>Hope it works</li></ol></div>
   <div class="pick"><span class="tag">After</span><ol style="margin:0;padding-left:18px;font-size:15px"><li>Gemini reads context overnight</li><li>A suggestion appears on the home screen</li><li>One tap to run it</li></ol></div>
 </div>
 <div class="callout"><p>The prompt is gone. The result is already there.</p></div>
@@ -113,7 +117,7 @@
 <footer class="site-footer" id="contact">
   <div class="wrap center">
     <p class="eyebrow">Contact</p>
-    <h2>Let's build what's next.</h2>
+    <h2>Let’s build what’s next.</h2>
     <p class="lede">Open to Staff and Principal roles in AI product design.<br>Based in Seoul, authorized to work in the US.</p>
     <div class="pills">
       <a class="pill dark" href="mailto:chanpiopark@gmail.com">Email me</a>

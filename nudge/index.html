@@ -14,16 +14,20 @@
 <meta property="og:image" content="https://www.chanpio.work/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href="../"><span class="mark" aria-hidden="true"></span>Chanpio Park</a>
+    <a class="brand" href="../">Chanpio Park</a>
     <nav class="nav" aria-label="Main">
       <a href="../#work">Work</a>
       <a href="../#about">About</a>
@@ -31,18 +35,18 @@
     </nav>
   </div>
 </header>
-<main class="case-nudge">
+<main id="main" class="case-nudge">
 <section class="case-head wrap center">
   <p class="eyebrow">Now Nudge</p>
   <h1>The answer is already on your keyboard</h1>
   <p class="meta">Samsung · 2025</p>
 </section>
-<div class="wrap"><figure class="cover"><img src="../images/nudge/01.webp" alt="Now Nudge" loading="eager" fetchpriority="high" decoding="async"></figure></div>
+<div class="wrap"><figure class="cover"><img width="1376" height="768" src="../images/nudge/01.webp" alt="Now Nudge" loading="eager" fetchpriority="high" decoding="async"></figure></div>
 <section class="dark-band">
   <div class="wrap">
     <div class="case-grid">
-      <aside class="rail"><dl><div><dt>My role</dt><dd>Design lead</dd><dd>Design strategy</dd><dd>Interaction design</dd><dd>User research</dd></div><div><dt>Team</dt><dd>Myself</dd><dd>1 PM</dd><dd>5 engineers</dd><dd>1 UX researcher</dd><dd>1 product designer</dd><dd>1 motion designer</dd></div></dl></aside>
-      <p class="summary">When a friend asks "Let's meet on Saturday?", most of us say yes and then go check. Now Nudge removes that check. It reads the message, knows what you've done, anticipates what you'll type next, and offers it as one chip above the keyboard. I led the design from research to launch, including the interaction model, where the nudge lives, and which AI model powers each moment.</p>
+      <aside class="rail"><dl><div><dt>Timeline</dt><dd>2025</dd></div><div><dt>My role</dt><dd>Design lead, research to launch</dd><dd>Owned the interaction model and where the nudge lives</dd></div><div><dt>Team</dt><dd>1 PM</dd><dd>1 UX researcher</dd><dd>5 engineers</dd><dd>1 product designer</dd><dd>1 motion designer</dd></div><div><dt>Scope</dt><dd>Ambient intelligence on Galaxy</dd></div></dl></aside>
+      <p class="summary">When a friend asks “Let’s meet on Saturday?”, most of us say yes and then go check. Now Nudge removes that check. It reads the message, knows what you’ve done, anticipates what you’ll type next, and offers it as one chip above the keyboard. I led the design from research to launch, including the interaction model and where the nudge lives.</p>
     </div>
     <div class="outcomes"><div><b><em>52%</em></b><span>monthly retention among people who tried it</span></div><div><b>26%</b><span>have used it, vs a 14% Galaxy AI baseline</span></div><div><b>Unpacked</b><span>featured on stage at Samsung Unpacked 2025</span></div><div><b>USA TODAY</b><span>named it a favorite Galaxy AI feature</span></div></div>
   </div>
@@ -51,17 +55,17 @@
 <div class="body">
   
 <h2>Users are forced to orchestrate</h2>
-<p>Someone texts, "Where's the restaurant we went last Friday?" To answer, you switch apps, search your history, copy the name, come back, and retype it. Every single time, for something this simple.</p>
-<figure class="fig flat"><img src="../images/nudge/w-problem.webp" alt="Four steps to answer one message: switch apps, search history, copy, re-type" loading="lazy" decoding="async"></figure>
+<p>Someone texts, “Where’s the restaurant we went last Friday?” To answer, you switch apps, search your history, copy the name, come back, and retype it. Every single time, for something this simple.</p>
+<figure class="fig flat"><img width="1800" height="772" src="../images/nudge/w-problem.webp" alt="Four steps to answer one message: switch apps, search history, copy, re-type" loading="lazy" decoding="async"></figure>
 
 <h2>What people expect from AI</h2>
 <p>I ran a survey of 300 people and 8 in-person interviews. People wanted three things from AI, and those three became the lens for every decision that followed.</p>
 <div class="compare">
-  <div><h4>Knowing</h4><p class="con" style="margin:0">It remembers who you are and what you've done.</p></div>
-  <div><h4>Anticipating</h4><p class="con" style="margin:0">It predicts what you need before you ask.</p></div>
-  <div><h4>Acting</h4><p class="con" style="margin:0">It does the steps for you.</p></div>
+  <div><h3>Knowing</h3><p class="con" style="margin:0">It remembers who you are and what you’ve done.</p></div>
+  <div><h3>Anticipating</h3><p class="con" style="margin:0">It predicts what you need before you ask.</p></div>
+  <div><h3>Acting</h3><p class="con" style="margin:0">It does the steps for you.</p></div>
 </div>
-<p class="quote">"I know what needs to happen. I just hate doing all the steps to get there."<cite>Interview participant</cite></p>
+<p class="quote">“I know what needs to happen. I just hate doing all the steps to get there.”<cite>Interview participant</cite></p>
 
 <h2>Start where AI can act with confidence</h2>
 <p>In the survey, 82% felt most inefficient in productivity and 65% in communication. I started with communication anyway. In a conversation the context is already on screen and the action is right there, so AI can act with confidence.</p>
@@ -75,48 +79,47 @@
 
 <h2>Two kinds of nudge</h2>
 <h3>Recall nudge: makes input easier</h3>
-<p>"Where's the restaurant we went last Friday?" Now Nudge picks out "restaurant" and "last Friday," checks your location history, and finds Pacific Catch, Friday at 7pm. That's what you were about to type, so it's waiting as a chip, ready to send.</p>
-<div class="flow"><div class="flow-step"><span class="flow-k">Trigger</span><div><span class="bubble">Where's the restaurant we went last Friday?</span></div></div><div class="flow-step"><span class="flow-k">Knowing</span><div>Location history<br><b>Pacific Catch</b>, Fri 7pm</div></div><div class="flow-step"><span class="flow-k">Anticipate</span><div>You're about to type the name</div></div><div class="flow-step"><span class="flow-k">Nudge</span><div><span class="nchip">Pacific Catch</span></div></div></div>
+<p>“Where’s the restaurant we went last Friday?” Now Nudge picks out “restaurant” and “last Friday,” checks your location history, and finds Pacific Catch, Friday at 7pm. That’s what you were about to type, so it’s waiting as a chip, ready to send.</p>
+<div class="flow"><div class="flow-step"><span class="flow-k">Trigger</span><div><span class="bubble">Where’s the restaurant we went last Friday?</span></div></div><div class="flow-step"><span class="flow-k">Knowing</span><div>Location history<br><b>Pacific Catch</b>, Fri 7pm</div></div><div class="flow-step"><span class="flow-k">Anticipate</span><div>You’re about to type the name</div></div><div class="flow-step"><span class="flow-k">Nudge</span><div><span class="nchip">Pacific Catch</span></div></div></div>
 <h3>Action nudge: see it before you tap</h3>
-<p>"Can you share photos of the trip to Seoul?" It finds photos tagged Seoul and offers one button, Share photos. Tap it and the gallery opens already filtered.</p>
-<div class="flow"><div class="flow-step"><span class="flow-k">Trigger</span><div><span class="bubble">Can you share photos of the trip to Seoul?</span></div></div><div class="flow-step"><span class="flow-k">Knowing</span><div>Gallery<br>Photos tagged <b>Seoul</b></div></div><div class="flow-step"><span class="flow-k">Anticipate</span><div>You're about to open Gallery and search</div></div><div class="flow-step"><span class="flow-k">Nudge</span><div><span class="nchip">Share photos</span></div></div></div>
-<figure class="shots s2 pair"><div class="shot"><div class="frame"><img src="../images/nudge/w-share.webp" alt="Share photos chip above the keyboard" loading="lazy" decoding="async"></div><p>The chip waits above the keyboard</p></div><div class="shot"><div class="frame"><video src="../images/nudge/06.mp4" poster="../images/nudge/06-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Now Nudge offering trip photos in a real conversation"></video></div><p>Tap it and the gallery opens filtered</p></div></figure>
+<p>“Can you share photos of the trip to Seoul?” It finds photos tagged Seoul and offers one button, Share photos. Tap it and the gallery opens already filtered.</p>
+<div class="flow"><div class="flow-step"><span class="flow-k">Trigger</span><div><span class="bubble">Can you share photos of the trip to Seoul?</span></div></div><div class="flow-step"><span class="flow-k">Knowing</span><div>Gallery<br>Photos tagged <b>Seoul</b></div></div><div class="flow-step"><span class="flow-k">Anticipate</span><div>You’re about to open Gallery and search</div></div><div class="flow-step"><span class="flow-k">Nudge</span><div><span class="nchip">Share photos</span></div></div></div>
+<figure class="shots s2 pair"><div class="shot"><div class="frame"><img width="700" height="1517" src="../images/nudge/w-share.webp" alt="Share photos chip above the keyboard" loading="lazy" decoding="async"></div><p>The chip waits above the keyboard</p></div><div class="shot"><div class="frame"><video src="../images/nudge/06.mp4" poster="../images/nudge/06-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Now Nudge offering trip photos in a real conversation"></video></div><p>Tap it and the gallery opens filtered</p></div></figure>
 
 <h2>Where should a guess live?</h2>
 <p>At the top it looked like a notification. In the middle of the chat it blocked the conversation. By the navigation bar it interrupted whatever you were doing.</p>
-<figure class="shots s4 four"><div class="shot no"><div class="frame"><img src="../images/nudge/w-place-top.webp" alt="Nudge placed at the top of the screen" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Rejected</span>Top: looks like a notification</p></div><div class="shot no"><div class="frame"><img src="../images/nudge/w-place-chat.webp" alt="Nudge placed inside the chat" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Rejected</span>In-chat: blocks the conversation</p></div><div class="shot no"><div class="frame"><img src="../images/nudge/w-place-nav.webp" alt="Nudge placed by the navigation bar" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Rejected</span>Nav bar: interrupts the task</p></div><div class="shot pick"><div class="frame"><img src="../images/nudge/w-place-keyboard.webp" alt="Nudge in the keyboard toolbar" loading="lazy" decoding="async"></div><p><span class="shot-tag pick">Chosen</span>Keyboard: the moment of intent</p></div></figure>
-<p>I landed on the keyboard. The keyboard isn't just input. It's the moment of intent. It never covers content, leads naturally into typing for recall nudges, and works in third-party chat apps like KakaoTalk and WhatsApp.</p>
+<figure class="shots s4 four"><div class="shot no"><div class="frame"><img width="700" height="1555" src="../images/nudge/w-place-top.webp" alt="Nudge placed at the top of the screen" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Rejected</span>Top: looks like a notification</p></div><div class="shot no"><div class="frame"><img width="700" height="1266" src="../images/nudge/w-place-chat.webp" alt="Nudge placed inside the chat" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Rejected</span>In-chat: blocks the conversation</p></div><div class="shot no"><div class="frame"><img width="412" height="892" src="../images/nudge/w-place-nav.webp" alt="Nudge placed by the navigation bar" loading="lazy" decoding="async"></div><p><span class="shot-tag no">Rejected</span>Nav bar: interrupts the task</p></div><div class="shot pick"><div class="frame"><img width="700" height="1555" src="../images/nudge/w-place-keyboard.webp" alt="Nudge in the keyboard toolbar" loading="lazy" decoding="async"></div><p><span class="shot-tag pick">Chosen</span>Keyboard: the moment of intent</p></div></figure>
+<p>I landed on the keyboard. The keyboard isn’t just input. It’s the moment of intent. It never covers content, leads naturally into typing for recall nudges, and works in third-party chat apps like KakaoTalk and WhatsApp.</p>
 
 <h2>One nudge or many?</h2>
-<p>My product owner and I disagreed on how, not what. I designed one nudge at a time. He wanted a scrollable row: we can't always know what the user wants, so why limit them?</p>
-<figure class="shots s2 pair"><div class="shot me"><div class="frame"><img src="../images/nudge/w-one.webp" alt="One nudge above the keyboard" loading="lazy" decoding="async"></div><p><span class="shot-tag pick">My proposal</span>One nudge: my proposal</p></div><div class="shot"><div class="frame"><img src="../images/nudge/w-scroll.webp" alt="Scrollable row of nudges" loading="lazy" decoding="async"></div><p>Scrollable nudges: PO's proposal</p></div></figure>
-<p>I pointed to Hick's Law, which says more options mean slower decisions, and a conversation isn't a browsing moment. Instead of arguing, we tested both, measuring time to choose and how many people scrolled.</p>
+<p>My product owner and I disagreed on how, not what. I designed one nudge at a time. He wanted a scrollable row: we can’t always know what the user wants, so why limit them?</p>
+<figure class="shots s2 pair"><div class="shot me"><div class="frame"><img width="700" height="1556" src="../images/nudge/w-one.webp" alt="One nudge above the keyboard" loading="lazy" decoding="async"></div><p><span class="shot-tag pick">My proposal</span>One nudge: my proposal</p></div><div class="shot"><div class="frame"><img width="700" height="1556" src="../images/nudge/w-scroll.webp" alt="Scrollable row of nudges" loading="lazy" decoding="async"></div><p>Scrollable nudges: PO’s proposal</p></div></figure>
+<p>I pointed to Hick’s Law, which says more options mean slower decisions, and a conversation isn’t a browsing moment. Instead of arguing, we tested both, measuring time to choose and how many people scrolled.</p>
 <div class="outcomes light two">
   <div><b><em>1.4x</em></b><span>slower to choose with the scroll version</span></div>
   <div><b>2%</b><span>ever scrolled to a second option</span></div>
 </div>
 <div class="callout"><p>We shipped the single most confident suggestion.</p></div>
 
-<h2>The right model for each moment</h2>
-<p>Recall and action nudges needed speed and low cost, so they run on a small on-device language model. Superfill, which fills travel forms even when fields have no labels, needed deeper reasoning, so it uses a cloud LLM. Choosing the right tool for each moment is part of AI product design.</p>
-<figure class="shots s2 pair"><div class="shot"><div class="frame"><img src="../images/nudge/w-superfill.webp" alt="Superfill filling a passport form" loading="lazy" decoding="async"></div><p>Superfill: cloud LLM for unlabeled forms</p></div><div class="shot"><div class="frame"><img src="../images/nudge/w-share.webp" alt="Share photos chip" loading="lazy" decoding="async"></div><p>Recall and action: on-device model</p></div></figure>
-
 <h2>Designed for the Fold</h2>
-<p>On the Fold, View calendar opens in split screen, so you check your schedule without leaving the conversation you're replying to.</p>
+<p>On the Fold, View calendar opens in split screen, so you check your schedule without leaving the conversation you’re replying to.</p>
 <figure class="fig"><video src="../images/nudge/d-fold.mp4" poster="../images/nudge/d-fold-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="View calendar opening in split screen on Galaxy Z Fold"></video></figure>
 
 <h2>Before and after</h2>
-<p>Five steps (receive, switch apps, search, copy, retype) collapse into one tap, because the system knows what you've done and anticipates what you'll do.</p>
-<figure class="shots s2 pair photo"><div class="shot"><div class="frame"><img src="../images/nudge/w-after-1.webp" alt="A friend asks where the restaurant was" loading="lazy" decoding="async"></div><p>The question arrives</p></div><div class="shot pick"><div class="frame"><img src="../images/nudge/w-after-2.webp" alt="Pacific Catch chip ready above the keyboard" loading="lazy" decoding="async"></div><p><span class="shot-tag pick">Chosen</span>The answer is already on the keyboard</p></div></figure>
+<p>Switching apps, searching, copying, and retyping collapse into one tap, because the system knows what you’ve done and anticipates what you’ll do.</p>
+<div class="ba">
+  <div class="ba-row"><p class="ba-label"><b>Before</b>4 steps across 2 apps</p><div class="ba-steps"><figure class="ba-step"><div class="ba-frame"><img width="480" height="747" src="../images/nudge/ba-switch.webp" alt="A friend asks where the restaurant was; you leave the chat" loading="lazy" decoding="async"></div><figcaption><span>1</span>Switch apps</figcaption></figure><figure class="ba-step"><div class="ba-frame"><img width="480" height="747" src="../images/nudge/ba-search.webp" alt="Maps search history" loading="lazy" decoding="async"></div><figcaption><span>2</span>Search history</figcaption></figure><figure class="ba-step"><div class="ba-frame"><img width="480" height="747" src="../images/nudge/ba-copy.webp" alt="The restaurant page, to copy its name" loading="lazy" decoding="async"></div><figcaption><span>3</span>Copy</figcaption></figure><figure class="ba-step"><div class="ba-frame"><img width="480" height="747" src="../images/nudge/ba-retype.webp" alt="Back in the chat, retyping the name" loading="lazy" decoding="async"></div><figcaption><span>4</span>Retype</figcaption></figure></div></div>
+  <div class="ba-row after"><p class="ba-label"><b>After</b>1 tap, without leaving the chat</p><div class="ba-steps"><figure class="ba-step"><div class="ba-frame"><img width="480" height="747" src="../images/nudge/ba-tap.webp" alt="Pacific Catch waiting as a chip above the keyboard" loading="lazy" decoding="async"></div><figcaption><span>1</span>Tap the nudge</figcaption></figure></div></div>
+</div>
 
 <h2>Outcomes</h2>
 <p>Now Nudge shipped and was featured on stage at Samsung Unpacked 2025. USA TODAY called it their favorite Galaxy AI feature. 26% of users have tried it, against a 14% Galaxy AI baseline, and 52% of them came back the next month.</p>
-<p class="quote">"The AI feature I feel most in daily life."<cite>Bolt, tech reviewer</cite></p>
+<p class="quote">“The AI feature I feel most in daily life.”<cite>Bolt, tech reviewer</cite></p>
 
 <div class="lesson">
   <p class="cap">Lesson learned</p>
   <p class="big">Context makes AI know without being asked.</p>
-  <p>The best suggestion is the one you'd have typed anyway.</p>
+  <p>The best suggestion is the one you’d have typed anyway.</p>
 </div>
 
   <nav class="next" aria-label="More work">
@@ -129,7 +132,7 @@
 <footer class="site-footer" id="contact">
   <div class="wrap center">
     <p class="eyebrow">Contact</p>
-    <h2>Let's build what's next.</h2>
+    <h2>Let’s build what’s next.</h2>
     <p class="lede">Open to Staff and Principal roles in AI product design.<br>Based in Seoul, authorized to work in the US.</p>
     <div class="pills">
       <a class="pill dark" href="mailto:chanpiopark@gmail.com">Email me</a>

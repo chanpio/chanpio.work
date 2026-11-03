@@ -1,0 +1,125 @@
+/* Now Nudge hero. Everything nests under the stage. Sizes inside the phone are true points.
+   Colors sampled from the shipped One UI screens in the case study. */
+.nh .ss-stage {
+  --nh-blue: #397aff;          /* sent bubble, caret, accents */
+  --nh-paper: #fdfcff;         /* Messages surface */
+  --nh-them: #f0eff2;          /* received bubble */
+  --nh-field: #f1f1f3;         /* composer field */
+  --nh-line: #ebebed;
+  --nh-tools: #f7f6f9;         /* keyboard toolbar row */
+  --nh-kb: #ebebee;            /* keyboard ground */
+  --nh-key: #fdfcff;
+  --nh-ink: #111114;
+  --nh-icon: #2b2b2f;
+  --nh-dim: #8b8a90;
+  --ss-font: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  background: transparent;
+  overflow: hidden;
+
+  /* No shadow: the phone runs off the hero's foot, so any cast shadow only shows
+     as a haze along its sides. The dark bezel separates it from the sky on its own. */
+  .nh-phone { position: absolute; left: 168px; top: 40px; box-shadow: none; }
+
+  .nh-app { height: calc(100% + 44px); margin-top: -44px; display: flex; flex-direction: column; background: var(--nh-paper); color: var(--nh-ink); }
+
+  /* Galaxy status bar: time left, wifi, signal and the numbered battery pill right */
+  .nh-status { flex: none; height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 6px 26px 0 28px; }
+  .nh-status__time { font-size: 17px; font-weight: 600; letter-spacing: 0.01em; font-variant-numeric: tabular-nums; }
+  .nh-status__sys { display: flex; align-items: center; gap: 3px; color: var(--nh-icon); }
+  .nh-battery {
+    margin-left: 3px; height: 19px; min-width: 32px; padding: 0 5px; border-radius: 10px; background: #3a3a3d; color: #fff;
+    display: grid; place-items: center; font-size: 12px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;
+  }
+
+  /* Samsung Messages header: back, photo with the online dot, big name, chevron, kebab */
+  .nh-head { flex: none; display: flex; align-items: center; gap: 10px; padding: 6px 12px 12px 14px; border-bottom: 1px solid var(--nh-line); color: var(--nh-icon); }
+  .nh-ava { position: relative; display: block; flex: none; margin-left: 4px; }
+  .nh-ava__dot { position: absolute; right: -1px; bottom: -1px; width: 13px; height: 13px; border-radius: 50%; background: var(--nh-blue); box-shadow: 0 0 0 2px var(--nh-paper); }
+  .nh-name { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; color: var(--nh-ink); }
+  .nh-head__chev { color: var(--nh-dim); margin-left: -4px; }
+  .nh-head__end { margin-left: auto; }
+
+  .nh-thread {
+    flex: 1; min-height: 0; padding: 12px 16px 14px; font-size: 16px; line-height: 1.4;
+    --ss-me: var(--nh-blue); --ss-me-text: #fff;
+    --ss-them: var(--nh-them); --ss-them-text: var(--nh-ink);
+  }
+  .nh-thread .ss-bubble { border-radius: 20px; padding: 10px 16px; max-width: 80%; }
+  .nh-thread .ss-bubble__text:has(.ss-bar) { display: grid; gap: 8px; padding: 5px 0; }
+  .nh-thread [data-from="me"] .ss-bar { background: rgba(255, 255, 255, 0.55); }
+
+  .nh-ent {
+    background: linear-gradient(rgba(57, 122, 255, 0.28), rgba(57, 122, 255, 0.28)) no-repeat 0 100% / 0% 34%;
+    color: inherit; border-radius: 2px; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+    transition: background-size 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nh-msg[data-known] .nh-ent { background-size: 100% 34%; }
+
+  /* Composer: more, the pill field with its caret and emoji, voice */
+  .nh-compose { flex: none; display: flex; align-items: center; gap: 10px; padding: 10px 12px 12px; border-top: 1px solid var(--nh-line); color: var(--nh-icon); }
+  .nh-field {
+    flex: 1; min-width: 0; height: 44px; border-radius: 22px; background: var(--nh-field);
+    display: flex; align-items: center; gap: 2px; padding: 0 12px; font-size: 17px; color: var(--nh-dim);
+  }
+  .nh-caret { width: 2px; height: 22px; border-radius: 1px; background: var(--nh-blue); flex: none; }
+  .nh-field__ph { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; }
+  .nh-field svg { color: var(--nh-icon); flex: none; }
+  .nh-compose__voice, .nh-compose__more { flex: none; }
+
+  /* Samsung Keyboard: the toolbar row is where the nudge lives */
+  .nh-kb { flex: none; height: 334px; background: var(--nh-kb); }
+  .nh-tools { position: relative; height: 66px; background: var(--nh-tools); display: flex; align-items: center; padding: 0 14px; color: var(--nh-icon); }
+  .nh-tools__panel { width: 24px; height: 22px; border: 1.75px solid currentColor; border-radius: 6px; display: grid; place-items: center; flex: none; }
+  .nh-tools__more { margin-left: auto; color: var(--nh-dim); }
+
+  .nh-nudge {
+    position: absolute; left: 50%; top: 11px; height: 44px; margin: 0; cursor: default;
+    display: inline-flex; align-items: center; gap: 8px; padding: 0 9px 0 7px; border-radius: 22px;
+    font: 600 17px/1 var(--ss-font); letter-spacing: -0.01em; color: var(--nh-ink); white-space: nowrap;
+    border: 2px solid transparent;
+    background:
+      linear-gradient(#fff, #fff) padding-box,
+      linear-gradient(90deg, #c8bdff 0%, #bcd6ff 50%, #b2ead6 100%) border-box;
+    box-shadow: 0 0 14px 1px rgba(165, 170, 255, 0.4), 0 0 10px rgba(160, 230, 210, 0.3);
+    opacity: 0; transform: translate(-50%, 8px) scale(0.96); will-change: transform;
+    transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nh-nudge img { display: block; flex: none; border-radius: 50%; }
+  .nh-tools[data-nudged] .nh-nudge { opacity: 1; transform: translate(-50%, 0); }
+  .nh-tools[data-nudged] .nh-nudge[data-pressed] { transform: translate(-50%, 0) scale(0.96); transition-duration: 0.12s; }
+
+  .nh-keys { display: grid; gap: 10px; padding: 10px 5px 0; }
+  .nh-krow { display: flex; gap: 6px; justify-content: center; }
+  .nh-krow span {
+    flex: 1; max-width: 36px; height: 46px; border-radius: 9px; background: var(--nh-key);
+    display: grid; place-items: center; font-size: 21px; font-weight: 400; color: var(--nh-ink);
+  }
+  .nh-krow--2 { padding: 0 20px; }
+
+  /* The glance it opened: Calendar's Tuesday, over the thread's history, half outside the phone */
+  .nh-event {
+    position: absolute; z-index: 4; box-sizing: border-box; padding: 16px;
+    background: #fff; color: var(--nh-ink); border-radius: 22px; transform-origin: 0 0; will-change: transform;
+    box-shadow: var(--ss-shadow-satellite);
+    opacity: 0;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  }
+  .nh-event[data-open] { opacity: 1; }
+  .nh-event__head { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; line-height: 24px; }
+  .nh-event__head img { display: block; border-radius: 50%; }
+  .nh-day { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px 10px; align-items: center; margin-top: 14px; }
+  .nh-day__hr { font-size: 12px; color: var(--nh-dim); text-align: right; font-variant-numeric: tabular-nums; line-height: 16px; }
+  .nh-day__busy { height: 28px; border-radius: 8px; background: #f2f3f6; display: flex; align-items: center; padding: 0 10px; }
+  .nh-day__free {
+    height: 40px; border-radius: 10px; background: #eaf1ff; color: #1f5fd6; display: flex; align-items: center; gap: 8px; padding: 0 12px;
+    font-size: 14px; line-height: 1.3; font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .nh-day__free b { font-weight: 700; }
+}
+
+.nh .ss-stage[data-layout='compact'] {
+  .nh-battery { font-size: 13px; height: 20px; min-width: 34px; }
+  .nh-phone { left: 16px; top: 16px; }
+  .nh-event { padding: 14px; }
+  .nh-day__free { gap: 6px; padding: 0 10px; font-size: 13px; }
+}

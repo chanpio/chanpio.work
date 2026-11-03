@@ -14,16 +14,20 @@
 <meta property="og:image" content="https://www.chanpio.work/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href="../"><span class="mark" aria-hidden="true"></span>Chanpio Park</a>
+    <a class="brand" href="../">Chanpio Park</a>
     <nav class="nav" aria-label="Main">
       <a href="../#work">Work</a>
       <a href="../#about">About</a>
@@ -31,17 +35,17 @@
     </nav>
   </div>
 </header>
-<main class="case-spay">
+<main id="main" class="case-spay">
 <section class="case-head wrap center">
   <p class="eyebrow">Samsung Pay Web</p>
   <h1>Browse on any PC, pay with your phone</h1>
   <p class="meta">Samsung · 2014–2019</p>
 </section>
-<div class="wrap"><figure class="cover"><img src="../images/spay/01.webp" alt="Samsung Pay Web" loading="eager" fetchpriority="high" decoding="async"></figure></div>
+<div class="wrap"><figure class="cover"><img width="1652" height="720" src="../images/spay/01.webp" alt="Samsung Pay Web" loading="eager" fetchpriority="high" decoding="async"></figure></div>
 <section class="dark-band">
   <div class="wrap">
     <div class="case-grid">
-      <aside class="rail"><dl><div><dt>My role</dt><dd>Design lead</dd><dd>Design strategy</dd><dd>User research</dd><dd>Interaction design</dd><dd>Prototyping</dd></div><div><dt>Team</dt><dd>Myself</dd><dd>PM</dd><dd>3 engineers</dd><dd>Visual designer</dd></div></dl></aside>
+      <aside class="rail"><dl><div><dt>Timeline</dt><dd>2014–2019</dd></div><div><dt>My role</dt><dd>Design lead</dd><dd>Defined the cross-device checkout: shop on any computer, approve on phone</dd></div><div><dt>Team</dt><dd>PM</dd><dd>3 engineers</dd><dd>Visual designer</dd></div></dl></aside>
       <p class="summary">Samsung Pay had won in stores, but online checkout was a gap, and Samsung laptops held only about 1% of the market. Instead of building for Samsung PCs, I designed a flow where you shop on any computer and approve the payment on your phone. Replacing a personal-info form with a QR scan cut drop-off by 60% and pairing time from 49 seconds to 7.</p>
     </div>
     <div class="outcomes"><div><b><em>60%</em></b><span>fewer drop-offs at the pairing step (60% to 24%)</span></div><div><b>86%</b><span>faster pairing (49s to 7s)</span></div><div><b>14%</b><span>lift in share of the promoted credit card</span></div><div><b>85%</b><span>of users came back to use it again</span></div></div>
@@ -52,9 +56,9 @@
   
 <h2>The wrong device to bet on</h2>
 <p>Extending Samsung Pay to the web made sense. Building it only for Samsung laptops, at roughly 1% market share, did not. Our survey also showed why people disliked paying online:</p>
-<figure class="fig row r2"><div><img src="../images/spay/02.webp" alt="Samsung Pay in stores" loading="lazy" decoding="async"></div><div><img src="../images/spay/03.webp" alt="Market share: 25% on phones, 1% on laptops" loading="lazy" decoding="async"></div></figure>
+<figure class="fig row r2"><div><img width="1490" height="1064" src="../images/spay/02.webp" alt="Samsung Pay in stores" loading="lazy" decoding="async"></div><div><img width="1524" height="938" src="../images/spay/03.webp" alt="Market share: 25% on phones, 1% on laptops" loading="lazy" decoding="async"></div></figure>
 <ul>
-  <li>They didn't want to save card details on work PCs</li>
+  <li>They didn’t want to save card details on work PCs</li>
   <li>Typing card number, address, and date of birth felt invasive and tedious</li>
   <li>Long payment flows made them give up</li>
 </ul>
@@ -67,35 +71,35 @@
 
 <h2>User insights</h2>
 <p>We studied 12 people who shop online at least once a week as they completed real purchases. The same frustrations kept appearing: manual card entry, distrust of shared computers, and wanting checkout to be over. That became our persona, Tyra.</p>
-<div class="full"><figure class="fig"><img src="../images/spay/04.webp" alt="Persona: Tyra" loading="lazy" decoding="async"></figure></div>
+<div class="full"><figure class="fig"><img width="1327" height="762" src="../images/spay/04.webp" alt="Persona: Tyra" loading="lazy" decoding="async"></figure></div>
 
 <h2>Browse on web, pay on phone</h2>
 <p>I mapped the core flow with the PM to keep business goals and design in step. You start a purchase on any computer, and a secure payment request goes to your Samsung phone to approve.</p>
-<div class="full bleed"><figure class="fig bleed"><img src="../images/spay/05.webp" alt="User flow: initiate on web, authenticate on phone" loading="lazy" decoding="async"></figure>
-<figure class="fig bleed"><img src="../images/spay/06.webp" alt="Wireframes" loading="lazy" decoding="async"></figure></div>
+<div class="full bleed"><figure class="fig bleed"><img width="2400" height="1563" src="../images/spay/05.webp" alt="User flow: initiate on web, authenticate on phone" loading="lazy" decoding="async"></figure>
+<figure class="fig bleed"><img width="2400" height="1170" src="../images/spay/06.webp" alt="Wireframes" loading="lazy" decoding="async"></figure></div>
 
 <h2>Testing found the real problem</h2>
 <p>In moderated usability testing, 60% of participants dropped off when asked for personal information. The form existed only to send a one-time passcode to the phone, but people found name, birthday, gender, and phone number too intrusive, and the step took too long.</p>
-<figure class="fig"><img src="../images/spay/07.webp" alt="The original personal-information form that caused the drop-off" loading="lazy" decoding="async"></figure>
-<div class="callout"><p>Nobody said "this feels invasive" out loud. The drop-off rate said it for them.</p></div>
+<figure class="fig"><img width="339" height="411" src="../images/spay/07.webp" alt="The original personal-information form that caused the drop-off" loading="lazy" decoding="async"></figure>
+<div class="callout"><p>Nobody said “this feels invasive” out loud. The drop-off rate said it for them.</p></div>
 
 <h2>From a form to a scan</h2>
 <p>We compared ways to link the browser session to the phone. An ID and password felt familiar but still needed typing and failed often on shared devices. A QR code needed nothing: scan it with your phone and the two are linked.</p>
 <div class="compare">
-  <div><h4>ID and password</h4><ul><li class="pro">Familiar</li><li class="con">Still manual input</li><li class="con">Forgotten or mistyped credentials</li></ul></div>
-  <div class="pick"><span class="tag">Chosen</span><h4>QR pairing</h4><ul><li class="pro">No typing, no password</li><li class="pro">Nothing personal to share</li></ul></div>
+  <div><h3>ID and password</h3><ul><li class="pro">Familiar</li><li class="con">Still manual input</li><li class="con">Forgotten or mistyped credentials</li></ul></div>
+  <div class="pick"><span class="tag">Chosen</span><h3>QR pairing</h3><ul><li class="pro">No typing, no password</li><li class="pro">Nothing personal to share</li></ul></div>
 </div>
 <p>Pairing time fell from 49 seconds to 7, and drop-off fell from 60% to 24%.</p>
 <div class="full"><figure class="fig"><video src="../images/spay/08.mp4" poster="../images/spay/08-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="QR pairing: scan on the PC, approve on the phone"></video></figure>
-<figure class="fig bleed"><img src="../images/spay/09.webp" alt="Final web and phone screens" loading="lazy" decoding="async"></figure></div>
+<figure class="fig bleed"><img width="2272" height="906" src="../images/spay/09.webp" alt="Final web and phone screens" loading="lazy" decoding="async"></figure></div>
 
 <h2>A late business request</h2>
-<p>After the flow was approved, the business team asked to promote a specific credit card at checkout. My first placement put the banner in the payment method dropdown. Data showed 80% of users never changed their payment method, so nobody would see it. I moved the promotion to the top of the payment sheet instead. Product and marketing both approved, and the promoted card's share rose 14%.</p>
-<figure class="fig row r2"><div><img src="../images/spay/10.webp" alt="Promotion in the dropdown versus at the top" loading="lazy" decoding="async"></div><div><img src="../images/spay/11.webp" alt="Final payment sheet with the promotion" loading="lazy" decoding="async"></div></figure>
+<p>After the flow was approved, the business team asked to promote a specific credit card at checkout. My first placement put the banner in the payment method dropdown. Data showed 80% of users never changed their payment method, so nobody would see it. I moved the promotion to the top of the payment sheet instead. Product and marketing both approved, and the promoted card’s share rose 14%.</p>
+<figure class="fig row r2"><div><img width="1238" height="1178" src="../images/spay/10.webp" alt="Promotion in the dropdown versus at the top" loading="lazy" decoding="async"></div><div><img width="567" height="1178" src="../images/spay/11.webp" alt="Final payment sheet with the promotion" loading="lazy" decoding="async"></div></figure>
 
 <div class="lesson">
   <p class="cap">Lesson learned</p>
-  <p class="big">Data reveals what users won't say out loud.</p>
+  <p class="big">Data reveals what users won’t say out loud.</p>
   <p>The drop-off pointed to distrust, not inconvenience, and that changed the whole approach.</p>
 </div>
 
@@ -109,7 +113,7 @@
 <footer class="site-footer" id="contact">
   <div class="wrap center">
     <p class="eyebrow">Contact</p>
-    <h2>Let's build what's next.</h2>
+    <h2>Let’s build what’s next.</h2>
     <p class="lede">Open to Staff and Principal roles in AI product design.<br>Based in Seoul, authorized to work in the US.</p>
     <div class="pills">
       <a class="pill dark" href="mailto:chanpiopark@gmail.com">Email me</a>

@@ -14,16 +14,19 @@
 <meta property="og:image" content="https://www.chanpio.work/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href="../"><span class="mark" aria-hidden="true"></span>Chanpio Park</a>
+    <a class="brand" href="../">Chanpio Park</a>
     <nav class="nav" aria-label="Main">
       <a href="../#work">Work</a>
       <a href="../#about">About</a>
@@ -31,18 +34,18 @@
     </nav>
   </div>
 </header>
-<main class="case-color-picker">
+<main id="main" class="case-color-picker">
 <section class="case-head wrap center">
   <p class="eyebrow">Color picker for everyone</p>
   <h1>Designing for colorblind users made it better for all</h1>
   <p class="meta">Samsung · 2022–2023</p>
 </section>
-<div class="wrap"><figure class="cover"><img src="../images/color-picker/01.webp" alt="Color picker for everyone" loading="eager" fetchpriority="high" decoding="async"></figure></div>
+<div class="wrap"><figure class="cover"><img width="1155" height="574" src="../images/color-picker/01.webp" alt="Color picker for everyone" loading="eager" fetchpriority="high" decoding="async"></figure></div>
 <section class="dark-band">
   <div class="wrap">
     <div class="case-grid">
-      <aside class="rail"><dl><div><dt>My role</dt><dd>Design lead</dd><dd>User research</dd><dd>Interaction design</dd><dd>Prototyping</dd></div><div><dt>Team</dt><dd>Myself</dd><dd>PM</dd><dd>3 engineers</dd><dd>2 UX researchers</dd></div></dl></aside>
-      <p class="summary">Picking a color sounds trivial until you can't tell the swatches apart, or don't know what "Fuchsia" means. I redesigned Samsung's color picker with plain color names, one hue order across apps, and tooltips and audio cues for colorblind and low-vision users. Selection success rose 2.4x, and the picker became a standard component across Samsung apps.</p>
+      <aside class="rail"><dl><div><dt>Timeline</dt><dd>2022–2023</dd></div><div><dt>My role</dt><dd>Design lead</dd><dd>Set the color naming and hue order, adopted across Samsung apps</dd></div><div><dt>Team</dt><dd>PM</dd><dd>3 engineers</dd><dd>2 UX researchers</dd></div></dl></aside>
+      <p class="summary">Picking a color sounds trivial until you can’t tell the swatches apart, or don’t know what “Fuchsia” means. I redesigned Samsung’s color picker with plain color names, one hue order across apps, and tooltips and audio cues for colorblind and low-vision users. Selection success rose 2.4x, and the picker became a standard component across Samsung apps.</p>
     </div>
     <div class="outcomes"><div><b><em>2.4x</em></b><span>higher color selection success</span></div><div><b>100%</b><span>of participants matched the new names correctly</span></div><div><b>1</b><span>standard component across Samsung apps</span></div></div>
   </div>
@@ -53,9 +56,9 @@
 <h2>Three kinds of friction</h2>
 <p>Auditing the color picker across Samsung apps turned up early signs of trouble: technical names like Fuchsia and Azure, the same colors in different orders from app to app, and little support for colorblind or low-vision users. We suspected the friction came from three places and set out to test it.</p>
 <p>We ran interviews with colorblind, low-vision, and general users, card sorts matching names to swatches, and confidence tests across designs. All three sources of friction held up.</p>
-<figure class="fig bleed"><img src="../images/color-picker/04.webp" alt="Audit: color pickers across Samsung apps" loading="lazy" decoding="async"></figure>
+<figure class="fig bleed"><img width="1057" height="316" src="../images/color-picker/04.webp" alt="Audit: color pickers across Samsung apps" loading="lazy" decoding="async"></figure>
 <ol class="steps">
-  <li><h3>Biological</h3><p>About 12 million people in the US are colorblind, and we'd received complaints that the picker didn't support them.</p><figure class="fig"><img src="../images/color-picker/02.webp" alt="The same image in normal vision and with color blindness" loading="lazy" decoding="async"></figure></li>
+  <li><h3>Biological</h3><p>About 12 million people in the US are colorblind, and we’d received complaints that the picker didn’t support them.</p><figure class="fig"><img width="1056" height="389" src="../images/color-picker/02.webp" alt="The same image in normal vision and with color blindness" loading="lazy" decoding="async"></figure></li>
   <li><h3>Knowledge</h3><p>In card sorting, people struggled to match unfamiliar names to their swatches.</p></li>
   <li><h3>Systemic</h3><p>Without a consistent order, people had to relearn the layout in every app.</p></li>
 </ol>
@@ -64,18 +67,18 @@
 <div class="callout"><p>Help every user, however they see or name color, pick the one they want without hesitating.</p></div>
 
 <h2>Show the name</h2>
-<p>Swatches had no labels, so colorblind users were guessing. I added tooltips that show each color's name, plus audio cues for screen reader users.</p>
-<div class="full"><figure class="fig"><img src="../images/color-picker/05.webp" alt="Spectrum picker with the color-name tooltip" loading="lazy" decoding="async"></figure></div>
+<p>Swatches had no labels, so colorblind users were guessing. I added tooltips that show each color’s name, plus audio cues for screen reader users.</p>
+<div class="full"><figure class="fig"><img width="1011" height="650" src="../images/color-picker/05.webp" alt="Spectrum picker with the color-name tooltip" loading="lazy" decoding="async"></figure></div>
 
 <h2>Use names people know</h2>
 <p>In the first test, many participants mismatched the original names. After we simplified the naming, every participant matched every color correctly.</p>
-<figure class="fig row r2"><div><img src="../images/color-picker/03.webp" alt="Before: Fuchsia, Azure, Saffron, Coral" loading="lazy" decoding="async"></div><div><img src="../images/color-picker/06.webp" alt="After: Bright pink, Sky blue, Dark red, Pink orange" loading="lazy" decoding="async"></div><figcaption>Card sort, before and after renaming.</figcaption></figure>
+<figure class="fig row r2"><div><img width="814" height="384" src="../images/color-picker/03.webp" alt="Before: Fuchsia, Azure, Saffron, Coral" loading="lazy" decoding="async"></div><div><img width="950" height="384" src="../images/color-picker/06.webp" alt="After: Bright pink, Sky blue, Dark red, Pink orange" loading="lazy" decoding="async"></div><figcaption>Card sort, before and after renaming.</figcaption></figure>
 
 <h2>One order everywhere</h2>
-<p>We introduced a hue-based order that follows the rainbow, from red through purple and then neutrals. It's familiar, it holds across cultures, and it means you learn the layout once.</p>
-<div class="full bleed"><figure class="fig row r2"><div><img src="../images/color-picker/08.webp" alt="Hue order: before and after" loading="lazy" decoding="async"></div><div><img src="../images/color-picker/07.webp" alt="The unified order across picker types" loading="lazy" decoding="async"></div></figure></div>
+<p>We introduced a hue-based order that follows the rainbow, from red through purple and then neutrals. It’s familiar, it holds across cultures, and it means you learn the layout once.</p>
+<div class="full bleed"><figure class="fig row r2"><div><img width="709" height="430" src="../images/color-picker/08.webp" alt="Hue order: before and after" loading="lazy" decoding="async"></div><div><img width="523" height="698" src="../images/color-picker/07.webp" alt="The unified order across picker types" loading="lazy" decoding="async"></div></figure></div>
 
-<p class="quote">"This tooltip really helps. Before, I often wasn't sure I'd picked the color I wanted."<cite>Colorblind participant</cite></p>
+<p class="quote">“This tooltip really helps. Before, I often wasn’t sure I’d picked the color I wanted.”<cite>Colorblind participant</cite></p>
 
 <div class="lesson">
   <p class="cap">Lesson learned</p>
@@ -93,7 +96,7 @@
 <footer class="site-footer" id="contact">
   <div class="wrap center">
     <p class="eyebrow">Contact</p>
-    <h2>Let's build what's next.</h2>
+    <h2>Let’s build what’s next.</h2>
     <p class="lede">Open to Staff and Principal roles in AI product design.<br>Based in Seoul, authorized to work in the US.</p>
     <div class="pills">
       <a class="pill dark" href="mailto:chanpiopark@gmail.com">Email me</a>

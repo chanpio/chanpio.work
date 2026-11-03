@@ -14,16 +14,21 @@
 <meta property="og:image" content="https://www.chanpio.work/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/hero/nudge-hero.css">
+<script type="module" src="assets/hero/nudge-hero.js"></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href="./"><span class="mark" aria-hidden="true"></span>Chanpio Park</a>
+    <a class="brand" href="./">Chanpio Park</a>
     <nav class="nav" aria-label="Main">
       <a href="./#work">Work</a>
       <a href="./#about">About</a>
@@ -31,21 +36,26 @@
     </nav>
   </div>
 </header>
-<main>
+<main id="main">
 <section class="hero">
   <div class="hero-card">
-    <div class="chips"><span class="chip c1" aria-hidden="true"><i>📅</i>Add to Calendar</span><span class="chip c2" aria-hidden="true"><i>🖼</i>Share photos</span><span class="chip c3" aria-hidden="true"><i>文</i>Translate</span><span class="chip c4" aria-hidden="true"><i>🗓</i>View calendar</span><span class="chip c5" aria-hidden="true"><i>📍</i>Open map</span><span class="chip c6" aria-hidden="true"><i>☕</i>Reorder coffee</span><span class="chip c7" aria-hidden="true"><i>⏰</i>Set reminder</span><span class="chip c8" aria-hidden="true"><i>✦</i>Summarize</span></div>
     <div class="hero-copy">
-      <h1>The best AI doesn't<br class="lg"> wait to be asked</h1>
-      <p>I'm Chanpio Park, a product designer leading Galaxy AI UX at Samsung.<br class="lg"> I design agentic AI and ambient intelligence.</p>
+      <h1>Designing the AI that <em>knows</em> what you need next</h1>
+      <p>I’m Chanpio Park, a product designer leading Galaxy AI UX at Samsung. I design agentic AI and ambient intelligence.</p>
+      <ol class="hero-steps">
+        <li data-step="knowing"><b>Knowing</b> It reads the conversation</li>
+        <li data-step="anticipating"><b>Anticipating</b> It offers the next step</li>
+        <li data-step="acting"><b>Acting</b> One tap opens your Tuesday</li>
+      </ol>
+      <button class="hero-replay" id="nudge-replay" type="button">Replay</button>
     </div>
-    <a class="scroll-cue" href="#work" aria-label="Scroll to work">⌄</a>
+    <div class="hero-stage" id="nudge-hero" role="img" aria-label="Now Nudge on a Galaxy phone: a friend asks about this Tuesday at lunchtime, Open calendar appears above the keyboard, and one tap shows Tuesday with the lunch slot free."></div>
   </div>
 </section>
 
 <section class="intro wrap center" id="work">
   <p class="eyebrow">Selected work</p>
-  <h2>Designing the AI that knows<br>what you need next</h2>
+  <h2>The best AI doesn’t wait<br>to be asked</h2>
   <div class="pills">
     <a class="pill soft" href="nudge/">Now Nudge</a>
     <a class="pill soft" href="automation/">Gemini Automation</a>
@@ -55,25 +65,25 @@
 
 <section class="wrap grid">
     <a class="card" href="nudge/">
-      <figure class="thumb"><img src="images/nudge/01.webp" alt="Now Nudge" loading="lazy" decoding="async"></figure>
+      <figure class="thumb"><img width="1376" height="768" src="images/nudge/01.webp" alt="Now Nudge" loading="lazy" decoding="async"></figure>
       <div class="card-text">
         <span class="card-meta">Samsung · 2025</span>
         <h3>Now Nudge</h3>
-        <p>Samsung's own proactive AI. It reads the conversation and offers the next step right above the keyboard.</p>
+        <p>Samsung’s own proactive AI. It reads the conversation and offers the next step right above the keyboard.</p>
         <span class="card-stat"><b>52%</b> came back the next month</span>
       </div>
     </a>
     <a class="card" href="automation/">
-      <figure class="thumb"><img src="images/automation/01.webp" alt="Gemini Automation" loading="lazy" decoding="async"></figure>
+      <figure class="thumb"><img width="1456" height="819" src="images/automation/01.webp" alt="Gemini Automation" loading="lazy" decoding="async"></figure>
       <div class="card-text">
         <span class="card-meta">Samsung + Google · 2026</span>
         <h3>Gemini Automation</h3>
         <p>Google built the agent. I shaped where it lives on Galaxy, from foldable progress views to automations that start before you ask.</p>
-        <span class="card-stat"><b>1:200</b> Gemini users had tried it</span>
+        <span class="card-stat"><b>5 → 3</b> steps from intent to a running task</span>
       </div>
     </a>
     <a class="card" href="cts/">
-      <figure class="thumb"><img src="images/cts/01.webp" alt="Circle to Search" loading="lazy" decoding="async"></figure>
+      <figure class="thumb"><img width="2019" height="1367" src="images/cts/01.webp" alt="Circle to Search" loading="lazy" decoding="async"></figure>
       <div class="card-text">
         <span class="card-meta">Samsung + Google · 2023–2024</span>
         <h3>Circle to Search</h3>
@@ -82,7 +92,7 @@
       </div>
     </a>
     <a class="card" href="spay/">
-      <figure class="thumb"><img src="images/spay/01.webp" alt="Samsung Pay Web" loading="lazy" decoding="async"></figure>
+      <figure class="thumb"><img width="1652" height="720" src="images/spay/01.webp" alt="Samsung Pay Web" loading="lazy" decoding="async"></figure>
       <div class="card-text">
         <span class="card-meta">Samsung · 2014–2019</span>
         <h3>Samsung Pay Web</h3>
@@ -91,7 +101,7 @@
       </div>
     </a>
     <a class="card" href="color-picker/">
-      <figure class="thumb"><img src="images/color-picker/01.webp" alt="Color picker for everyone" loading="lazy" decoding="async"></figure>
+      <figure class="thumb"><img width="1155" height="574" src="images/color-picker/01.webp" alt="Color picker for everyone" loading="lazy" decoding="async"></figure>
       <div class="card-text">
         <span class="card-meta">Samsung · 2022–2023</span>
         <h3>Color picker for everyone</h3>
@@ -100,7 +110,7 @@
       </div>
     </a>
     <a class="card" href="splitscreen/">
-      <figure class="thumb"><img src="images/splitscreen/01.webp" alt="Split screen for Galaxy Z Fold" loading="lazy" decoding="async"></figure>
+      <figure class="thumb"><img width="2314" height="1079" src="images/splitscreen/01.webp" alt="Split screen for Galaxy Z Fold" loading="lazy" decoding="async"></figure>
       <div class="card-text">
         <span class="card-meta">Samsung · 2021</span>
         <h3>Split screen for Galaxy Z Fold</h3>
@@ -111,25 +121,8 @@
 </section>
 
 <section class="dark-band rounded" id="about">
-  <div class="wrap center">
-    <span class="glyph" aria-hidden="true">✦</span>
-    <h2>Knowing, anticipating, acting,<br>with people in control</h2>
-    <p class="lede">15+ years at Samsung across Samsung Pay, One UI, and Galaxy AI.<br>I lead a team of 8 designers and work closely with Google on Gemini.</p>
-    <div class="pills">
-      <a class="pill light" href="resume/">Resume</a>
-      <a class="pill line" href="https://www.linkedin.com/in/chanpio/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-    <div class="loop">
-      <div><span class="loop-icon k" aria-hidden="true"></span><h3>Knowing</h3><p>Understand context from what's on screen, without asking.</p></div>
-      <div><span class="loop-icon a" aria-hidden="true"></span><h3>Anticipating</h3><p>Offer the next step only when the intent is clear.</p></div>
-      <div><span class="loop-icon x" aria-hidden="true"></span><h3>Acting</h3><p>Carry it out, while the person stays in control.</p></div>
-    </div>
-    <div class="numbers">
-      <div><b>42M+</b><span>Galaxy devices, 2026 lineup</span></div>
-      <div><b>50M</b><span>monthly users, Circle to Search</span></div>
-      <div><b>24</b><span>countries, Samsung Pay</span></div>
-      <div><b>8</b><span>designers on my team</span></div>
-    </div>
+  <div class="wrap">
+    <p class="about-text">For 18+ years I’ve designed at the intersection of human behavior and emerging technology. I lead UX for agentic and proactive Galaxy AI across the S26, Z Fold8, Z Flip8, and Fold8 Ultra, shipping to 42M+ devices in the 2026 lineup, and I lead Samsung’s UX in the AI partnership with Google. Green Card holder, authorized to work in the US.</p>
   </div>
   <div class="wrap">
     <div class="list-head"><h2>Experience</h2><a href="resume/">Full resume ›</a></div>
@@ -140,7 +133,7 @@
 <footer class="site-footer" id="contact">
   <div class="wrap center">
     <p class="eyebrow">Contact</p>
-    <h2>Let's build what's next.</h2>
+    <h2>Let’s build what’s next.</h2>
     <p class="lede">Open to Staff and Principal roles in AI product design.<br>Based in Seoul, authorized to work in the US.</p>
     <div class="pills">
       <a class="pill dark" href="mailto:chanpiopark@gmail.com">Email me</a>

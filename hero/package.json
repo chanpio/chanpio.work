@@ -1,0 +1,22 @@
+{
+  "name": "chanpio-hero",
+  "private": true,
+  "type": "module",
+  "description": "Source for the home page's Now Nudge hero demo. Builds to ../assets/hero/.",
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@material-symbols/svg-400": "0.48.2",
+    "lucide-react": "0.468.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.7.0",
+    "typescript": "^5.6.3",
+    "vite": "^6.4.5"
+  }
+}
