@@ -223,7 +223,7 @@ There are no card shadows on white. Cards are separated by the image tile and sp
 | Width | What changes |
 |---|---|
 | 820px | Case header stacks |
-| 860px | Hero stacks: copy over the demo, which drops to its 358px compact design |
+| 1024px | Hero stacks: copy over the demo, which drops to its 358px compact design |
 | 760px | Grids collapse; bands inset 8px with 32px radius; bleed figures stop bleeding |
 | 640px | Experience rows stack |
 | 600px | Image rows stack; hero h1 drops its forced line break |
@@ -270,7 +270,7 @@ A fixed frosted pill 12px from the top, max 1080px wide, with padding `8 8 8 20`
 
 ### 9.3 Hero card
 
-Full width minus the gutter, sized to its content, with only the bottom corners rounded to 48px. Two columns on the sky gradient: on the left a `display` h1, a `hero-sub` line, the Knowing / Anticipating / Acting list and a Replay pill; on the right the Now Nudge demo, its phone running off the card's foot. Below 860px the copy stacks over the demo.
+Full width minus the gutter, sized to its content, with only the bottom corners rounded to 48px. Two columns on the sky gradient: on the left a `display` h1, a `hero-sub` line, the Knowing / Anticipating / Acting list and a Replay pill; on the right the Now Nudge demo, its phone running off the card's foot. Below 1024px the copy stacks over the demo.
 
 ### 9.4 Now Nudge demo
 
