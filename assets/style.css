@@ -366,6 +366,7 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 }
 .body .fig > img, .body .fig > video { width: 100%; }
 .body .fig.row > div > img, .body .fig.row > div > video { border-radius: 12px; }
+.body .fig.row.ns-videos > div > video { border-radius: 18px; }
 .body .fig > img, .body .fig > video { object-fit: contain; }
 .body .fig.row { gap: 16px; }
 .body .fig.narrow, .body .fig.narrow-wide { max-width: none; }
