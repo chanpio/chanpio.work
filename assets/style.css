@@ -366,8 +366,8 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 }
 .body .fig > img, .body .fig > video { width: 100%; }
 .body .fig.row > div > img, .body .fig.row > div > video { border-radius: 12px; }
-.body .fig.row.ns-videos > div > video { border-radius: 0; background: transparent; clip-path: inset(0 round 11.5% / 5.3%); }
-.body .fig.row.ns-videos > div:nth-child(3) > video { clip-path: inset(0 0.4% 0 0.7% round 11.5% / 5.3%); }
+.body .fig.row.ns-videos > div > video { border-radius: 0; background: transparent; clip-path: inset(0 round 10.5% / 4.85%); }
+.body .fig.row.ns-videos > div:nth-child(3) > video { clip-path: inset(0 0.4% 0 0.7% round 10.5% / 4.85%); }
 .body .fig > img, .body .fig > video { object-fit: contain; }
 .body .fig.row { gap: 16px; }
 .body .fig.narrow, .body .fig.narrow-wide { max-width: none; }
