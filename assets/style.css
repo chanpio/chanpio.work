@@ -408,10 +408,10 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 .shot .frame img, .shot .frame video { display: block; width: 100%; height: auto; }
 .shots.photo .frame { box-shadow: none; }
 .shot.no .frame { opacity: .72; }
-.shot.pick .frame, .shot.me .frame { box-shadow: 0 0 0 2px var(--blue), 0 16px 36px -12px rgba(59,142,240,.35); }
+.shot.pick .frame, .shot.me .frame { box-shadow: 0 0 0 2px var(--blue); }
 .shot p { margin: 14px 2px 0; font-size: 14px; line-height: 1.45; color: var(--graphite); }
 .shot-tag { display: inline-block; margin: 0 8px 6px 0; padding: 2px 9px; border-radius: 999px;
-  font-size: 11px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase;
+  font-size: 12px; font-weight: 600;
   background: var(--soft); color: var(--graphite); }
 .shot-tag.pick { background: #1b66c9; color: #fff; }
 .shots figcaption { grid-column: 1 / -1; }
@@ -423,8 +423,8 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
   width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: var(--paper);
   font-size: 12px; color: var(--graphite); z-index: 1; }
 .flow-step:last-child { background: var(--ink); color: #fff; }
-.flow-k { display: block; margin-bottom: 10px; font-size: 11px; font-weight: 600; letter-spacing: .06em;
-  text-transform: uppercase; color: var(--blue-text); }
+.flow-k { display: block; margin-bottom: 10px; font-size: 13px; font-weight: 600;
+  color: var(--blue-text); }
 .flow .bubble { display: inline-block; padding: 8px 12px; border-radius: 16px 16px 16px 4px; background: var(--paper);
   box-shadow: 0 0 0 1px rgba(0,0,0,.06); }
 .flow .nchip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px;
@@ -468,7 +468,7 @@ main[class^="case-"] .fig img, main[class^="case-"] .fig video { background: non
 .ba-frame { aspect-ratio: 480 / 747; border-radius: 18px; overflow: hidden; background: var(--soft); }
 .ba-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .ba-row:not(.after) .ba-frame { opacity: .8; }
-.ba-row.after .ba-frame { box-shadow: 0 0 0 2px var(--blue), 0 16px 36px -12px rgba(59,142,240,.35); }
+.ba-row.after .ba-frame { box-shadow: 0 0 0 2px var(--blue); }
 .ba-step figcaption { display: flex; align-items: baseline; gap: 8px; margin-top: 12px; font-size: 14px; line-height: 1.4; color: var(--ink); }
 .ba-step figcaption span { flex: none; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
   font-size: 11px; font-weight: 600; background: var(--soft); color: var(--graphite); transform: translateY(-1px); }
