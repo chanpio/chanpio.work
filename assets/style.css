@@ -385,12 +385,10 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 
 /* Now Nudge: no grey matte */
 .case-nudge .cover { background: none; padding: 0; }
-.case-nudge .cover img, .case-nudge .cover video { border-radius: var(--r-xl); }
 .case-nudge .body .fig > img, .case-nudge .body .fig > video, .case-nudge .body .fig.row > div { background: none; padding: 0; border-radius: var(--r-md); }
 .case-nudge .body .fig > img, .case-nudge .body .fig > video { overflow: hidden; }
 .case-nudge .body .fig.narrow > img, .case-nudge .body .fig.narrow > video { max-width: 340px; margin: 0 auto; display: block; }
 .case-nudge .body .fig.narrow-wide > img, .case-nudge .body .fig.narrow-wide > video { max-width: 520px; margin: 0 auto; display: block; }
-@media (max-width: 760px) { .case-nudge .cover img, .case-nudge .cover video { border-radius: var(--r-lg); } }
 
 /* ---------- Frameless screens on white (Now Nudge, Automation) ---------- */
 .case-automation .cover { background: none; padding: 0; }
@@ -450,10 +448,14 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 
 /* ---------- All case studies: images sit directly on white, no grey matte ---------- */
 main[class^="case-"] .cover { background: none; padding: 0; }
+/* Covers share the dark band's radius so the two stacked shapes match */
+main[class^="case-"] .cover img, main[class^="case-"] .cover video { border-radius: var(--r-xl); }
+@media (max-width: 760px) { main[class^="case-"] .cover img, main[class^="case-"] .cover video { border-radius: var(--r-lg); } }
 main[class^="case-"] .body .fig > img, main[class^="case-"] .body .fig > video,
 main[class^="case-"] .body .fig.row > div { background: none; padding: 0; border-radius: var(--r-md); }
 main[class^="case-"] .body .fig.row > div > img, main[class^="case-"] .body .fig.row > div > video { border-radius: var(--r-md); }
 main[class^="case-"] .fig img, main[class^="case-"] .fig video { background: none; }
+main[class^="case-"] .body .fig.narrow > img, main[class^="case-"] .body .fig.narrow > video { max-width: 340px; margin: 0 auto; }
 .fig.row { padding: 0; border-bottom: 0; text-decoration: none; }
 
 /* ---------- Before and after: one row per version, same-size frames, so the step count is the comparison ---------- */
