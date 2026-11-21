@@ -112,7 +112,8 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 .nav .pill { padding: 11px 18px; }
 @media (max-width: 480px) { .nav > a[href$="#about"] { display: none; } }
 
-/* Hero: copy and the Knowing / Anticipating / Acting loop on the left, the Now Nudge demo on the right.
+/* Hero: the headline, the Knowing / Anticipating / Acting progress row and the CTAs on the left, the Now Nudge demo on the right.
+   Kept to what the demo needs on the first screen; the intro line and proof row sit just below the card (.hero-more).
    The demo's source is hero/ (stageshow kit); it builds to assets/hero/. */
 .hero { padding: 0; } /* the hero card runs edge to edge */
 .hero-card {
@@ -122,35 +123,32 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
     radial-gradient(120% 70% at 50% 110%, #f7e9d6 0%, rgba(247,233,214,0) 60%),
     radial-gradient(90% 60% at 15% 85%, #e9e1ff 0%, rgba(233,225,255,0) 60%),
     linear-gradient(180deg, #cfe2f7 0%, #e6eef8 45%, #f6efe6 100%);
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); align-items: end; column-gap: 24px;
+  /* The demo column is sized by the viewport's height as well as its width: wide design (560×620) on tall screens,
+     the phone-only compact design (358×580, it switches below 560px) on short ones */
+  --stage-w: min(560px, 46vw, calc((100svh - 88px) / 1.107));
+  display: grid; grid-template-columns: minmax(0, 1fr) var(--stage-w); align-items: end; column-gap: 32px;
   padding: 96px max(var(--gutter), calc((100% - 1280px) / 2)) 0 var(--edge);
 }
-.hero-copy { position: relative; z-index: 2; align-self: center; min-width: 0; padding-block: 40px 64px; color: #000; }
-.hero-copy h1 { text-wrap: balance; font-size: clamp(42px, 4.9vw, 66px); line-height: 1.02; }
-.hero-copy p { margin: 20px 0 0; max-width: 34ch; font-size: clamp(18px, 2vw, 21px); font-weight: 500; letter-spacing: -0.01em; }
-/* Hero CTAs and proof line sit on the fixed sky, so like .hero-replay they pin light-stage colors instead of theme tokens */
-.hero-cta { justify-content: flex-start; margin-top: 26px; }
+.hero-copy { position: relative; z-index: 2; align-self: center; min-width: 0; padding-block: 24px 72px; color: #000; }
+.hero-copy h1 { text-wrap: balance; font-size: clamp(40px, 5.4vw, 76px); line-height: 1.02; max-width: 12ch; }
+/* Hero CTAs sit on the fixed sky, so like .hero-replay they pin light-stage colors instead of theme tokens */
+.hero-cta { justify-content: flex-start; margin-top: 32px; }
 .hero-cta .pill.dark { background: #000; color: #fff; }
 .hero-cta .pill.dark:hover { background: var(--blue); color: #fff; }
 .hero-cta .pill.soft { background: rgba(255,255,255,.65); color: #000; }
 .hero-cta .pill.soft:hover { background: #fff; }
-.hero-copy p.hero-proof { margin: 16px 0 0; max-width: none; font-size: 15px; font-weight: 400; letter-spacing: 0; color: #55575e; }
-.hero-proof b { font-weight: 600; color: #000; }
 
-.hero-steps { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: 8px max-content 1fr; column-gap: 12px; row-gap: 4px; max-width: 400px; }
+/* The loop as a three-part progress row: a rule over each label lights as the demo reaches that beat.
+   The one-line descriptions stay for screen readers; the demo shows them. */
+.hero-steps { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 16px; max-width: 480px; }
 .hero-steps li {
-  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline; padding: 8px 0;
-  color: #55575e; transition: color .4s ease;
-}
-.hero-steps li::before {
-  content: ""; width: 8px; height: 8px; border-radius: 50%; background: #b8bcc6; transform: translateY(-1px);
-  transition: background .4s ease, box-shadow .4s ease;
+  padding-top: 12px; border-top: 2px solid rgba(0,0,0,.1);
+  font-size: 16px; line-height: 1.3; color: #55575e; transition: color .4s ease, border-color .4s ease;
 }
 .hero-steps b { font-weight: 600; color: inherit; }
-.hero-steps li[data-past] { color: #3d3f45; }
-.hero-steps li[data-past]::before { background: #8fb9ef; }
-.hero-steps li[data-on] { color: #000; }
-.hero-steps li[data-on]::before { background: var(--blue); box-shadow: 0 0 0 4px rgba(59,142,240,.18); }
+.hero-steps span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.hero-steps li[data-past] { color: #3d3f45; border-top-color: #8fb9ef; }
+.hero-steps li[data-on] { color: #000; border-top-color: var(--blue); }
 .hero-replay {
   visibility: hidden; opacity: 0; transition: opacity .3s ease;
   margin-top: 16px; border: 0; cursor: pointer; font: inherit; font-weight: 500; font-size: 15px; line-height: 1;
@@ -160,80 +158,56 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 .hero-replay:hover { background: #fff; }
 .hero-stage { min-width: 0; width: 100%; align-self: end; transition: opacity .4s ease; }
 .hero-stage[data-fading] { opacity: 0; }
-@media (prefers-reduced-motion: reduce) { .hero-steps li, .hero-steps li::before, .hero-stage { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .hero-steps li, .hero-stage { transition: none; } }
 
-/* Any landscape screen keeps two columns, so the demo is beside the copy on the first screen.
-   The demo column is sized by the viewport's height as well as its width: wide design (560×620) on tall screens,
-   the phone-only compact design (358×580, it switches below 560px) on short ones. */
-.hero-card { --stage-w: min(560px, 46vw, calc((100svh - 88px) / 1.107)); grid-template-columns: minmax(0, 1fr) var(--stage-w); }
 @media (orientation: landscape) and (max-height: 700px) {
-  .hero-card { --stage-w: min(358px, 38vw, calc((100svh - 56px) / 1.62)); }
-}
-@media (orientation: landscape) and (max-width: 1180px) {
-  .hero-copy h1 { font-size: clamp(34px, 4.6vw, 56px); }
-  .hero-copy p { font-size: clamp(16px, 1.8vw, 20px); }
-}
-/* Short viewports — small windows, landscape phones: tighten the copy so it fits beside the demo */
-@media (orientation: landscape) and (max-height: 760px) {
-  .hero-card { padding-top: 64px; }
-  .hero-copy { padding-block: 16px 28px; }
-  .hero-copy p { margin-top: 14px; }
-  .hero-cta { margin-top: 18px; }
-  .hero-copy p.hero-proof { margin-top: 12px; }
-  .hero-steps { margin-top: 18px; }
-  .hero-steps li { padding: 5px 0; }
-  .hero-replay { margin-top: 10px; }
+  .hero-card { --stage-w: min(358px, 38vw, calc((100svh - 56px) / 1.62)); padding-top: 64px; }
+  .hero-copy { padding-block: 8px 40px; }
 }
 @media (orientation: landscape) and (max-height: 480px) {
   .hero-card { padding-top: 56px; column-gap: 16px; }
-  .hero-copy { padding-block: 4px 16px; }
-  .hero-copy h1 { font-size: clamp(26px, 3.8vw, 34px); }
-  .hero-copy p { font-size: 15px; margin-top: 8px; }
-  .hero-cta { margin-top: 12px; }
+  .hero-copy { padding-block: 0 20px; }
+  .hero-copy h1 { font-size: clamp(28px, 4.4vw, 40px); max-width: 14ch; }
+  .hero-steps { margin-top: 16px; }
+  .hero-steps li { font-size: 14px; padding-top: 8px; }
+  .hero-cta { margin-top: 16px; }
   .hero-cta .pill { padding: 9px 16px; font-size: 15px; }
-  .hero-copy p.hero-proof { font-size: 13px; margin-top: 8px; }
-  .hero-steps { margin-top: 8px; font-size: 14px; }
-  .hero-steps li { padding: 2px 0; }
-  .hero-replay { margin-top: 6px; padding: 8px 14px; font-size: 14px; }
+  .hero-replay { margin-top: 8px; padding: 8px 14px; font-size: 14px; }
 }
 
-/* Portrait (phones, upright tablets): one column, re-ordered so the demo is on the first screen.
-   .hero-copy dissolves (display: contents) and its parts sit around the stage:
-   headline → the Knowing / Anticipating / Acting row → demo → intro, CTAs, proof, Replay.
-   The phone fades out at its foot so the copy below reads as a new block rather than a cut. */
+/* Portrait (phones, upright tablets): one column, re-ordered so the demo is on the first screen:
+   headline → progress row → demo (fading out at its foot) → CTAs. .hero-copy dissolves (display: contents). */
 @media (orientation: portrait), (max-width: 640px) {
   .hero-card { display: flex; flex-direction: column; align-items: stretch; padding: 84px var(--edge) 36px; }
   .hero-copy { display: contents; }
-  .hero-copy > * { order: 5; }
-  .hero-copy h1 { order: 1; max-width: none; font-size: clamp(36px, 7.4vw, 60px); }
-  .hero-steps { order: 2; margin: 18px 0 0; max-width: none; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 14px; font-size: 14px; line-height: 1.35; }
-  .hero-steps li { grid-column: auto; display: block; padding: 10px 0 0; border-top: 2px solid rgba(0,0,0,.08); transition: color .4s ease, border-color .4s ease; }
-  .hero-steps li::before { display: none; }
-  .hero-steps li b { display: block; }
-  .hero-steps li[data-past] { border-top-color: #8fb9ef; }
-  .hero-steps li[data-on] { border-top-color: var(--blue); }
+  .hero-copy h1 { order: 1; max-width: none; font-size: clamp(34px, 8.6vw, 60px); }
+  .hero-steps { order: 2; margin-top: 18px; max-width: none; }
+  .hero-replay { order: 3; align-self: flex-start; margin-top: 12px; }
+  .hero-replay:not([data-ready]) { display: none; }
   .hero-stage {
-    order: 3; align-self: center; width: 100%; max-width: 560px; margin-top: 14px;
+    order: 4; align-self: center; width: 100%; max-width: 560px; margin-top: 14px;
     -webkit-mask-image: linear-gradient(#000 82%, transparent); mask-image: linear-gradient(#000 82%, transparent);
   }
-  .hero-copy p { order: 4; margin-top: 4px; max-width: 40ch; }
-  .hero-copy p.hero-proof { order: 6; }
-  .hero-cta { order: 5; margin-top: 22px; }
-  .hero-replay { order: 2; align-self: flex-start; margin-top: 12px; }
-  .hero-replay:not([data-ready]) { display: none; }
+  .hero-cta { order: 5; margin-top: 8px; }
 }
-@media (orientation: portrait) and (min-width: 641px) { .hero-card { padding-top: 104px; } .hero-steps { font-size: 16px; } }
-@media (max-width: 380px) { .hero-steps { column-gap: 10px; font-size: 13px; } }
-/* Short portrait phones (SE-class): labels only in the step row, a smaller headline, and a demo sized so the keyboard row, where the nudge appears, is on the first screen */
+@media (orientation: portrait) and (min-width: 641px) { .hero-card { padding-top: 104px; } }
+/* Short portrait phones (SE-class): size the demo so the keyboard row, where the nudge appears, is on the first screen */
 @media (orientation: portrait) and (max-height: 760px) {
   .hero-card { padding-top: 72px; }
   .hero-copy h1 { font-size: clamp(30px, 8.6vw, 36px); }
   .hero-steps { margin-top: 12px; }
-  .hero-steps li { padding-top: 8px; }
-  .hero-steps li span { display: none; }
-  .hero-stage { margin-top: 8px; max-width: min(560px, calc((100svh - 250px) * 0.78)); }
+  .hero-steps li { padding-top: 8px; font-size: 14px; }
+  .hero-stage { margin-top: 8px; max-width: min(560px, calc((100svh - 230px) * 0.78)); }
 }
+@media (max-width: 380px) { .hero-steps { column-gap: 10px; } .hero-steps li { font-size: 14px; } }
 @media (max-width: 760px) { .hero-card { border-radius: 0 0 var(--r-lg) var(--r-lg); } }
+
+/* Below the hero: who I am and the proof row, then the work */
+.hero-more { padding-top: clamp(48px, 7vw, 96px); }
+.hero-intro { margin: 0 auto; max-width: 30ch; font-family: var(--font-display); font-size: clamp(26px, 3.2vw, 38px); line-height: 1.2; letter-spacing: -0.01em; text-wrap: balance; }
+.hero-more .hero-proof { margin: 16px 0 0; font-size: 15px; color: var(--graphite); }
+.hero-more .hero-proof b { font-weight: 600; color: var(--ink); }
+.hero-more + .intro { padding-top: clamp(48px, 6vw, 80px); }
 
 /* Intro + grid */
 .intro { padding: clamp(56px, 8vw, 104px) var(--gutter) clamp(32px, 4vw, 48px); }
