@@ -217,6 +217,7 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 
 /* Intro + grid */
 .intro { padding: clamp(56px, 8vw, 104px) var(--gutter) clamp(32px, 4vw, 48px); }
+.intro .eyebrow:last-child { margin-bottom: 0; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 32px); padding-bottom: clamp(56px, 8vw, 104px); }
 @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
 .card { text-decoration: none; display: block; }
