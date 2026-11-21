@@ -521,7 +521,7 @@ main[class^="case-"] .body .fig.narrow > img, main[class^="case-"] .body .fig.na
 .ba-row.after .ba-label b { color: var(--blue-text); }
 .ba-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .ba-step { margin: 0; }
-.ba-frame { aspect-ratio: 480 / 747; border-radius: 18px; overflow: hidden; background: var(--soft); }
+.ba-frame { aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; background: var(--soft); }
 .ba-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .ba-row:not(.after) .ba-frame { opacity: .8; }
 .ba-row.after .ba-frame { box-shadow: 0 0 0 2px var(--blue); }
