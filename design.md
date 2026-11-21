@@ -39,7 +39,7 @@ The design system behind www.chanpio.work. Every value here comes from `assets/s
 | `--night-line` | `#2C2C2E` | `#2C2C2E` | Row dividers inside a band |
 | `--night-text` | `#F5F5F7` | `#F5F5F7` | Body text on night |
 | `--night-dim` | `#A1A1A6` | `#A1A1A6` | Secondary text on night |
-| `blue-on-night` | `#7DB6FF` | `#7DB6FF` | Accent on black (lighter for contrast); not yet a token |
+| `--blue-night` | `#7DB6FF` | `#7DB6FF` | Accent on black (lighter for contrast) |
 
 In dark mode, bands lift to `#161618` so they still separate from the `#0B0B0C` page.
 
@@ -418,12 +418,12 @@ These are inconsistencies in the current CSS, not intended design.
 
 | # | Issue | Fix |
 |---|---|---|
-| 1 | h3 line-height inherits 1.55 from body, which is loose at 22–28px | `h3 { line-height: 1.25; }` |
+| 1 | ~~h3 line-height inherits 1.55 from body, which is loose at 22–28px~~ | Done 2026-11-21: `h3 { line-height: 1.25; }` |
 | 2 | 12 fixed text sizes; 15/14/13 are hard to tell apart | Merge `meta` and `tag` into `caption` (14) |
-| 3 | Instrument Sans 700 is loaded but unused | Load `wght@400;500;600` only |
+| 3 | ~~Instrument Sans 700 is loaded but unused~~ | Done 2026-11-21: all pages load `wght@400;500;600` only |
 | 4 | Five tracking values (−0.01 to −0.03em) | Reduce to −0.01 / −0.02 / −0.03 |
-| 5 | `#7DB6FF` (blue-on-night) and the 22px loop-icon radius are hard-coded | Add `--blue-night` and use `--r-md` |
+| 5 | ~~`#7DB6FF` (blue-on-night) and the 22px loop-icon radius are hard-coded~~ | Done 2026-11-21: `--blue-night` token added; the loop cards that used the 22px tile are retired |
 | 6 | Loop icon colors are hard-coded per class | Move them to `--chip-1`…`--chip-8` tokens |
-| 7 | Mobile band radius is a literal `32px` | Use `var(--r-lg)` |
+| 7 | ~~Mobile band radius is a literal `32px`~~ | Done 2026-11-21: `var(--r-lg)` (hero card mobile radius too) |
 | 8 | Spacing has no tokens; 12 near-duplicate values are written inline | Add `--space-1`…`--space-12` from section 4.1 |
 | 9 | ~~Blue eyebrow on white is 3.3:1, below AA for 16px text~~ | Done: `--blue-text` `#1B66C9` for blue text and white-on-blue tags; `#3B8EF0` stays for fills and focus |
