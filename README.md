@@ -49,5 +49,5 @@ These lines were rewritten or drafted. Check each one is accurate and cleared to
 - **Circle to Search 80%**: reworded from "10 mins to 2 mins" to "less time to complete a visual search task in testing". Confirm the basis.
 - **Samsung Pay 14%**: now "lift in share of the promoted credit card". Confirm meaning.
 - **Samsung Pay years**: set to 2014–2019 from your resume. The web checkout itself may be narrower.
-- **Years of experience**: site says 15+. Resume says 18+. Make them match.
+- **Years of experience**: removed everywhere on purpose (no tenure counts, no roles before 2014, no graduation years). Keep it that way.
 - **Phone number**: removed from the site on purpose. Email and LinkedIn only.
