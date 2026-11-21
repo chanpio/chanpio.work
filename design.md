@@ -273,7 +273,7 @@ A fixed frosted pill 12px from the top, max 1080px wide, with padding `8 8 8 20`
 
 ### 9.3 Hero card
 
-Full width minus the gutter, sized to its content, with only the bottom corners rounded to 48px. Two columns on the sky gradient: on the left a `display` h1, a `hero-sub` line, the Knowing / Anticipating / Acting list and a Replay pill that appears once the demo rests; on the right the Now Nudge demo, its phone running off the card's foot. Below 1024px the copy stacks over the demo.
+Full width minus the gutter, sized to its content, with only the bottom corners rounded to 48px. Two columns on the sky gradient: on the left a `display` h1, a `hero-sub` line, two CTA pills (dark “See the work” to `#work`, soft “Resume”), a one-line proof row at `meta` size (42M+ Galaxy devices · 2026 Design Samsung Grand Prize · 15+ years at Samsung, values in 600 ink), the Knowing / Anticipating / Acting list and a Replay pill that appears once the demo rests; on the right the Now Nudge demo, its phone running off the card's foot. The CTA pills pin fixed light-stage colors (black, translucent white) instead of theme tokens, like the Replay pill, because the sky does not change in dark mode. Below 1024px the copy stacks over the demo.
 
 ### 9.4 Now Nudge demo
 
