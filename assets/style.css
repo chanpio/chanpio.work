@@ -132,7 +132,7 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 .hero-copy { position: relative; z-index: 2; align-self: center; min-width: 0; padding-block: 24px 72px; color: #000; }
 .hero-copy h1 { text-wrap: balance; font-size: clamp(40px, 5.4vw, 76px); line-height: 1.02; max-width: 12ch; }
 /* Hero CTAs sit on the fixed sky, so like .hero-replay they pin light-stage colors instead of theme tokens */
-.hero-cta { justify-content: flex-start; margin-top: 32px; }
+.hero-cta { justify-content: flex-start; margin-top: 48px; }
 .hero-cta .pill.dark { background: #000; color: #fff; }
 .hero-cta .pill.dark:hover { background: var(--blue); color: #fff; }
 .hero-cta .pill.soft { background: rgba(255,255,255,.65); color: #000; }
@@ -140,7 +140,8 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 
 /* The loop as a three-part progress row: a rule over each label lights as the demo reaches that beat.
    The one-line descriptions stay for screen readers; the demo shows them. */
-.hero-steps { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 16px; max-width: 480px; }
+.hero-loop { display: flex; align-items: flex-end; gap: 20px; margin-top: 36px; max-width: 600px; }
+.hero-steps { flex: 1; min-width: 0; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 16px; max-width: 480px; }
 .hero-steps li {
   padding-top: 12px; border-top: 2px solid rgba(0,0,0,.1);
   font-size: 16px; line-height: 1.3; color: #55575e; transition: color .4s ease, border-color .4s ease;
@@ -150,10 +151,13 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 .hero-steps li[data-past] { color: #3d3f45; border-top-color: #8fb9ef; }
 .hero-steps li[data-on] { color: #000; border-top-color: var(--blue); }
 .hero-replay {
-  visibility: hidden; opacity: 0; transition: opacity .3s ease;
-  margin-top: 16px; border: 0; cursor: pointer; font: inherit; font-weight: 500; font-size: 15px; line-height: 1;
-  padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,.7); color: #000;
+  /* Belongs to the demo, so it ends the progress row rather than sitting with the CTAs */
+  visibility: hidden; opacity: 0; transition: opacity .3s ease; flex: none;
+  display: inline-flex; align-items: center; gap: 6px; margin: 0 0 -4px;
+  border: 0; cursor: pointer; font: inherit; font-weight: 500; font-size: 14px; line-height: 1;
+  padding: 8px 14px 8px 11px; border-radius: 999px; background: rgba(255,255,255,.7); color: #000;
 }
+.hero-replay::before { content: "↻"; font-size: 16px; line-height: 1; }
 .hero-replay[data-ready] { visibility: visible; opacity: 1; }
 .hero-replay:hover { background: #fff; }
 .hero-stage { min-width: 0; width: 100%; align-self: end; transition: opacity .4s ease; }
@@ -168,11 +172,10 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
   .hero-card { padding-top: 56px; column-gap: 16px; }
   .hero-copy { padding-block: 0 20px; }
   .hero-copy h1 { font-size: clamp(28px, 4.4vw, 40px); max-width: 14ch; }
-  .hero-steps { margin-top: 16px; }
+  .hero-loop { margin-top: 16px; }
   .hero-steps li { font-size: 14px; padding-top: 8px; }
   .hero-cta { margin-top: 16px; }
   .hero-cta .pill { padding: 9px 16px; font-size: 15px; }
-  .hero-replay { margin-top: 8px; padding: 8px 14px; font-size: 14px; }
 }
 
 /* Portrait (phones, upright tablets): one column, re-ordered so the demo is on the first screen:
@@ -181,9 +184,7 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
   .hero-card { display: flex; flex-direction: column; align-items: stretch; padding: 84px var(--edge) 36px; }
   .hero-copy { display: contents; }
   .hero-copy h1 { order: 1; max-width: none; font-size: clamp(34px, 8.6vw, 60px); }
-  .hero-steps { order: 2; margin-top: 18px; max-width: none; }
-  .hero-replay { order: 3; align-self: flex-start; margin-top: 12px; }
-  .hero-replay:not([data-ready]) { display: none; }
+  .hero-loop { order: 2; margin-top: 18px; max-width: none; gap: 12px; }
   .hero-stage {
     order: 4; align-self: center; width: 100%; max-width: 560px; margin-top: 14px;
     -webkit-mask-image: linear-gradient(#000 82%, transparent); mask-image: linear-gradient(#000 82%, transparent);
@@ -195,11 +196,16 @@ h1 em, h2 em, .card h3 em { font-style: italic; }
 @media (orientation: portrait) and (max-height: 760px) {
   .hero-card { padding-top: 72px; }
   .hero-copy h1 { font-size: clamp(30px, 8.6vw, 36px); }
-  .hero-steps { margin-top: 12px; }
+  .hero-loop { margin-top: 12px; }
   .hero-steps li { padding-top: 8px; font-size: 14px; }
   .hero-stage { margin-top: 8px; max-width: min(560px, calc((100svh - 230px) * 0.78)); }
 }
 @media (max-width: 380px) { .hero-steps { column-gap: 10px; } .hero-steps li { font-size: 14px; } }
+/* Narrow screens: Replay becomes a round icon button so the three labels keep their room */
+@media (max-width: 520px) {
+  .hero-replay { width: 36px; height: 36px; padding: 0; justify-content: center; font-size: 0; margin-bottom: -6px; }
+  .hero-replay::before { font-size: 18px; }
+}
 @media (max-width: 760px) { .hero-card { border-radius: 0 0 var(--r-lg) var(--r-lg); } }
 
 /* Below the hero: who I am and the proof row, then the work */
