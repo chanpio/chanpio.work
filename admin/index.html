@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Admin · Chanpio Park</title>
+<link rel="icon" href="../favicon-32.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Admin for chanpio.work: edit page text in place and commit it to GitHub.
+   How it stays safe on a public static site:
+   - Saving uses a GitHub fine-grained token scoped to this one repository (Contents: read and write). Without it nothing can be written;
+     GitHub itself rejects every other visitor, whatever happens on this page.
+   - The token never leaves this browser except to api.github.com. It is stored encrypted (AES-GCM, key from the admin password via
+     PBKDF2-SHA256, 600k iterations); the password is never stored, so each visit asks for it to unlock.
+   How edits are saved: the page's HTML is read from GitHub, each text block is located in the source by position, and only the blocks
+   you changed are spliced back in. Untouched markup is kept byte for byte, so a commit's diff is just your edit. */
+:root { --ink: #0b0b0d; --graphite: #5d6068; --hair: #e4e5e9; --soft: #f3f4f6; --blue: #3b6fe0; --red: #c8352c; --green: #1f8a4c; }
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { font-family: "Instrument Sans", system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; color: var(--ink); background: #fff; font-size: 15px; -webkit-font-smoothing: antialiased; }
+button, input, select { font: inherit; color: inherit; }
+a { color: var(--blue); }
+[hidden] { display: none !important; }
+
+/* Gate: unlock or first-time setup */
+.gate { min-height: 100%; display: grid; place-items: center; padding: 32px 20px; background: linear-gradient(180deg, #cfe2f7 0%, #e6eef8 45%, #f6efe6 100%); }
+.panel { width: min(100%, 440px); background: #fff; border-radius: 24px; padding: 28px; box-shadow: 0 10px 40px rgba(20, 30, 60, .12); }
+.panel h1 { margin: 0 0 6px; font-size: 24px; font-weight: 600; letter-spacing: -0.01em; }
+.panel p { margin: 0 0 16px; color: var(--graphite); line-height: 1.5; }
+.panel ol { margin: 0 0 18px; padding-left: 20px; color: var(--graphite); line-height: 1.55; }
+.panel ol b { color: var(--ink); font-weight: 600; }
+.field { display: block; margin: 0 0 12px; }
+.field span { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+.field input { width: 100%; height: 46px; padding: 0 14px; border: 1.5px solid var(--hair); border-radius: 12px; background: #fff; outline: none; }
+.field input:focus { border-color: var(--blue); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 40px; padding: 0 16px; border: 0; border-radius: 999px; cursor: pointer; font-weight: 500; white-space: nowrap; background: var(--soft); }
+.btn:hover { background: #e9eaee; }
+.btn.primary { background: var(--ink); color: #fff; }
+.btn.primary:hover { background: var(--blue); }
+.btn.danger { color: var(--red); }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn.block { width: 100%; height: 48px; margin-top: 4px; }
+.msg { min-height: 20px; margin: 10px 0 0; font-size: 14px; color: var(--red); }
+.msg.ok { color: var(--green); }
+.linkish { background: none; border: 0; padding: 0; color: var(--graphite); text-decoration: underline; cursor: pointer; font-size: 13px; }
+.row-end { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
+
+/* Editor */
+.editor { height: 100%; display: flex; flex-direction: column; }
+.bar { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--hair); background: #fff; }
+.bar .brand { font-weight: 600; margin-right: 4px; }
+.bar select { height: 40px; padding: 0 12px; border: 1.5px solid var(--hair); border-radius: 999px; background: #fff; }
+.bar .grow { flex: 1; }
+.bar .status { color: var(--graphite); font-size: 13px; }
+.bar .count { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 12px; font-weight: 600; }
+.tools { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px 12px; border-bottom: 1px solid var(--hair); background: var(--soft); }
+.tools .btn { height: 34px; padding: 0 12px; background: #fff; font-size: 14px; }
+.tools .btn:hover { background: #fff; box-shadow: 0 0 0 1.5px var(--blue) inset; }
+.tools .hint { color: var(--graphite); font-size: 13px; margin-left: 4px; }
+.tools .sep { width: 1px; height: 22px; background: var(--hair); margin: 0 4px; }
+.frame-wrap { position: relative; flex: 1; min-height: 0; background: #fff; }
+.frame-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); max-width: calc(100% - 32px); padding: 12px 18px; border-radius: 14px; background: var(--ink); color: #fff; font-size: 14px; line-height: 1.45; box-shadow: 0 10px 30px rgba(0,0,0,.2); z-index: 10; }
+.toast.err { background: var(--red); }
+@media (max-width: 640px) {
+  .bar { gap: 6px; padding: 8px 10px; }
+  .bar .brand, .bar .grow, .tools .hint { display: none; }
+  .bar select { order: -1; flex: 1 1 100%; min-width: 0; }
+  .bar .status { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bar .btn { height: 36px; padding: 0 12px; }
+  /* one swipeable row of tools */
+  .tools { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 8px 10px; }
+  .tools::-webkit-scrollbar { display: none; }
+  .tools .btn { flex: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Unlock (returning visit on this device) -->
+<section class="gate" id="unlock" hidden>
+  <form class="panel" id="unlock-form" autocomplete="on">
+    <h1>Admin</h1>
+    <p>관리자 비밀번호를 입력하세요.</p>
+    <input type="text" name="username" value="chanpio.work admin" autocomplete="username" hidden>
+    <label class="field"><span>비밀번호</span><input type="password" id="unlock-pw" autocomplete="current-password" required autofocus></label>
+    <button class="btn primary block" type="submit">잠금 해제</button>
+    <p class="msg" id="unlock-msg" role="alert"></p>
+    <div class="row-end"><a href="../">← 사이트로</a><button class="linkish" type="button" id="forget">이 기기에서 연결 해제</button></div>
+  </form>
+</section>
+
+<!-- Setup (first visit on this device) -->
+<section class="gate" id="setup" hidden>
+  <form class="panel" id="setup-form" autocomplete="on">
+    <h1>Admin 연결</h1>
+    <p>이 기기에서 처음 한 번만 하면 됩니다. 저장 권한은 GitHub가 직접 확인하므로, 토큰이 없는 사람은 아무것도 바꿀 수 없습니다.</p>
+    <ol>
+      <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub 토큰 만들기</a> (Fine-grained)</li>
+      <li>Repository access: <b>Only select repositories → chanpio.work</b></li>
+      <li>Permissions → Repository: <b>Contents → Read and write</b> (나머지는 그대로)</li>
+      <li>생성된 토큰을 아래에 붙여넣고, 이 기기에서 쓸 비밀번호를 정하세요.</li>
+    </ol>
+    <input type="text" name="username" value="chanpio.work admin" autocomplete="username" hidden>
+    <label class="field"><span>GitHub 토큰</span><input type="password" id="setup-token" placeholder="github_pat_…" autocomplete="off" spellcheck="false" required></label>
+    <label class="field"><span>관리자 비밀번호 (8자 이상)</span><input type="password" id="setup-pw" minlength="8" autocomplete="new-password" required></label>
+    <label class="field"><span>비밀번호 확인</span><input type="password" id="setup-pw2" minlength="8" autocomplete="new-password" required></label>
+    <button class="btn primary block" type="submit">연결</button>
+    <p class="msg" id="setup-msg" role="alert"></p>
+    <div class="row-end"><a href="../">← 사이트로</a></div>
+  </form>
+</section>
+
+<!-- Editor -->
+<section class="editor" id="editor" hidden>
+  <div class="bar">
+    <span class="brand">Admin</span>
+    <select id="page" aria-label="페이지"></select>
+    <span class="status" id="status"></span>
+    <span class="grow"></span>
+    <button class="btn" type="button" id="revert" disabled>되돌리기</button>
+    <button class="btn primary" type="button" id="save" disabled>저장 <span class="count" id="count" hidden>0</span></button>
+    <button class="btn" type="button" id="lock" title="잠그기">잠금</button>
+  </div>
+  <div class="tools" id="tools">
+    <button class="btn" type="button" data-cmd="bold" title="굵게"><b>B</b></button>
+    <button class="btn" type="button" data-cmd="italic" title="기울임"><i>I</i></button>
+    <button class="btn" type="button" data-cmd="link" title="링크">링크</button>
+    <button class="btn" type="button" data-cmd="unlink" title="링크 해제">링크 해제</button>
+    <span class="sep"></span>
+    <button class="btn" type="button" data-cmd="dup" title="선택한 블록 아래에 같은 형식의 블록 추가">+ 아래에 추가</button>
+    <button class="btn danger" type="button" data-cmd="del" title="선택한 블록 삭제">블록 삭제</button>
+    <span class="hint">텍스트를 눌러 바로 고치세요. 파란 테두리가 고칠 수 있는 블록입니다.</span>
+  </div>
+  <div class="frame-wrap"><iframe id="frame" title="편집 미리보기"></iframe></div>
+</section>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(() => {
+  'use strict'
+  const OWNER = 'chanpio', REPO = 'chanpio.work', BRANCH = 'main'
+  const PAGES = [
+    ['index.html', '홈'],
+    ['resume/index.html', 'Resume'],
+    ['nudge/index.html', 'Now Nudge'],
+    ['automation/index.html', 'Gemini Automation'],
+    ['cts/index.html', 'Circle to Search'],
+    ['color-picker/index.html', 'Color for everyone'],
+    ['splitscreen/index.html', 'Split screen'],
+    ['spay/index.html', 'Samsung Pay'],
+    ['404.html', '404'],
+  ]
+  const STORE = 'chanpio-admin-v1'
+  // Text blocks you can edit: the outermost match wins, so a list item is edited as a whole (with its bold label and links).
+  const EDITABLE = 'h1,h2,h3,h4,h5,h6,p,li,figcaption,dt,dd,blockquote,summary,.pill,.r-title,.r-sub,.r-year,.card-meta,.card-tag'
+  const NEVER = 'script,style,svg,video,iframe,[role="img"],.hero-stage,#nudge-hero,.site-header,nav,.fine,.cv-foot'
+  const VOID = new Set('area base br col embed hr img input link meta source track wbr'.split(' '))
+  const RAW = new Set(['script', 'style', 'textarea', 'title'])
+
+  const $ = (id) => document.getElementById(id)
+  const enc = new TextEncoder(), dec = new TextDecoder()
+  let token = null
+  let cur = null // { path, sha, src, recs, doc, origInner: Map, ids: [] }
+
+  // ---------- crypto: the token is stored encrypted with a key derived from the admin password ----------
+  const b64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)))
+  const unb64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0))
+  async function keyFrom(pw, salt) {
+    const base = await crypto.subtle.importKey('raw', enc.encode(pw), 'PBKDF2', false, ['deriveKey'])
+    return crypto.subtle.deriveKey({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations: 600000 }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt'])
+  }
+  async function seal(tok, pw) {
+    const salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12))
+    const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, await keyFrom(pw, salt), enc.encode(tok))
+    return { v: 1, salt: b64(salt), iv: b64(iv), ct: b64(ct) }
+  }
+  async function unseal(box, pw) {
+    const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(box.iv) }, await keyFrom(pw, unb64(box.salt)), unb64(box.ct))
+    return dec.decode(pt)
+  }
+  const loadBox = () => { try { return JSON.parse(localStorage.getItem(STORE)) } catch { return null } }
+
+  // ---------- GitHub ----------
+  async function gh(path, opts = {}) {
+    const r = await fetch('https://api.github.com' + path, {
+      ...opts,
+      headers: { Accept: 'application/vnd.github+json', Authorization: 'Bearer ' + token, 'X-GitHub-Api-Version': '2022-11-28', ...(opts.body ? { 'Content-Type': 'application/json' } : {}) },
+      cache: 'no-store',
+    })
+    const data = await r.json().catch(() => ({}))
+    if (!r.ok) { const e = new Error(data.message || ('HTTP ' + r.status)); e.status = r.status; throw e }
+    return data
+  }
+  async function checkToken() {
+    const repo = await gh(`/repos/${OWNER}/${REPO}`)
+    if (!repo.permissions || !repo.permissions.push) throw new Error('이 토큰에는 chanpio.work 쓰기 권한이 없습니다 (Contents: Read and write 필요).')
+  }
+  const fromB64Utf8 = (s) => dec.decode(unb64(s.replace(/\n/g, '')))
+  const toB64Utf8 = (s) => { const u = enc.encode(s); let bin = ''; for (let i = 0; i < u.length; i += 0x8000) bin += String.fromCharCode(...u.subarray(i, i + 0x8000)); return btoa(bin) }
+
+  // ---------- source indexing: every element's position in the raw HTML, in document order ----------
+  function indexSource(src) {
+    const recs = [], stack = []
+    let i = 0
+    const n = src.length
+    while (i < n) {
+      const lt = src.indexOf('<', i)
+      if (lt < 0) break
+      if (src.startsWith('<!--', lt)) { const e = src.indexOf('-->', lt + 4); i = e < 0 ? n : e + 3; continue }
+      if (src[lt + 1] === '!' || src[lt + 1] === '?') { const e = src.indexOf('>', lt); i = e < 0 ? n : e + 1; continue }
+      if (src[lt + 1] === '/') {
+        const m = /^<\/([a-zA-Z][\w:-]*)\s*>/.exec(src.slice(lt, lt + 64))
+        if (!m) { i = lt + 1; continue }
+        const name = m[1].toLowerCase()
+        for (let k = stack.length - 1; k >= 0; k--) {
+          if (stack[k].tag === name) {
+            for (let j = stack.length - 1; j > k; j--) stack[j].bad = true // implicitly closed: not safe to edit
+            const r = stack[k]; r.contentEnd = lt; r.closeEnd = lt + m[0].length
+            stack.length = k
+            break
+          }
+        }
+        i = lt + m[0].length
+        continue
+      }
+      const m = /^<([a-zA-Z][\w:-]*)/.exec(src.slice(lt, lt + 64))
+      if (!m) { i = lt + 1; continue }
+      const tag = m[1].toLowerCase()
+      let j = lt + m[0].length, q = null
+      for (; j < n; j++) { const c = src[j]; if (q) { if (c === q) q = null } else if (c === '"' || c === "'") q = c; else if (c === '>') break }
+      const openEnd = j + 1
+      const selfClose = src[j - 1] === '/'
+      const rec = { tag, openStart: lt, contentStart: openEnd }
+      recs.push(rec)
+      if (VOID.has(tag) || selfClose) { rec.contentEnd = openEnd; rec.closeEnd = openEnd; i = openEnd; continue }
+      if (RAW.has(tag)) {
+        const e = src.toLowerCase().indexOf('</' + tag, openEnd)
+        const ge = e < 0 ? n : src.indexOf('>', e)
+        rec.contentEnd = e < 0 ? n : e; rec.closeEnd = ge < 0 ? n : ge + 1
+        i = rec.closeEnd
+        continue
+      }
+      stack.push(rec)
+      i = openEnd
+    }
+    stack.forEach((r) => (r.bad = true))
+    return recs
+  }
+
+  // ---------- load a page ----------
+  async function loadPage(path) {
+    status('불러오는 중…')
+    $('save').disabled = true; $('revert').disabled = true; setCount(0)
+    const f = await gh(`/repos/${OWNER}/${REPO}/contents/${encodeURI(path)}?ref=${BRANCH}`)
+    const src = fromB64Utf8(f.content)
+    const recs = indexSource(src)
+    const doc = new DOMParser().parseFromString(src, 'text/html')
+    const els = [...doc.getElementsByTagName('*')]
+    // The parser and the indexer must agree element for element, or positions can't be trusted
+    const aligned = els.length === recs.length && els.every((el, k) => el.localName === recs[k].tag)
+    if (!aligned) throw new Error('이 페이지의 HTML 구조를 안전하게 읽지 못했습니다. 편집을 막았습니다.')
+    const origInner = new Map(), ids = []
+    let skipped = 0
+    const tpl = doc.createElement('template')
+    els.forEach((el, k) => {
+      if (!el.matches(EDITABLE) || el.closest(NEVER)) return
+      if (el.parentElement && el.parentElement.closest(EDITABLE)) return // outermost only
+      const r = recs[k]
+      if (r.bad || r.contentEnd == null) { skipped++; return }
+      tpl.innerHTML = src.slice(r.contentStart, r.contentEnd)
+      if (tpl.innerHTML !== el.innerHTML) { skipped++; return } // source and DOM disagree: leave it alone
+      el.setAttribute('data-aid', String(k))
+      origInner.set(String(k), el.innerHTML)
+      ids.push(String(k))
+    })
+    // Preview: the page itself, without its scripts, resolving assets from the live site path
+    doc.querySelectorAll('script').forEach((s) => s.remove())
+    const base = doc.createElement('base')
+    base.href = new URL('../' + path.replace(/[^/]*$/, ''), location.href).href
+    doc.head.prepend(base)
+    const st = doc.createElement('style')
+    st.textContent = `
+      [data-aid]{outline:1.5px dashed rgba(59,111,224,.35);outline-offset:3px;border-radius:2px;cursor:text}
+      [data-aid]:hover{outline-color:rgba(59,111,224,.8)}
+      [data-aid]:focus{outline:2px solid #3b6fe0;outline-offset:3px}
+      [data-aid][data-changed]{outline:2px solid #f2a33a;outline-offset:3px}
+      [data-new]{outline:2px solid #1f8a4c!important;outline-offset:3px}
+      .site-header{position:static!important}
+      .hero-replay{visibility:visible!important;opacity:1!important}`
+    doc.head.appendChild(st)
+    cur = { path, sha: f.sha, src, recs, origInner, ids, skipped, deleted: new Set() }
+    document.documentElement.dataset.skipped = String(skipped) // blocks left read-only because source and DOM disagree
+    const frame = $('frame')
+    await new Promise((res) => { frame.onload = res; frame.srcdoc = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML })
+    wireFrame(frame.contentDocument)
+    status(ids.length + '개 블록 편집 가능')
+  }
+
+  // ---------- editing inside the preview ----------
+  let focusEl = null
+  function wireFrame(d) {
+    d.querySelectorAll('[data-aid]').forEach(makeEditable)
+    // Links and buttons inside the preview must not navigate or submit
+    d.addEventListener('click', (e) => { if (e.target.closest('a,button')) e.preventDefault() }, true)
+    d.addEventListener('focusin', (e) => { const el = e.target.closest('[data-aid],[data-new]'); if (el) focusEl = el })
+    d.addEventListener('input', refresh)
+    // Paste as plain text so no foreign styling gets into the page
+    d.addEventListener('paste', (e) => { e.preventDefault(); const t = (e.clipboardData || window.clipboardData).getData('text/plain'); d.execCommand('insertText', false, t) })
+    // Enter in a block adds a line break, not a new unknown element
+    d.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); d.execCommand('insertLineBreak') } })
+  }
+  function makeEditable(el) { el.setAttribute('contenteditable', 'true'); el.setAttribute('spellcheck', 'false') }
+
+  const frameDoc = () => $('frame').contentDocument
+  function clean(html, keepNbsp) {
+    // Normalise what the browser's editor leaves behind: its styled spans and font tags, stray attributes,
+    // trailing line breaks, and the non-breaking spaces it types (unless the original block used them on purpose)
+    const t = document.createElement('template')
+    t.innerHTML = html
+    t.content.querySelectorAll('[contenteditable],[spellcheck],[data-aid],[data-new],[data-changed]').forEach((n) => { n.removeAttribute('contenteditable'); n.removeAttribute('spellcheck'); n.removeAttribute('data-aid'); n.removeAttribute('data-new'); n.removeAttribute('data-changed') })
+    t.content.querySelectorAll('font,span[style]').forEach((n) => n.replaceWith(...n.childNodes))
+    t.content.querySelectorAll('[style]').forEach((n) => n.removeAttribute('style'))
+    let s = t.innerHTML.replace(/(<br>)+$/, '')
+    if (!keepNbsp) s = s.replace(/&nbsp;/g, ' ')
+    return s
+  }
+  function outerClean(el) {
+    const c = el.cloneNode(true)
+    ;[c, ...c.querySelectorAll('*')].forEach((n) => { n.removeAttribute('contenteditable'); n.removeAttribute('spellcheck'); n.removeAttribute('data-aid'); n.removeAttribute('data-new'); n.removeAttribute('data-changed'); if (!n.getAttribute('style')) n.removeAttribute('style') })
+    c.innerHTML = clean(c.innerHTML)
+    return c.outerHTML
+  }
+
+  function changes() {
+    const d = frameDoc(), out = { edits: [], inserts: [], deletes: [...cur.deleted] }
+    if (!d) return out
+    d.querySelectorAll('[data-aid]').forEach((el) => {
+      const id = el.getAttribute('data-aid')
+      const orig = cur.origInner.get(id), keep = orig.includes('&nbsp;')
+      const now = clean(el.innerHTML, keep), was = clean(orig, keep)
+      const changed = now !== was
+      el.toggleAttribute('data-changed', changed)
+      if (changed) out.edits.push({ id, html: now })
+    })
+    // New blocks: attach each run of new blocks to the nearest original block before it (or after it, if first in its parent)
+    d.querySelectorAll('[data-new]').forEach((el) => {
+      if (!el.textContent.trim()) return
+      let p = el.previousElementSibling
+      while (p && p.hasAttribute('data-new')) p = p.previousElementSibling
+      if (p && p.hasAttribute('data-aid')) { out.inserts.push({ after: p.getAttribute('data-aid'), html: outerClean(el), node: el }); return }
+      let nx = el.nextElementSibling
+      while (nx && nx.hasAttribute('data-new')) nx = nx.nextElementSibling
+      if (nx && nx.hasAttribute('data-aid')) out.inserts.push({ before: nx.getAttribute('data-aid'), html: outerClean(el), node: el })
+    })
+    return out
+  }
+  function refresh() {
+    if (!cur) return
+    const c = changes()
+    const n = c.edits.length + c.inserts.length + c.deletes.length
+    setCount(n)
+    $('save').disabled = n === 0
+    $('revert').disabled = n === 0
+  }
+  function setCount(n) { $('count').textContent = n; $('count').hidden = n === 0 }
+
+  // Toolbar: keep the selection inside the preview while pressing buttons
+  $('tools').addEventListener('pointerdown', (e) => { if (e.target.closest('button')) e.preventDefault() })
+  $('tools').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-cmd]')
+    if (!b || !cur) return
+    const d = frameDoc(), cmd = b.dataset.cmd
+    if (cmd === 'bold' || cmd === 'italic' || cmd === 'unlink') { d.execCommand(cmd); refresh(); return }
+    if (cmd === 'link') {
+      const sel = d.getSelection()
+      if (!sel || sel.isCollapsed) return toast('링크를 걸 글자를 먼저 선택하세요.', true)
+      const url = prompt('링크 주소 (https://… 또는 사이트 안의 경로)')
+      if (!url) return
+      if (/^\s*javascript:/i.test(url)) return toast('이 주소는 쓸 수 없습니다.', true)
+      d.execCommand('createLink', false, url.trim()); refresh(); return
+    }
+    const el = focusEl && d.contains(focusEl) ? focusEl : null
+    if (!el) return toast('먼저 블록을 하나 누르세요.', true)
+    if (cmd === 'dup') {
+      const c = el.cloneNode(false)
+      c.removeAttribute('data-aid'); c.removeAttribute('data-changed'); c.removeAttribute('id')
+      c.setAttribute('data-new', ''); makeEditable(c)
+      c.textContent = '새 텍스트'
+      el.after(c)
+      c.focus()
+      const r = d.createRange(); r.selectNodeContents(c); const s = d.getSelection(); s.removeAllRanges(); s.addRange(r)
+      refresh(); return
+    }
+    if (cmd === 'del') {
+      if (!confirm('이 블록을 삭제할까요?\n\n“' + el.textContent.trim().slice(0, 80) + '”')) return
+      if (el.hasAttribute('data-aid')) cur.deleted.add(el.getAttribute('data-aid'))
+      el.remove(); focusEl = null; refresh()
+    }
+  })
+
+  // ---------- save: splice only the changed blocks back into the source ----------
+  async function save() {
+    const c = changes()
+    if (!c.edits.length && !c.inserts.length && !c.deletes.length) return
+    $('save').disabled = true
+    status('저장 중…')
+    try {
+      const ops = []
+      const rec = (id) => cur.recs[Number(id)]
+      c.edits.forEach((e) => { if (!cur.deleted.has(e.id)) { const r = rec(e.id); ops.push({ at: r.contentStart, end: r.contentEnd, text: e.html }) } })
+      c.deletes.forEach((id) => {
+        const r = rec(id)
+        // Take the line's indentation and newline with it when the block sits on its own line
+        let s = r.openStart, e = r.closeEnd
+        const ls = cur.src.lastIndexOf('\n', s - 1) + 1
+        if (/^[ \t]*$/.test(cur.src.slice(ls, s)) && cur.src[e] === '\n') { s = ls; e = e + 1 }
+        ops.push({ at: s, end: e, text: '' })
+      })
+      const lineIndent = (pos) => { const ls = cur.src.lastIndexOf('\n', pos - 1) + 1; const m = /^[ \t]*/.exec(cur.src.slice(ls, pos)); return m[0].length === pos - ls ? m[0] : null }
+      const groups = new Map()
+      c.inserts.forEach((x) => { const key = x.after ? 'a' + x.after : 'b' + x.before; if (!groups.has(key)) groups.set(key, []); groups.get(key).push(x.html) })
+      groups.forEach((htmls, key) => {
+        const id = key.slice(1), r = rec(id)
+        if (cur.deleted.has(id) && key[0] === 'a') {
+          // anchor was deleted: put the new blocks where it was
+          const ind = lineIndent(r.openStart)
+          ops.push({ at: r.openStart, end: r.openStart, text: htmls.join(ind != null ? '\n' + ind : '') + (ind != null ? '\n' + ind : '') })
+          return
+        }
+        if (key[0] === 'a') {
+          const ind = lineIndent(r.openStart)
+          const sep = ind != null ? '\n' + ind : ''
+          ops.push({ at: r.closeEnd, end: r.closeEnd, text: htmls.map((h) => sep + h).join('') })
+        } else {
+          const ind = lineIndent(r.openStart)
+          const sep = ind != null ? '\n' + ind : ''
+          ops.push({ at: r.openStart, end: r.openStart, text: htmls.map((h) => h + sep).join('') })
+        }
+      })
+      ops.sort((a, b) => b.at - a.at || b.end - a.end)
+      let out = cur.src
+      for (const o of ops) out = out.slice(0, o.at) + o.text + out.slice(o.end)
+      const label = PAGES.find((p) => p[0] === cur.path)[1]
+      const n = c.edits.length + c.inserts.length + c.deletes.length
+      await gh(`/repos/${OWNER}/${REPO}/contents/${encodeURI(cur.path)}`, {
+        method: 'PUT',
+        body: JSON.stringify({ message: `Admin: edit ${label} (${n} block${n > 1 ? 's' : ''})`, content: toB64Utf8(out), sha: cur.sha, branch: BRANCH }),
+      })
+      toast('저장했습니다. 1~2분 뒤 사이트에 반영됩니다.')
+      await loadPage(cur.path)
+    } catch (e) {
+      status('')
+      $('save').disabled = false
+      if (e.status === 409 || e.status === 422) toast('그 사이 이 페이지가 바뀌었습니다. 새로고침 후 다시 고쳐주세요.', true)
+      else if (e.status === 401 || e.status === 403) toast('GitHub가 저장을 거부했습니다. 토큰이 만료됐거나 권한이 없습니다. 잠금 → 연결 해제 후 다시 연결하세요.', true)
+      else toast('저장하지 못했습니다: ' + e.message, true)
+    }
+  }
+
+  // ---------- UI glue ----------
+  let toastTimer
+  function toast(t, err) { const el = $('toast'); el.textContent = t; el.classList.toggle('err', !!err); el.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => (el.hidden = true), err ? 6000 : 3500) }
+  function status(t) { $('status').textContent = t }
+  function show(id) { ['unlock', 'setup', 'editor'].forEach((s) => ($(s).hidden = s !== id)) }
+  const dirty = () => cur && Number($('count').textContent) > 0
+
+  async function openEditor() {
+    show('editor')
+    const sel = $('page')
+    sel.innerHTML = PAGES.map(([p, l]) => `<option value="${p}">${l}</option>`).join('')
+    const want = new URLSearchParams(location.search).get('page')
+    if (want && PAGES.some((p) => p[0] === want)) sel.value = want
+    try { await loadPage(sel.value) } catch (e) { status(''); toast(e.message, true) }
+  }
+  $('page').addEventListener('change', async (e) => {
+    if (dirty() && !confirm('저장하지 않은 변경이 있습니다. 다른 페이지로 갈까요?')) { e.target.value = cur.path; return }
+    try { await loadPage(e.target.value) } catch (err) { status(''); toast(err.message, true) }
+  })
+  $('save').addEventListener('click', save)
+  $('revert').addEventListener('click', async () => { if (confirm('이 페이지의 저장하지 않은 변경을 모두 되돌릴까요?')) await loadPage(cur.path) })
+  $('lock').addEventListener('click', () => { if (dirty() && !confirm('저장하지 않은 변경이 사라집니다. 잠글까요?')) return; token = null; cur = null; $('frame').srcdoc = ''; $('unlock-pw').value = ''; show('unlock') })
+  addEventListener('beforeunload', (e) => { if (dirty()) { e.preventDefault(); e.returnValue = '' } })
+
+  $('unlock-form').addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const msg = $('unlock-msg'); msg.className = 'msg'; msg.textContent = '확인 중…'
+    try { token = await unseal(loadBox(), $('unlock-pw').value) } catch { msg.textContent = '비밀번호가 맞지 않습니다.'; return }
+    try { await checkToken() } catch (err) { token = null; msg.textContent = 'GitHub 연결 실패: ' + err.message + ' (토큰 만료라면 “연결 해제” 후 다시 연결)'; return }
+    msg.textContent = ''
+    openEditor()
+  })
+  $('forget').addEventListener('click', () => { if (confirm('이 기기에 저장된 연결을 지울까요? 다시 쓰려면 토큰을 다시 붙여넣어야 합니다.')) { localStorage.removeItem(STORE); show('setup') } })
+  $('setup-form').addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const msg = $('setup-msg'); msg.className = 'msg'
+    const tok = $('setup-token').value.trim(), pw = $('setup-pw').value
+    if (pw.length < 8) { msg.textContent = '비밀번호는 8자 이상이어야 합니다.'; return }
+    if (pw !== $('setup-pw2').value) { msg.textContent = '비밀번호 확인이 다릅니다.'; return }
+    msg.textContent = 'GitHub에서 권한 확인 중…'
+    token = tok
+    try { await checkToken() } catch (err) { token = null; msg.textContent = err.message; return }
+    localStorage.setItem(STORE, JSON.stringify(await seal(tok, pw)))
+    $('setup-token').value = ''; $('setup-pw').value = ''; $('setup-pw2').value = ''
+    msg.textContent = ''
+    openEditor()
+  })
+
+  if (!window.crypto || !crypto.subtle) { show('setup'); $('setup-msg').textContent = '이 브라우저에서는 쓸 수 없습니다 (HTTPS 필요).'; return }
+  show(loadBox() ? 'unlock' : 'setup')
+})()
+</script>
+</body>
+</html>

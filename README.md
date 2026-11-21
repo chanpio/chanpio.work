@@ -51,3 +51,11 @@ These lines were rewritten or drafted. Check each one is accurate and cleared to
 - **Samsung Pay years**: set to 2014–2019 from your resume. The web checkout itself may be narrower.
 - **Years of experience**: removed everywhere on purpose (no tenure counts, no roles before 2014, no graduation years). Keep it that way.
 - **Phone number**: removed from the site on purpose. Email and LinkedIn only.
+
+## Admin (text editing)
+
+`/admin/` edits page text in place and commits straight to `main` (GitHub Pages redeploys in 1–2 minutes). Every page links to it from the footer ("Admin"), opening the editor on that page.
+
+- **Access**: a GitHub fine-grained token for this repository only, Contents: Read and write. GitHub enforces it, so the page is harmless to anyone without one. The token is stored in the browser encrypted with the admin password (AES-GCM, PBKDF2 600k); the password itself is never stored. New device = paste a token once, set a password.
+- **Editing**: headings, paragraphs, list items, captions, pills and rows are editable; bold, italic, links; add a block below (same style) or delete one. Paste is plain text. The header, the hero demo and the copyright line are locked.
+- **Saving**: only changed blocks are spliced into the source by position, so the commit diff is just the edit. If the page changed on GitHub meanwhile, saving stops and asks for a reload.
