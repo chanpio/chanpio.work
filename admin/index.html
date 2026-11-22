@@ -101,8 +101,8 @@ a { color: var(--blue); }
     <p>이 기기에서 처음 한 번만 하면 됩니다. 저장 권한은 GitHub가 직접 확인하므로, 토큰이 없는 사람은 아무것도 바꿀 수 없습니다.</p>
     <ol>
       <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub 토큰 만들기</a> (Fine-grained)</li>
-      <li>Repository access: <b>Only select repositories → chanpio.work</b></li>
-      <li>Permissions → Repository: <b>Contents → Read and write</b> (나머지는 그대로)</li>
+      <li>Repository access: <b>Only select repositories</b> → <b>chanpio.work</b> 선택 (“Public repositories”는 읽기 전용이라 안 됩니다)</li>
+      <li>Permissions → <b>Add permissions → Contents</b> → Access를 <b>Read and write</b>로 (나머지는 그대로)</li>
       <li>생성된 토큰을 아래에 붙여넣고, 이 기기에서 쓸 비밀번호를 정하세요.</li>
     </ol>
     <input type="text" name="username" value="chanpio.work admin" autocomplete="username" hidden>
@@ -197,9 +197,19 @@ a { color: var(--blue); }
     if (!r.ok) { const e = new Error(data.message || ('HTTP ' + r.status)); e.status = r.status; throw e }
     return data
   }
-  async function checkToken() {
-    const repo = await gh(`/repos/${OWNER}/${REPO}`)
-    if (!repo.permissions || !repo.permissions.push) throw new Error('이 토큰에는 chanpio.work 쓰기 권한이 없습니다 (Contents: Read and write 필요).')
+  // Proves the token can write, not just read: GitHub reports the account's role on the repo, not the token's scope,
+  // so a read-only token would pass a read check and fail only at save. Creating and deleting a throwaway branch
+  // needs Contents: write and leaves main (and the live site) untouched.
+  const WRITE_HELP = '이 토큰은 읽기만 되고 쓰기가 안 됩니다. 토큰 설정에서 Repository access를 “Only select repositories → chanpio.work”로, Permissions의 Contents를 “Read and write”로 바꾸세요. (“Public repositories”는 읽기 전용입니다.)'
+  async function checkToken(write) {
+    let ref
+    try { ref = await gh(`/repos/${OWNER}/${REPO}/git/ref/heads/${BRANCH}`) }
+    catch (e) { throw new Error(e.status === 401 ? '토큰이 올바르지 않거나 만료됐습니다.' : 'chanpio.work 저장소에 접근할 수 없는 토큰입니다.') }
+    if (!write) return
+    const name = 'admin-check-' + Math.random().toString(36).slice(2, 10)
+    try { await gh(`/repos/${OWNER}/${REPO}/git/refs`, { method: 'POST', body: JSON.stringify({ ref: 'refs/heads/' + name, sha: ref.object.sha }) }) }
+    catch (e) { throw new Error(e.status === 401 ? '토큰이 올바르지 않거나 만료됐습니다.' : WRITE_HELP) }
+    try { await gh(`/repos/${OWNER}/${REPO}/git/refs/heads/${name}`, { method: 'DELETE' }) } catch {}
   }
   const fromB64Utf8 = (s) => dec.decode(unb64(s.replace(/\n/g, '')))
   const toB64Utf8 = (s) => { const u = enc.encode(s); let bin = ''; for (let i = 0; i < u.length; i += 0x8000) bin += String.fromCharCode(...u.subarray(i, i + 0x8000)); return btoa(bin) }
@@ -458,14 +468,15 @@ a { color: var(--blue); }
       status('')
       $('save').disabled = false
       if (e.status === 409 || e.status === 422) toast('그 사이 이 페이지가 바뀌었습니다. 새로고침 후 다시 고쳐주세요.', true)
-      else if (e.status === 401 || e.status === 403) toast('GitHub가 저장을 거부했습니다. 토큰이 만료됐거나 권한이 없습니다. 잠금 → 연결 해제 후 다시 연결하세요.', true)
+      else if (e.status === 401) toast('토큰이 만료됐습니다. 잠금 → “이 기기에서 연결 해제” 후 새 토큰으로 다시 연결하세요.', true)
+      else if (e.status === 403 || e.status === 404) toast(WRITE_HELP + ' 바꾼 뒤 잠금 → “이 기기에서 연결 해제” → 다시 연결.', true)
       else toast('저장하지 못했습니다: ' + e.message, true)
     }
   }
 
   // ---------- UI glue ----------
   let toastTimer
-  function toast(t, err) { const el = $('toast'); el.textContent = t; el.classList.toggle('err', !!err); el.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => (el.hidden = true), err ? 6000 : 3500) }
+  function toast(t, err) { const el = $('toast'); el.textContent = t; el.classList.toggle('err', !!err); el.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => (el.hidden = true), err ? 12000 : 3500) }
   function status(t) { $('status').textContent = t }
   function show(id) { ['unlock', 'setup', 'editor'].forEach((s) => ($(s).hidden = s !== id)) }
   const dirty = () => cur && Number($('count').textContent) > 0
@@ -504,7 +515,7 @@ a { color: var(--blue); }
     if (pw !== $('setup-pw2').value) { msg.textContent = '비밀번호 확인이 다릅니다.'; return }
     msg.textContent = 'GitHub에서 권한 확인 중…'
     token = tok
-    try { await checkToken() } catch (err) { token = null; msg.textContent = err.message; return }
+    try { await checkToken(true) } catch (err) { token = null; msg.textContent = err.message; return }
     localStorage.setItem(STORE, JSON.stringify(await seal(tok, pw)))
     $('setup-token').value = ''; $('setup-pw').value = ''; $('setup-pw2').value = ''
     msg.textContent = ''
