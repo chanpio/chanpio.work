@@ -20,6 +20,14 @@
      as a haze along its sides. The dark bezel separates it from the sky on its own. */
   .nh-phone { position: absolute; left: 168px; top: 40px; box-shadow: none; }
 
+  /* The camera: phone and glance ride in this wrapper, stage-sized so their
+     coordinates do not move. The script pushes it toward the chip for the tap
+     (1.4s in) and pulls it back as the glance opens (1s out, set inline). */
+  .nh-cam {
+    position: absolute; inset: 0; transform-origin: 0 0; will-change: transform;
+    transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
   .nh-app { height: calc(100% + 44px); margin-top: -44px; display: flex; flex-direction: column; background: var(--nh-paper); color: var(--nh-ink); }
 
   /* Galaxy status bar: time left, wifi, signal and the numbered battery pill right */
@@ -122,4 +130,10 @@
   .nh-phone { left: 16px; top: 16px; }
   .nh-event { padding: 14px; }
   .nh-day__free { gap: 6px; padding: 0 10px; font-size: 13px; }
+}
+
+/* Reduced motion already swaps the demo for its still frame (the camera rests
+   wide there); this only keeps the wrapper itself from ever animating. */
+@media (prefers-reduced-motion: reduce) {
+  .nh .ss-stage .nh-cam { transition: none; }
 }

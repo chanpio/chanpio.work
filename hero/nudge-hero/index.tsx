@@ -1,4 +1,4 @@
-import { Stage, Phone, Thread, Bubble, Avatar, Bar, type Act } from '../kit'
+import { Stage, Phone, Thread, Bubble, Avatar, Bar, type Act, type Rect } from '../kit'
 import { Sym } from './icons'
 import calendarIcon from './calendar-icon.png'
 import './nudge.css'
@@ -10,16 +10,28 @@ import './nudge.css'
 //   Anticipating "Open calendar" rises in the keyboard toolbar, Calendar's own icon
 //   Acting       a tap, and Tuesday opens as a glance that grows out of the chip,
 //                the lunchtime slot free
+// The camera rides along: wide for the conversation, pushed in on the chip for
+// the tap, back out as the glance opens and the result settles.
 // Plays once and holds the payoff; the host remounts it for Replay.
 //
 // Real strings: Mina, my message, her question, the chip, the day and its free slot.
 
-type S = { typing: boolean; reply: boolean; known: boolean; nudge: boolean; event: boolean }
-const initial: S = { typing: false, reply: false, known: false, nudge: false, event: false }
-const poster: S = { typing: false, reply: true, known: true, nudge: true, event: true }
+type S = { typing: boolean; reply: boolean; known: boolean; nudge: boolean; event: boolean; cam: 'wide' | 'chip' }
+const initial: S = { typing: false, reply: false, known: false, nudge: false, event: false, cam: 'wide' }
+const poster: S = { typing: false, reply: true, known: true, nudge: true, event: true, cam: 'wide' }
 
 // Where the calendar glance rests, in stage px, per layout
 const CARD = { wide: { x: 40, y: 128, w: 256 }, compact: { x: 16, y: 96, w: 204 } }
+
+// The camera's push-in: scale, and the stage point the chip's centre lands on.
+// rect() reports camera-moved positions once the camera moves, so the focal point
+// and the glance's closed transform are computed from the chip's rect captured
+// while the camera was at rest.
+const CAM = {
+  wide: { k: 1.7, tx: 280, ty: 300 },
+  compact: { k: 1.55, tx: 179, ty: 270 },
+}
+const restNudge: Record<'wide' | 'compact', Rect | null> = { wide: null, compact: null }
 
 async function script(a: Act<S>) {
   await a.wait(900)
@@ -31,12 +43,12 @@ async function script(a: Act<S>) {
   a.put({ known: true })
   await a.wait(1300)
   a.mark('anticipating')
-  a.put({ nudge: true })
+  a.put({ nudge: true, cam: 'chip' })
   await a.wait(1600)
   await a.click('nudge')
   a.mark('acting')
   await a.wait(120)
-  a.put({ event: true })
+  a.put({ event: true, cam: 'wide' })
   await a.wait(3000)
 }
 
@@ -65,18 +77,26 @@ export default function NudgeHero() {
       poster={poster}
       script={script}
       play="once"
-      cursor={{ at: { wide: { x: 470, y: 560 }, compact: { x: 300, y: 540 } }, style: 'touch' }}
+      cursor={{ at: { wide: { x: 470, y: 560 }, compact: { x: 300, y: 540 } }, style: 'touch', ripple: true }}
       className="nh"
     >
       {(s, rect, layout) => {
         const card = CARD[layout]
-        const from = rect('nudge')
+        const live = rect('nudge')
+        if (s.cam === 'wide' && live.width) restNudge[layout] = live
+        const from = restNudge[layout]
         // Closed, the glance sits over the chip at the chip's width; open, it is itself
         const closed = from && from.width
           ? `translate(${from.x - card.x}px, ${from.y - card.y}px) scale(${from.width / card.w})`
           : 'scale(.3)'
+        // The camera: at rest it is the identity; on the chip it scales the scene
+        // so the chip's centre lands on the layout's target point
+        const cam = CAM[layout]
+        const camT = s.cam === 'chip' && from
+          ? `translate(${cam.tx - cam.k * (from.x + from.width / 2)}px, ${cam.ty - cam.k * (from.y + from.height / 2)}px) scale(${cam.k})`
+          : 'none'
         return (
-          <>
+          <div className="nh-cam" style={{ transform: camT, transitionDuration: s.cam === 'chip' ? '1.4s' : '1s' }}>
             <Phone width={layout === 'wide' ? 352 : 326} frame="android" status={false} className="nh-phone">
               <div className="nh-app">
                 <StatusBar />
@@ -155,7 +175,7 @@ export default function NudgeHero() {
                 <span className="nh-day__busy"><Bar w={72} h={7} /></span>
               </div>
             </div>
-          </>
+          </div>
         )
       }}
     </Stage>
