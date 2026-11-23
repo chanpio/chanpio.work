@@ -123,9 +123,7 @@ Values resolve at a 390px phone and a 1280px desktop.
 | `lede` | 18 | 400 | 1.6 | 0 | Section intro, graphite, max 46ch |
 | `body` | **17** | 400 | 1.55 | 0 | Base reading size |
 | `ui` | 16 | 500 | 1.0 | 0 | Nav, pills, chips, eyebrow |
-| `meta` | 15 | 400 | inherit | 0 | Card meta, rail, outcome labels, row sub |
-| `caption` | 14 | 400 | inherit | 0 | Figure captions, fine print, stat label |
-| `tag` | 13 | 600 | inherit | 0 | "Chosen" tag; chips on mobile (500) |
+| `caption` | 14 | 400 (600 for the "Chosen" tag) | inherit | 0 | Card meta, rail, outcome labels, row sub, figure captions, fine print, stat label, "Chosen" tag |
 
 ### 3.4 Measure
 
@@ -140,7 +138,7 @@ Values resolve at a 390px phone and a 1280px desktop.
 
 ## 4. Spacing
 
-The system uses a 4px base. Section spacing is fluid; component spacing is fixed.
+The system uses a 4px base. Section spacing is fluid; component spacing is fixed, and the component scale below is defined in CSS as `--space-1`…`--space-12`.
 
 ### 4.1 Component scale
 
@@ -283,7 +281,7 @@ A faux One UI screen built with the stageshow kit: Samsung Messages, the Samsung
 
 The whole card is one link. It contains:
 1. Thumbnail at 4:3, 32px radius, `--soft` placeholder. If there is no image, a gradient tile shows the project name.
-2. Meta at 15 graphite: "Org · Year".
+2. Meta at 14 graphite: "Org · Year".
 3. Title in `card-title`, which turns blue on hover.
 4. Description at 17 graphite, max 46ch.
 5. Stat pill: `--soft` fill, 7×14 padding, value 16/600 + label 14/400.
@@ -307,11 +305,11 @@ The whole card is one link. It contains:
 - **Numbers panel (home):** a single `--night-card` panel, 32px radius, 28px padding, 4 columns.
 - **Outcome cards (case):** separate `--night-card` tiles, 20px radius, padding `22 22 20`, auto-fit.
 
-Both use a `number` value over a 15px night-dim label. A highlighted value (`<em>`) is set in blue-on-night.
+Both use a `number` value over a 14px night-dim label. A highlighted value (`<em>`) is set in blue-on-night.
 
 ### 9.9 List row (FAQ style)
 
-Grid `1fr auto auto 20px` with 24px vertical padding and a 1px `--night-line` bottom border. It holds the title (19/500), sub and year (15 night-dim), and a › chevron (22 night-dim). On hover, the title and chevron turn blue. Under 640px it stacks into the title, then sub, then year, with the chevron spanning the rows.
+Grid `1fr auto auto 20px` with 24px vertical padding and a 1px `--night-line` bottom border. It holds the title (19/500), sub and year (14 night-dim), and a › chevron (22 night-dim). On hover, the title and chevron turn blue. Under 640px it stacks into the title, then sub, then year, with the chevron spanning the rows.
 
 ### 9.10 Case header
 
@@ -319,7 +317,7 @@ A centered eyebrow (project name), a `title` h1, and a "Org · Year" meta line i
 
 ### 9.11 Compare box
 
-`--soft` fill, 20px radius, padding 20×22, with a 2px transparent border. The chosen box (`.pick`) gets a blue border, an 8% blue tint, and a blue "Chosen" tag pill. Its title is 17/600 and its list is 15, with cons in graphite.
+`--soft` fill, 20px radius, padding 20×22, with a 2px transparent border. The chosen box (`.pick`) gets a blue border, an 8% blue tint, and a blue "Chosen" tag pill. Its title is 17/600 and its list is 14, with cons in graphite.
 
 ### 9.12 Steps
 
@@ -330,7 +328,7 @@ An ordered list with a 48px left inset. Each number sits in a 32px black circle 
 | Component | Spec |
 |---|---|
 | Callout | `--soft` fill, 20px radius, padding 22×24, body text at 500 in ink |
-| Quote | `quote` style, centered, with a 15 graphite `cite` below |
+| Quote | `quote` style, centered, with a 14 graphite `cite` below |
 | Lesson | Black card, 32px radius, 32–48px padding, centered; blue-on-night label, `statement` in white, supporting line in night-dim |
 
 ### 9.14 Figure
@@ -419,11 +417,11 @@ These are inconsistencies in the current CSS, not intended design.
 | # | Issue | Fix |
 |---|---|---|
 | 1 | ~~h3 line-height inherits 1.55 from body, which is loose at 22–28px~~ | Done 2026-11-21: `h3 { line-height: 1.25; }` |
-| 2 | 12 fixed text sizes; 15/14/13 are hard to tell apart | Merge `meta` and `tag` into `caption` (14) |
+| 2 | ~~12 fixed text sizes; 15/14/13 are hard to tell apart~~ | Done 2026-11-23: `meta` and `tag` merged into `caption` (14); every 15px and 13px in style.css is now 14px. Sizes under 14px survive only inside screenshot figures (shot-tag 12, step chips 11/10), where they annotate device UI, not site type |
 | 3 | ~~Instrument Sans 700 is loaded but unused~~ | Done 2026-11-21: all pages load `wght@400;500;600` only |
-| 4 | Five tracking values (−0.01 to −0.03em) | Reduce to −0.01 / −0.02 / −0.03 |
+| 4 | ~~Five tracking values (−0.01 to −0.03em)~~ | Done 2026-11-23: −0.005 → −0.01, −0.015 → −0.02, −0.025 → −0.03; only −0.01 / −0.02 / −0.03 (and 0) remain |
 | 5 | ~~`#7DB6FF` (blue-on-night) and the 22px loop-icon radius are hard-coded~~ | Done 2026-11-21: `--blue-night` token added; the loop cards that used the 22px tile are retired |
-| 6 | Loop icon colors are hard-coded per class | Move them to `--chip-1`…`--chip-8` tokens |
+| 6 | ~~Loop icon colors are hard-coded per class~~ | Closed 2026-11-23: the loop cards that used them are retired, so there is nothing left to tokenize |
 | 7 | ~~Mobile band radius is a literal `32px`~~ | Done 2026-11-21: `var(--r-lg)` (hero card mobile radius too) |
-| 8 | Spacing has no tokens; 12 near-duplicate values are written inline | Add `--space-1`…`--space-12` from section 4.1 |
+| 8 | ~~Spacing has no tokens; 12 near-duplicate values are written inline~~ | Done 2026-11-23: `--space-1`…`--space-12` added from section 4.1; component padding, margin and gap use them. The fluid section rhythm (§4.2) stays in clamp() form |
 | 9 | ~~Blue eyebrow on white is 3.3:1, below AA for 16px text~~ | Done: `--blue-text` `#1B66C9` for blue text and white-on-blue tags; `#3B8EF0` stays for fills and focus |
