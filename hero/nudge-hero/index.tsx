@@ -1,4 +1,4 @@
-import { Stage, Phone, Thread, Bubble, Avatar, Bar, type Act } from '../kit'
+import { Stage, Phone, Thread, Bubble, Avatar, type Act } from '../kit'
 import { Sym } from './icons'
 import calendarIcon from './calendar-icon.png'
 import './nudge.css'
@@ -86,11 +86,11 @@ export default function NudgeHero() {
                 </div>
 
                 <Thread app="sms" className="nh-thread">
-                  <Bubble from="them" tail={false}><Bar w={150} h={8} /><Bar w={96} h={8} /></Bubble>
-                  <Bubble from="me" tail={false}><Bar w={120} h={8} /></Bubble>
-                  <Bubble from="them" tail={false}><Bar w={170} h={8} /><Bar w={130} h={8} /></Bubble>
+                  <Bubble from="them" tail={false}>Finally home! That SF trip wiped me out</Bubble>
+                  <Bubble from="me" tail={false}>Welcome back — how long were you there?</Bubble>
+                  <Bubble from="them" tail={false}>Five days. The workshop ran all week</Bubble>
                   <Bubble from="me" tail={false}>My flight is on 9/15, next week.</Bubble>
-                  <Bubble from="them" tail={false}><Bar w={176} h={8} /><Bar w={140} h={8} /><Bar w={60} h={8} /></Bubble>
+                  <Bubble from="them" tail={false}>And I still owe you a coffee from last time</Bubble>
                   {(s.typing || s.reply) && (
                     <Bubble from="them" tail={false} typing={s.typing}>
                       <span className="nh-msg" data-known={s.known ? '' : undefined}>
@@ -135,11 +135,11 @@ export default function NudgeHero() {
                   </div>
                   <div className="nh-day">
                     <span className="nh-day__hr">10</span>
-                    <span className="nh-day__busy"><Bar w={96} h={7} /></span>
+                    <span className="nh-day__busy"><b>Team standup</b><span>10:00 – 11:00 AM</span></span>
                     <span className="nh-day__hr">12</span>
                     <span className="nh-day__free"><b>Free</b>12:00 – 1:00 PM</span>
                     <span className="nh-day__hr">3</span>
-                    <span className="nh-day__busy"><Bar w={72} h={7} /></span>
+                    <span className="nh-day__busy"><b>Design review</b><span>3:00 – 4:00 PM</span></span>
                   </div>
                 </div>
               </div>
