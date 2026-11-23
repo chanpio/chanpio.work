@@ -1,4 +1,4 @@
-import { Stage, Phone, Thread, Bubble, Avatar, Bar, type Act, type Rect } from '../kit'
+import { Stage, Phone, Thread, Bubble, Avatar, Bar, type Act } from '../kit'
 import { Sym } from './icons'
 import calendarIcon from './calendar-icon.png'
 import './nudge.css'
@@ -7,49 +7,37 @@ import './nudge.css'
 // in the case study (images/nudge/w-place-keyboard, w-share): Samsung Messages,
 // Samsung Keyboard with the nudge in its toolbar row, the Galaxy status bar.
 //   Knowing      Mina's message lands; "this Tuesday at lunchtime" is read
-//   Anticipating "Open calendar" rises in the keyboard toolbar, Calendar's own icon
-//   Acting       a tap, and Tuesday opens as a glance that grows out of the chip,
-//                the lunchtime slot free
-// The camera rides along: wide for the conversation, pushed in on the chip for
-// the tap, back out as the glance opens and the result settles.
+//   Anticipating "Open calendar" rises in the keyboard toolbar, Calendar's own
+//                icon, shimmering softly while it waits
+//   Acting       a tap, and the keyboard gives way to Tuesday as a glance
+//                inside the chat, the lunchtime slot free
+// Nothing leaves the conversation: the phone never moves, there is no camera
+// and no satellite card; every move happens inside the thread.
 // Plays once and holds the payoff; the host remounts it for Replay.
 //
 // Real strings: Mina, my message, her question, the chip, the day and its free slot.
 
-type S = { typing: boolean; reply: boolean; known: boolean; nudge: boolean; event: boolean; cam: 'wide' | 'chip' }
-const initial: S = { typing: false, reply: false, known: false, nudge: false, event: false, cam: 'wide' }
-const poster: S = { typing: false, reply: true, known: true, nudge: true, event: true, cam: 'wide' }
-
-// Where the calendar glance rests, in stage px, per layout
-const CARD = { wide: { x: 40, y: 128, w: 256 }, compact: { x: 16, y: 96, w: 204 } }
-
-// The camera's push-in: scale, and the stage point the chip's centre lands on.
-// rect() reports camera-moved positions once the camera moves, so the focal point
-// and the glance's closed transform are computed from the chip's rect captured
-// while the camera was at rest.
-const CAM = {
-  wide: { k: 1.7, tx: 280, ty: 300 },
-  compact: { k: 1.55, tx: 179, ty: 270 },
-}
-const restNudge: Record<'wide' | 'compact', Rect | null> = { wide: null, compact: null }
+type S = { typing: boolean; reply: boolean; known: boolean; nudge: boolean; event: boolean }
+const initial: S = { typing: false, reply: false, known: false, nudge: false, event: false }
+const poster: S = { typing: false, reply: true, known: true, nudge: true, event: true }
 
 async function script(a: Act<S>) {
-  await a.wait(900)
+  await a.wait(500)
   a.put({ typing: true })
-  await a.wait(1500)
+  await a.wait(900)
   a.put({ typing: false, reply: true })
-  await a.wait(1100)
+  await a.wait(700)
   a.mark('knowing')
   a.put({ known: true })
-  await a.wait(1300)
+  await a.wait(800)
   a.mark('anticipating')
-  a.put({ nudge: true, cam: 'chip' })
-  await a.wait(1600)
+  a.put({ nudge: true })
+  await a.wait(1100)
   await a.click('nudge')
   a.mark('acting')
-  await a.wait(120)
-  a.put({ event: true, cam: 'wide' })
-  await a.wait(3000)
+  await a.wait(100)
+  a.put({ event: true })
+  await a.wait(2200)
 }
 
 function StatusBar() {
@@ -77,28 +65,14 @@ export default function NudgeHero() {
       poster={poster}
       script={script}
       play="once"
-      cursor={{ at: { wide: { x: 470, y: 560 }, compact: { x: 300, y: 540 } }, style: 'touch', ripple: true }}
+      cursor={{ at: { wide: { x: 470, y: 560 }, compact: { x: 300, y: 540 } }, style: 'touch' }}
       className="nh"
     >
       {(s, rect, layout) => {
-        const card = CARD[layout]
-        const live = rect('nudge')
-        if (s.cam === 'wide' && live.width) restNudge[layout] = live
-        const from = restNudge[layout]
-        // Closed, the glance sits over the chip at the chip's width; open, it is itself
-        const closed = from && from.width
-          ? `translate(${from.x - card.x}px, ${from.y - card.y}px) scale(${from.width / card.w})`
-          : 'scale(.3)'
-        // The camera: at rest it is the identity; on the chip it scales the scene
-        // so the chip's centre lands on the layout's target point
-        const cam = CAM[layout]
-        const camT = s.cam === 'chip' && from
-          ? `translate(${cam.tx - cam.k * (from.x + from.width / 2)}px, ${cam.ty - cam.k * (from.y + from.height / 2)}px) scale(${cam.k})`
-          : 'none'
         return (
-          <div className="nh-cam" style={{ transform: camT, transitionDuration: s.cam === 'chip' ? '1.4s' : '1s' }}>
+          <>
             <Phone width={layout === 'wide' ? 352 : 326} frame="android" status={false} className="nh-phone">
-              <div className="nh-app">
+              <div className="nh-app" data-sheet={s.event ? '' : undefined}>
                 <StatusBar />
                 <div className="nh-head">
                   <Sym name="back" size={22} />
@@ -153,29 +127,24 @@ export default function NudgeHero() {
                     ))}
                   </div>
                 </div>
+
+                <div className="nh-sheet" data-open={s.event ? '' : undefined}>
+                  <div className="nh-sheet__head">
+                    <img src={calendarIcon} width={24} height={24} alt="" />
+                    <span>Tue, Sep 9</span>
+                  </div>
+                  <div className="nh-day">
+                    <span className="nh-day__hr">10</span>
+                    <span className="nh-day__busy"><Bar w={96} h={7} /></span>
+                    <span className="nh-day__hr">12</span>
+                    <span className="nh-day__free"><b>Free</b>12:00 – 1:00 PM</span>
+                    <span className="nh-day__hr">3</span>
+                    <span className="nh-day__busy"><Bar w={72} h={7} /></span>
+                  </div>
+                </div>
               </div>
             </Phone>
-
-            <div
-              className="nh-event"
-              data-target="event"
-              data-open={s.event ? '' : undefined}
-              style={{ left: card.x, top: card.y, width: card.w, transform: s.event ? 'none' : closed }}
-            >
-              <div className="nh-event__head">
-                <img src={calendarIcon} width={24} height={24} alt="" />
-                <span>Tue, Sep 9</span>
-              </div>
-              <div className="nh-day">
-                <span className="nh-day__hr">10</span>
-                <span className="nh-day__busy"><Bar w={96} h={7} /></span>
-                <span className="nh-day__hr">12</span>
-                <span className="nh-day__free"><b>Free</b>12:00 – 1:00 PM</span>
-                <span className="nh-day__hr">3</span>
-                <span className="nh-day__busy"><Bar w={72} h={7} /></span>
-              </div>
-            </div>
-          </div>
+          </>
         )
       }}
     </Stage>

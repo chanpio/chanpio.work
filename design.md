@@ -243,7 +243,7 @@ There are no card shadows on white. Cards are separated by the image tile and sp
 | Motion | Spec | Trigger |
 |---|---|---|
 | Hero rise | 0.9s `cubic-bezier(.2,.8,.2,1)`, 16px up + fade | Page load, once |
-| Nudge demo | About 11s a run. Plays 3 times, each run holding the result 3.2s, then fading out (0.4s) to the opening frame; after the third it holds on the result and shows Replay, which plays it 3 times again. The Knowing / Anticipating / Acting list lights in step. A camera rides the scene: wide for the conversation, pushing in on the chip for the tap (1.4s), then pulling back as the glance opens (1s). Under reduced motion it shows the finished frame, no Replay | Hero, on load |
+| Nudge demo | About 7s a run. Plays 3 times, each run holding the result 2.4s, then fading out (0.4s) to the opening frame; after the third it holds on the result and shows Replay, which plays it 3 times again. The Knowing / Anticipating / Acting list lights in step. Nothing leaves the conversation: the phone never moves, the chip shimmers while it waits, and on the tap the keyboard gives way to the calendar glance as a sheet inside the chat, the app riding up so the free slot lands in frame. Under reduced motion it shows the finished frame, no Replay | Hero, on load |
 | Thumb zoom | scale 1.03 over 0.6s `cubic-bezier(.2,.8,.2,1)` | Card hover |
 | Color shift | 0.2s on background, color, border | Pill hover |
 | Smooth scroll | `scroll-behavior: smooth` | Anchor links |
@@ -275,7 +275,7 @@ Full width minus the gutter, sized to its content, with only the bottom corners 
 
 ### 9.4 Now Nudge demo
 
-A faux One UI screen built with the stageshow kit: Samsung Messages, the Samsung Keyboard toolbar with the Open calendar nudge, and the Galaxy status bar, matched to the shipped screens in the Now Nudge case study. Source in `hero/`, built to `assets/hero/` with `npm run build` (see `hero/README.md`). The stage is one `role="img"` with a description; the site's global CSS is fenced off it with `:not(:where(.ss-stage *))`. The scene rides in a camera wrapper (`.nh-cam`), stage-sized so no coordinates move: the script pushes it toward the chip for the tap and pulls it back as the glance opens. The glance's closed transform and the camera's focal point both read the chip's rect captured while the camera was at rest, since `rect()` reports camera-moved positions once it moves.
+A faux One UI screen built with the stageshow kit: Samsung Messages, the Samsung Keyboard toolbar with the Open calendar nudge, and the Galaxy status bar, matched to the shipped screens in the Now Nudge case study. Source in `hero/`, built to `assets/hero/` with `npm run build` (see `hero/README.md`). The stage is one `role="img"` with a description; the site's global CSS is fenced off it with `:not(:where(.ss-stage *))`. The glance is a sheet inside the chat (`.nh-sheet`) that takes the keyboard's place; because the phone runs off the stage's foot, the app rides up 150px as it opens (`.nh-app[data-sheet]`) so the day's free slot lands in frame.
 
 ### 9.5 Project card
 

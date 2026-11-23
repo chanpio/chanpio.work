@@ -12,7 +12,7 @@ const steps = [...document.querySelectorAll<HTMLElement>('[data-step]')]
 const control = document.getElementById('nudge-replay') as HTMLButtonElement | null
 const ORDER = ['knowing', 'anticipating', 'acting']
 const PLAYS = 3
-const HOLD = 3200 // the payoff stays on screen this long before the next run
+const HOLD = 2400 // the payoff stays on screen this long before the next run
 const FADE = 400 // matches .hero-stage's opacity transition
 
 const reduced = () => {
